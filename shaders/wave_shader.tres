@@ -50,7 +50,6 @@ void vertex() {
 // Input:6
 	vec2 n_out6p0 = VERTEX;
 	float n_out6p1 = n_out6p0.r;
-	float n_out6p2 = n_out6p0.g;
 
 
 // Input:3
@@ -92,7 +91,6 @@ void vertex() {
 
 }
 "
-graph_offset = Vector2(-431.056, -131.298)
 mode = 1
 flags/light_only = false
 nodes/vertex/0/position = Vector2(440, -80)
