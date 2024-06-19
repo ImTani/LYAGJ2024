@@ -10,8 +10,9 @@ config_version=5
 
 [application]
 
-config/name="Working Title"
+config/name="One Inventory Slot Only - LYGJ 2024"
 config/tags=PackedStringArray("lyagj")
+run/main_scene="res://scenes/test_world.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
