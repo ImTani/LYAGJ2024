@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://eohbogu0cec3"]
+[gd_scene load_steps=35 format=3 uid="uid://eohbogu0cec3"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_w4a55"]
 [ext_resource type="Texture2D" uid="uid://cikmgyfofq6wh" path="res://assets/player_sprites/tile000.png" id="2_mw1do"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/components/AnimationComponent.gd" id="6_5778f"]
 [ext_resource type="Script" path="res://scripts/components/AdvancedJumpComponent.gd" id="7_w0ux2"]
 [ext_resource type="Texture2D" uid="uid://c80r68bgsycdm" path="res://assets/player_sprites/tile001.png" id="8_8puch"]
+[ext_resource type="Script" path="res://scripts/components/ThrowerComponent.gd" id="8_pmtx5"]
 [ext_resource type="Texture2D" uid="uid://1aiqbj63232m" path="res://assets/player_sprites/tile024.png" id="9_4khc8"]
 [ext_resource type="Texture2D" uid="uid://bf1wlgc4pm2jd" path="res://assets/player_sprites/tile025.png" id="10_2s1ll"]
 [ext_resource type="Texture2D" uid="uid://mfjfdw8cdrat" path="res://assets/player_sprites/tile026.png" id="11_qr8tr"]
@@ -27,7 +28,7 @@
 [ext_resource type="Script" path="res://scripts/components/HolderComponent.gd" id="25_nfach"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_km53y"]
-size = Vector2(13, 24)
+size = Vector2(15, 28)
 
 [sub_resource type="Animation" id="Animation_iu8g4"]
 length = 0.001
@@ -99,7 +100,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_g56mv"]
 resource_name = "land"
-step = 0.25
+length = 0.2
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -107,7 +109,7 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("21_5famu"), ExtResource("22_566we"), ExtResource("23_xxvcf"), ExtResource("24_thyem")]
@@ -141,7 +143,7 @@ _data = {
 "run": SubResource("Animation_i4xpo")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "animation_component", "holder_component")]
+[node name="PlatformerPlayer" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "animation_component", "holder_component", "thrower_component")]
 position = Vector2(0, -14)
 script = ExtResource("1_w4a55")
 gravity_component = NodePath("GravityComponent")
@@ -150,15 +152,18 @@ movement_component = NodePath("MovementComponent")
 jump_component = NodePath("AdvancedJumpComponent")
 animation_component = NodePath("AnimationComponent")
 holder_component = NodePath("HolderComponent")
+thrower_component = NodePath("ThrowerComponent")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 2)
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_km53y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, -2)
 texture = ExtResource("2_mw1do")
+
+[node name="HoldLocation" type="Node2D" parent="."]
 
 [node name="GravityComponent" type="Node" parent="."]
 script = ExtResource("3_ekt3m")
@@ -169,6 +174,7 @@ script = ExtResource("4_7u3fe")
 
 [node name="MovementComponent" type="Node" parent="."]
 script = ExtResource("5_s1r2c")
+ground_acceleration = 8.0
 
 [node name="AnimationComponent" type="Node" parent="." node_paths=PackedStringArray("sprite", "animation_player")]
 script = ExtResource("6_5778f")
@@ -179,15 +185,16 @@ animation_player = NodePath("../AnimationPlayer")
 script = ExtResource("7_w0ux2")
 jump_velocity = -300.0
 
-[node name="HolderComponent" type="Node" parent="." node_paths=PackedStringArray("HoldLocation")]
+[node name="ThrowerComponent" type="Node" parent="."]
+script = ExtResource("8_pmtx5")
+
+[node name="HolderComponent" type="Node" parent="." node_paths=PackedStringArray("hold_location")]
 script = ExtResource("25_nfach")
-HoldLocation = NodePath("../HoldLocation")
+hold_location = NodePath("../HoldLocation")
+x_offset = 27.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_jua12")
 }
 speed_scale = 2.0
-
-[node name="HoldLocation" type="Marker2D" parent="."]
-position = Vector2(17, -2)

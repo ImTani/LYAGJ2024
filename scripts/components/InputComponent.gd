@@ -16,3 +16,9 @@ func get_jump_input():
 
 func get_jump_input_released():
 	return Input.is_action_just_released(jump_input) 
+
+func get_mouse_position() -> Vector2:
+	return get_viewport().get_mouse_position()
+
+func get_mouse_click():
+	return Input.is_action_just_pressed("click")

@@ -1,38 +1,33 @@
-[gd_scene load_steps=6 format=3 uid="uid://1rsft48n2dji"]
+[gd_scene load_steps=7 format=3 uid="uid://1rsft48n2dji"]
 
 [ext_resource type="Script" path="res://scripts/components/PickupComponent.gd" id="1_1yano"]
-[ext_resource type="Texture2D" uid="uid://eueyuobot22u" path="res://assets/kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="2_di5oi"]
+[ext_resource type="Script" path="res://scripts/item.gd" id="1_02ldc"]
+[ext_resource type="Shader" uid="uid://tlm38mqaeaqj" path="res://shaders/wave_shader.tres" id="3_c8ag3"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6y2lv"]
-atlas = ExtResource("2_di5oi")
-region = Rect2(126, 18, 18, 18)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k6dif"]
+shader = ExtResource("3_c8ag3")
+shader_parameter/wave_speed = 10.0
+shader_parameter/wave_intensity = 1.0
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_w1uw4"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6y2lv")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_m6v72"]
+size = Vector2(18, 18)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_o3pon"]
-radius = 13.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_wfi8y"]
 
-[node name="Item" type="Node2D"]
+[node name="Item" type="Node2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_02ldc")
+sprite = NodePath("Sprite")
 
-[node name="PickupComponent" type="Node" parent="." node_paths=PackedStringArray("sprite", "detection_area", "item")]
+[node name="PickupComponent" type="Node" parent="." node_paths=PackedStringArray("detection_area", "item")]
 script = ExtResource("1_1yano")
-sprite = NodePath("../Sprite")
 detection_area = NodePath("../DetectionArea")
 item = NodePath("..")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_w1uw4")
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_k6dif")
+texture = SubResource("PlaceholderTexture2D_m6v72")
 
 [node name="DetectionArea" type="Area2D" parent="."]
 
-[node name="Collision" type="CollisionShape2D" parent="DetectionArea"]
-shape = SubResource("CircleShape2D_o3pon")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_wfi8y")
