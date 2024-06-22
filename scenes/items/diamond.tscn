@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://4n8v4sj3slol"]
+
+[ext_resource type="PackedScene" uid="uid://1rsft48n2dji" path="res://scenes/item.tscn" id="1_mov0u"]
+[ext_resource type="Texture2D" uid="uid://y0ud2vjha7av" path="res://assets/item_sprites/diamond.png" id="2_hiqka"]
+
+[node name="Diamond" node_paths=PackedStringArray("sprite") instance=ExtResource("1_mov0u")]
+sprite = NodePath("Sprite")
+
+[node name="PickupComponent" parent="." index="1" node_paths=PackedStringArray("detection_area", "item")]
+detection_area = NodePath("../DetectionArea")
+item = NodePath("..")
+
+[node name="Sprite" parent="." index="2"]
+texture = ExtResource("2_hiqka")
