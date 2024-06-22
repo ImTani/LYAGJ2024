@@ -17,10 +17,10 @@ func handle_hold_location_update(move_direction: float) -> void:
 		position_tween.set_ease(Tween.EASE_IN_OUT)
 		
 		if move_direction > 0:
-			position_tween.tween_property(hold_location, "position", Vector2(x_offset, 0), 0.2)
+			position_tween.tween_property(hold_location, "position", Vector2(-x_offset, 0), 0.2)
 			current_item.sprite.flip_h = false
 		else:
-			position_tween.tween_property(hold_location, "position", Vector2(-x_offset, 0), 0.2)
+			position_tween.tween_property(hold_location, "position", Vector2(x_offset, 0), 0.2)
 			current_item.sprite.flip_h = true
 
 func pick_up(item: Item) -> void:

@@ -65,17 +65,9 @@ func jump(body: CharacterBody2D) -> void:
 	coyote_timer.stop()
 
 func initialize_jump_buffer_timer() -> void:
-	var _jump_buffer_timer = Timer.new()
-	_jump_buffer_timer.wait_time = jump_buffer_time
-	_jump_buffer_timer.one_shot = true
-	_jump_buffer_timer.name = "JumpBufferTimer"
-	add_child(_jump_buffer_timer)
-	jump_buffer_timer = _jump_buffer_timer
+	jump_buffer_timer = utils._initialize_timer("JumpBufferTimer", jump_buffer_time)
+	add_child(jump_buffer_timer)
 
 func initialize_coyote_timer() -> void:
-	var _coyote_timer = Timer.new()
-	_coyote_timer.wait_time = coyote_time
-	_coyote_timer.one_shot = true 
-	_coyote_timer.name = "CoyoteTimer"
-	add_child(_coyote_timer)
-	coyote_timer = _coyote_timer
+	coyote_timer = utils._initialize_timer("CoyoteTimer", coyote_time)
+	add_child(coyote_timer)

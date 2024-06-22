@@ -13,3 +13,10 @@ func get_component(parent: Node, component: String):
 		return parent.get_node(component)
 	else:
 		return null
+
+func _initialize_timer(_name: String, _wait_time: float):
+	var _timer = Timer.new()
+	_timer.wait_time = _wait_time
+	_timer.one_shot = true
+	_timer.name = _name
+	return _timer
