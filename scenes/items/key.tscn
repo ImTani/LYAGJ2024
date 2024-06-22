@@ -6,9 +6,9 @@
 [node name="Key" node_paths=PackedStringArray("sprite") instance=ExtResource("1_d7arl")]
 sprite = NodePath("Sprite")
 
-[node name="PickupComponent" parent="." index="0" node_paths=PackedStringArray("detection_area", "item")]
+[node name="PickupComponent" parent="." index="1" node_paths=PackedStringArray("detection_area", "item")]
 detection_area = NodePath("../DetectionArea")
 item = NodePath("..")
 
-[node name="Sprite" parent="." index="1"]
+[node name="Sprite" parent="." index="2"]
 texture = ExtResource("2_u0v7x")

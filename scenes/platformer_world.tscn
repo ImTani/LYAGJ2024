@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://c4ouhrq4y2h4q"]
+[gd_scene load_steps=33 format=4 uid="uid://c4ouhrq4y2h4q"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_q4wr6"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_vyy81"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://cyhwu2cagoijn" path="res://scenes/items/key.tscn" id="13_cwihj"]
 [ext_resource type="PackedScene" uid="uid://4n8v4sj3slol" path="res://scenes/items/diamond.tscn" id="14_jvaot"]
 [ext_resource type="PackedScene" uid="uid://eohbogu0cec3" path="res://scenes/player.tscn" id="15_wvaci"]
+[ext_resource type="PackedScene" uid="uid://ckry5eecdpv3v" path="res://scenes/checkpoint.tscn" id="16_jlkes"]
+[ext_resource type="PackedScene" uid="uid://b3ol5sqaib5pe" path="res://scenes/hazard.tscn" id="17_ychrd"]
 
 [sub_resource type="Resource" id="Resource_01jbi"]
 script = ExtResource("3_lp4lg")
@@ -497,6 +499,7 @@ sources/0 = SubResource("TileSetAtlasSource_a1mol")
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_qiqm4"]
 scenes/1/scene = ExtResource("13_cwihj")
 scenes/2/scene = ExtResource("14_jvaot")
+scenes/3/scene = ExtResource("16_jlkes")
 
 [sub_resource type="TileSet" id="TileSet_ttr45"]
 tile_size = Vector2i(18, 18)
@@ -508,13 +511,13 @@ sources/0 = SubResource("TileSetScenesCollectionSource_qiqm4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(-106, -46)
+position = Vector2(-135, -27)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("1_q4wr6")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
-position = Vector2(-106, -46)
+position = Vector2(-135, -27)
 script = ExtResource("2_vyy81")
 follow_mode = 2
 follow_target = NodePath("../Player")
@@ -585,11 +588,11 @@ tile_map_data = PackedByteArray("AAD6/wAAAAACAAEAAAD7/wAAAAACAAEAAAD8/wAAAAACAAE
 tile_set = SubResource("TileSet_c7ilh")
 
 [node name="Foreground" type="TileMapLayer" parent="Tilemap"]
-tile_map_data = PackedByteArray("AAAGAP3/AAAAAAAAAQAJAP3/AAAAAAAAAgA=")
+tile_map_data = PackedByteArray("AAAGAP3/AAAAAAAAAQAJAP3/AAAAAAAAAgD6////AAAAAAAAAwA=")
 tile_set = SubResource("TileSet_ttr45")
 
-[node name="Player" parent="." node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "animation_component", "holder_component", "thrower_component") instance=ExtResource("15_wvaci")]
-position = Vector2(-106, -46)
+[node name="Player" parent="." node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "animation_component", "holder_component", "thrower_component", "respawn_component", "health_component") instance=ExtResource("15_wvaci")]
+position = Vector2(-135, -27)
 gravity_component = NodePath("GravityComponent")
 input_component = NodePath("InputComponent")
 movement_component = NodePath("MovementComponent")
@@ -597,6 +600,11 @@ jump_component = NodePath("AdvancedJumpComponent")
 animation_component = NodePath("AnimationComponent")
 holder_component = NodePath("HolderComponent")
 thrower_component = NodePath("ThrowerComponent")
+respawn_component = NodePath("RespawnComponent")
+health_component = NodePath("HealthComponent")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4dr5n")
+
+[node name="Hazard" parent="." instance=ExtResource("17_ychrd")]
+position = Vector2(-27, -9)

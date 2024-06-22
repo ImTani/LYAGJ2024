@@ -4,6 +4,8 @@
 [ext_resource type="Script" path="res://scripts/item.gd" id="1_02ldc"]
 [ext_resource type="Shader" uid="uid://tlm38mqaeaqj" path="res://shaders/wave_shader.tres" id="3_c8ag3"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_wfi8y"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k6dif"]
 shader = ExtResource("3_c8ag3")
 shader_parameter/wave_speed = 10.0
@@ -12,11 +14,15 @@ shader_parameter/wave_intensity = 1.0
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_m6v72"]
 size = Vector2(18, 18)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wfi8y"]
-
 [node name="Item" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_02ldc")
 sprite = NodePath("Sprite")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_wfi8y")
+debug_color = Color(0.633799, 0.527927, 0, 0.42)
 
 [node name="PickupComponent" type="Node" parent="." node_paths=PackedStringArray("detection_area", "item")]
 script = ExtResource("1_1yano")
@@ -26,8 +32,3 @@ item = NodePath("..")
 [node name="Sprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_k6dif")
 texture = SubResource("PlaceholderTexture2D_m6v72")
-
-[node name="DetectionArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-shape = SubResource("CircleShape2D_wfi8y")

@@ -9,7 +9,9 @@ func _ready() -> void:
 	detection_area.body_entered.connect(_on_pickup)
 
 func _on_pickup(body) -> void:
-	if not body.has_node("HolderComponent"):
+	var holder_component: HolderComponent = utils.get_component(body, "HolderComponent")
+	
+	if not holder_component:
 		return
-
-	body.holder_component.pick_up(item)
+	
+	holder_component.pick_up(item)

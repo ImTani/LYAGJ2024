@@ -11,6 +11,5 @@ func handle_gravity(body: CharacterBody2D, delta: float):
 
 	if not body.is_on_floor():
 		body.velocity.y += gravity * delta
-	
-	just_landed = is_falling and body.is_on_floor()
+
 	is_falling = body.velocity.y > 0 and not body.is_on_floor()

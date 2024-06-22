@@ -8,15 +8,19 @@ class_name HolderComponent
 var current_item: Item = null
 
 func handle_hold_location_update(move_direction: float) -> void:
+	
 	if current_item:
 		if move_direction == 0:
 			return
 		
+		var position_tween = create_tween()
+		position_tween.set_ease(Tween.EASE_IN_OUT)
+		
 		if move_direction > 0:
-			hold_location.position.x = -x_offset
+			position_tween.tween_property(hold_location, "position", Vector2(x_offset, 0), 0.2)
 			current_item.sprite.flip_h = false
 		else:
-			hold_location.position.x = x_offset
+			position_tween.tween_property(hold_location, "position", Vector2(-x_offset, 0), 0.2)
 			current_item.sprite.flip_h = true
 
 func pick_up(item: Item) -> void:
