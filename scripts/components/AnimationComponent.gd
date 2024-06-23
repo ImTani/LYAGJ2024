@@ -23,6 +23,9 @@ func handle_horizontal_flip(move_direction: float) -> void:
 		
 	sprite.flip_h = false if move_direction > 0 else true
 
+func handle_hurt_effect() -> void:
+	pass
+
 func handle_move_animation(move_direction: float, velocity: Vector2, on_floor: bool) -> void:
 	handle_horizontal_flip(move_direction)
 	

@@ -7,6 +7,7 @@ class_name HealthComponent
 
 var health: int
 var is_alive: bool = true
+var is_invincible: bool = false
 var invincibility_timer: Timer
 
 signal died
@@ -19,9 +20,20 @@ func handle_health() -> void:
 	health = clamp(health, 0, max_health)
 
 func take_damage(damage: float) -> void:
-	health -= damage
-	if health == 0:
-		die()
+	if not is_invincible:
+		health -= damage
+		
+		if health == 0:
+			die()
+			return
+		
+		is_invincible = true
+		
+		invincibility_timer.start()
+		await invincibility_timer.timeout
+		
+		is_invincible = false
+
 
 func heal_health(healing: float) -> void:
 	health += healing

@@ -208,6 +208,7 @@ gravity = 1000.0
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("10_nufit")
+invincibility_time = 1.0
 
 [node name="HolderComponent" type="Node" parent="." node_paths=PackedStringArray("hold_location")]
 script = ExtResource("25_nfach")
