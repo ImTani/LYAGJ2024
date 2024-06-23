@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://eohbogu0cec3"]
+[gd_scene load_steps=45 format=3 uid="uid://eohbogu0cec3"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_w4a55"]
 [ext_resource type="Texture2D" uid="uid://cikmgyfofq6wh" path="res://assets/player_sprites/tile000.png" id="2_mw1do"]
@@ -34,24 +34,11 @@
 [ext_resource type="Texture2D" uid="uid://66royvlefio5" path="res://assets/player_sprites/tile060.png" id="32_87u33"]
 [ext_resource type="Texture2D" uid="uid://bhl6xpq10fs7g" path="res://assets/player_sprites/tile061.png" id="33_iipd5"]
 [ext_resource type="Texture2D" uid="uid://diud1y0fpqp2f" path="res://assets/player_sprites/tile062.png" id="34_7hbah"]
+[ext_resource type="PackedScene" uid="uid://ci1f3gr7y3awr" path="res://scenes/particles/hurt_particle.tscn" id="35_1k2uy"]
+[ext_resource type="PackedScene" uid="uid://lnkh6yfc1ypy" path="res://scenes/particles/spawn_particle.tscn" id="36_5rxl6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_km53y"]
 size = Vector2(15, 28)
-
-[sub_resource type="Animation" id="Animation_iu8g4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_mw1do")]
-}
 
 [sub_resource type="Animation" id="Animation_g6cig"]
 resource_name = "death"
@@ -160,7 +147,6 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jua12"]
 _data = {
-"RESET": SubResource("Animation_iu8g4"),
 "death": SubResource("Animation_g6cig"),
 "fall": SubResource("Animation_mjw3o"),
 "idle": SubResource("Animation_i3y2w"),
@@ -206,9 +192,11 @@ animation_player = NodePath("../AnimationPlayer")
 script = ExtResource("3_ekt3m")
 gravity = 1000.0
 
-[node name="HealthComponent" type="Node" parent="."]
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("body")]
 script = ExtResource("10_nufit")
-invincibility_time = 1.0
+body = NodePath("..")
+hurt_particles = ExtResource("35_1k2uy")
+invincibility_time = 0.2
 
 [node name="HolderComponent" type="Node" parent="." node_paths=PackedStringArray("hold_location")]
 script = ExtResource("25_nfach")
@@ -225,6 +213,7 @@ ground_acceleration = 8.0
 [node name="RespawnComponent" type="Node" parent="." node_paths=PackedStringArray("body")]
 script = ExtResource("27_0mnbk")
 body = NodePath("..")
+respawn_particles = ExtResource("36_5rxl6")
 
 [node name="ThrowerComponent" type="Node" parent="."]
 script = ExtResource("8_pmtx5")

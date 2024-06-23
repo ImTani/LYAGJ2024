@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://lnkh6yfc1ypy"]
+
+[ext_resource type="Script" path="res://scripts/queue_free_on_timeout.gd" id="1_8wukh"]
+[ext_resource type="Texture2D" uid="uid://d2lceccxwhwet" path="res://addons/BurstParticles2D/BurstParticles2D-demo/ring.png" id="1_efivt"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2xny4"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_eou63"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_purv5"]
+offsets = PackedFloat32Array(0.00378788, 1)
+colors = PackedColorArray(0.99, 0.95436, 0.4554, 1, 1, 0.633333, 0, 0)
+
+[node name="SpawnParticle" type="CPUParticles2D"]
+material = SubResource("CanvasItemMaterial_2xny4")
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 0.9
+lifetime_randomness = 0.2
+fixed_fps = 60
+texture = ExtResource("1_efivt")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+scale_amount_min = 0.0
+scale_amount_max = 0.02
+scale_amount_curve = SubResource("Curve_eou63")
+color_ramp = SubResource("Gradient_purv5")
+script = ExtResource("1_8wukh")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

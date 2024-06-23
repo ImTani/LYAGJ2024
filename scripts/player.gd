@@ -14,6 +14,7 @@ extends CharacterBody2D
 func _ready() -> void:
 	thrower_component.item_thrown.connect(holder_component.remove_current_item)
 	health_component.died.connect(respawn_component.respawn)
+	health_component.died.connect(thrower_component.throw_item)
 
 func _physics_process(delta: float) -> void:
 
@@ -21,9 +22,9 @@ func _physics_process(delta: float) -> void:
 	var is_dead = not health_component.is_alive
 
 	gravity_component.handle_gravity(self, delta)
+	movement_component.handle_horizontal_movement(self, horizontal_input, is_dead)
 
 	if not is_dead:
-		movement_component.handle_horizontal_movement(self, horizontal_input)
 		
 		holder_component.handle_hold_location_update(horizontal_input)
 		thrower_component.handle_item_throw(holder_component.current_item, input_component.get_mouse_click(), input_component.get_mouse_position())
