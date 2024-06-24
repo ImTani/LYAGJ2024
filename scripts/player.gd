@@ -19,12 +19,15 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 
 	var horizontal_input = input_component.input_horizontal 
-	var is_dead = not health_component.is_alive
-
+	var is_dead: bool = not health_component.is_alive
+	var is_invincible: bool = health_component.is_invincible
+	
+	var immobile: bool = is_dead
+	
 	gravity_component.handle_gravity(self, delta)
 	movement_component.handle_horizontal_movement(self, horizontal_input, is_dead)
 
-	if not is_dead:
+	if not immobile:
 		
 		holder_component.handle_hold_location_update(horizontal_input)
 		thrower_component.handle_item_throw(holder_component.current_item, input_component.get_mouse_click(), input_component.get_mouse_position())

@@ -17,12 +17,14 @@ colors = PackedColorArray(0.99, 0.95436, 0.4554, 1, 1, 0.633333, 0, 0)
 [node name="SpawnParticle" type="CPUParticles2D"]
 material = SubResource("CanvasItemMaterial_2xny4")
 emitting = false
-amount = 20
+amount = 50
 one_shot = true
 explosiveness = 0.9
 lifetime_randomness = 0.2
 fixed_fps = 60
 texture = ExtResource("1_efivt")
+emission_shape = 1
+emission_sphere_radius = 10.0
 spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 10.0
