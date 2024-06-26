@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://eohbogu0cec3"]
+[gd_scene load_steps=47 format=3 uid="uid://eohbogu0cec3"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_w4a55"]
 [ext_resource type="Texture2D" uid="uid://cikmgyfofq6wh" path="res://assets/player_sprites/tile000.png" id="2_mw1do"]
@@ -39,6 +39,16 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_km53y"]
 size = Vector2(15, 28)
+
+[sub_resource type="Gradient" id="Gradient_c34li"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y7n8f"]
+gradient = SubResource("Gradient_c34li")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.1, 0.5)
+metadata/_snap_enabled = true
 
 [sub_resource type="Animation" id="Animation_g6cig"]
 resource_name = "death"
@@ -156,6 +166,7 @@ _data = {
 }
 
 [node name="PlatformerPlayer" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "animation_component", "holder_component", "thrower_component", "respawn_component", "health_component")]
+modulate = Color(0.70342, 0.70342, 0.703419, 1)
 position = Vector2(0, -14)
 script = ExtResource("1_w4a55")
 gravity_component = NodePath("GravityComponent")
@@ -175,7 +186,7 @@ shape = SubResource("RectangleShape2D_km53y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, -2)
-texture = ExtResource("2_mw1do")
+texture = ExtResource("34_7hbah")
 
 [node name="HoldLocation" type="Node2D" parent="."]
 
@@ -217,6 +228,12 @@ respawn_particles = ExtResource("36_5rxl6")
 
 [node name="ThrowerComponent" type="Node" parent="."]
 script = ExtResource("8_pmtx5")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(9.375, 9.375)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_y7n8f")
+texture_scale = 0.4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

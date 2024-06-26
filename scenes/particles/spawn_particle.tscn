@@ -12,7 +12,7 @@ point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_purv5"]
 offsets = PackedFloat32Array(0.00378788, 1)
-colors = PackedColorArray(0.99, 0.95436, 0.4554, 1, 1, 0.633333, 0, 0)
+colors = PackedColorArray(1.49, 1.454, 0.955, 1, 1, 0.633333, 0, 0)
 
 [node name="SpawnParticle" type="CPUParticles2D"]
 material = SubResource("CanvasItemMaterial_2xny4")
