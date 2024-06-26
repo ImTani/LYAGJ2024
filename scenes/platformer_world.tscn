@@ -539,6 +539,7 @@ tween_resource = SubResource("Resource_01jbi")
 tween_on_load = false
 follow_damping = true
 follow_damping_value = Vector2(0.2, 0.2)
+draw_limits = true
 
 [node name="Tilemap" type="Node2D" parent="."]
 

@@ -28,7 +28,6 @@ func _physics_process(delta: float) -> void:
 	movement_component.handle_horizontal_movement(self, horizontal_input, is_dead)
 
 	if not immobile:
-		
 		holder_component.handle_hold_location_update(horizontal_input)
 		thrower_component.handle_item_throw(holder_component.current_item, input_component.get_mouse_click(), input_component.get_mouse_position())
 
