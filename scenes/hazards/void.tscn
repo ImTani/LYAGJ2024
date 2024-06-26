@@ -12,8 +12,7 @@ texture = null
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 shape = SubResource("WorldBoundaryShape2D_rurb6")
 
-[node name="HurtComponent" parent="." index="2" node_paths=PackedStringArray("hurtbox")]
-hurtbox = NodePath("../HurtBox")
+[node name="HurtComponent" parent="." index="2"]
 damage = 999
 
 [node name="CollisionBox" parent="." index="3"]

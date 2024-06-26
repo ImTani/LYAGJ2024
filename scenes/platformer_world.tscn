@@ -622,17 +622,8 @@ modulate = Color(0.438, 0.408, 0.48, 1)
 tile_map_data = PackedByteArray("AAAGAP3/AAAAAAAAAQAJAP3/AAAAAAAAAgD6////AAAAAAAAAwD9////AAAAAAAABADy/xAAAAAAAAAABQAjAP//AAAAAAAAAwAoAAAAAAAAAAAABAApAAAAAAAAAAAABAAdAAAAAAAAAAAABAAeAAAAAAAAAAAABAAfAAAAAAAAAAAABAAUAPn/AAAAAAAABgAUAPj/AAAAAAAABgA=")
 tile_set = SubResource("TileSet_ttr45")
 
-[node name="Player" parent="." node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "animation_component", "holder_component", "thrower_component", "respawn_component", "health_component") instance=ExtResource("15_wvaci")]
+[node name="Player" parent="." instance=ExtResource("15_wvaci")]
 position = Vector2(-135, -63)
-gravity_component = NodePath("GravityComponent")
-input_component = NodePath("InputComponent")
-movement_component = NodePath("MovementComponent")
-jump_component = NodePath("AdvancedJumpComponent")
-animation_component = NodePath("AnimationComponent")
-holder_component = NodePath("HolderComponent")
-thrower_component = NodePath("ThrowerComponent")
-respawn_component = NodePath("RespawnComponent")
-health_component = NodePath("HealthComponent")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4dr5n")

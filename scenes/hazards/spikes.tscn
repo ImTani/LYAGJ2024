@@ -22,9 +22,6 @@ region_rect = Rect2(144, 54, 18, 18)
 position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_6r86u")
 
-[node name="HurtComponent" parent="." index="2" node_paths=PackedStringArray("hurtbox")]
-hurtbox = NodePath("../HurtBox")
-
 [node name="CollisionShape2D" parent="CollisionBox" index="0"]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_38sw0")

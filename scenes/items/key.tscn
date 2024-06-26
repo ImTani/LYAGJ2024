@@ -4,12 +4,7 @@
 [ext_resource type="Script" path="res://scripts/components/KeyComponent.gd" id="2_s7kmd"]
 [ext_resource type="Texture2D" uid="uid://dmr280hdqrqxa" path="res://assets/item_sprites/key.png" id="2_u0v7x"]
 
-[node name="Key" node_paths=PackedStringArray("sprite") instance=ExtResource("1_d7arl")]
-sprite = NodePath("Sprite")
-
-[node name="PickupComponent" parent="." index="1" node_paths=PackedStringArray("detection_area", "item")]
-detection_area = NodePath("../DetectionArea")
-item = NodePath("..")
+[node name="Key" instance=ExtResource("1_d7arl")]
 
 [node name="KeyComponent" type="Node" parent="." index="2" node_paths=PackedStringArray("DetectionArea")]
 script = ExtResource("2_s7kmd")
