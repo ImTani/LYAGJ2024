@@ -629,4 +629,5 @@ position = Vector2(-135, -63)
 environment = SubResource("Environment_4dr5n")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.749969, 0.418295, 0.455394, 1)
