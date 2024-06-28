@@ -31,7 +31,8 @@ func handle_footsteps_sfx(move_input: float) -> void:
 		footsteps_audio_player.play()
 	
 func handle_falling_sfx(is_falling: bool) -> void:
-	if is_falling and not footsteps_audio_player.playing:
+	if OS.get_name() == "Web": return #temporary, this sfx is bugged on web
+	if is_falling and not fall_audio_player.playing:
 		fall_audio_player.play()
 	elif not is_falling:
 		fall_audio_player.stop()
@@ -56,3 +57,5 @@ func handle_death_sfx() -> void:
 func handle_respawn_sfx() -> void:
 	if not respawn_audio_player.playing:
 		respawn_audio_player.play()
+		await respawn_audio_player.finished
+		respawn_audio_player.stop()
