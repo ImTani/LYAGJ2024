@@ -1,248 +1,17 @@
-[gd_scene load_steps=31 format=3 uid="uid://dlkthuhdkymnc"]
+[gd_scene load_steps=3 format=3 uid="uid://dlkthuhdkymnc"]
 
-[ext_resource type="Texture2D" uid="uid://vi47jt7incm7" path="res://assets/kenney_fantasy_ui_borders/PNG/Default/Panel/panel-000.png" id="1_8n44f"]
-[ext_resource type="Texture2D" uid="uid://dsp1ippr2e7mc" path="res://assets/kenney_fantasy_ui_borders/PNG/Default/Transparent center/panel-transparent-center-000.png" id="2_s3o3s"]
-[ext_resource type="Texture2D" uid="uid://bx0vpyyyeci6a" path="res://assets/kenney_fantasy_ui_borders/PNG/Default/Transparent center/panel-transparent-center-023.png" id="3_4hii1"]
-[ext_resource type="Texture2D" uid="uid://0gfyjmsc7xas" path="res://assets/kenney_fantasy_ui_borders/PNG/Default/Cursors/Check_Box.png" id="3_kcml2"]
-[ext_resource type="Texture2D" uid="uid://mblx6u2f4na8" path="res://assets/kenney_fantasy_ui_borders/PNG/Default/Border/panel-border-017.png" id="3_loabx"]
-[ext_resource type="Texture2D" uid="uid://rlyxcu81sfg2" path="res://assets/kenney_fantasy_ui_borders/PNG/Default/Cursors/Slider_Cursor.png" id="3_uj03e"]
-[ext_resource type="FontFile" uid="uid://55ya5v6mg0jv" path="res://assets/font/static/PixelifySans-Medium.ttf" id="4_ld785"]
+[ext_resource type="Theme" uid="uid://b6m5m23f256la" path="res://resources/theme.tres" id="1_rb18g"]
+[ext_resource type="Script" path="res://scripts/UI/pause_menu.gd" id="8_1ag2x"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jqqyt"]
-texture = ExtResource("2_s3o3s")
-texture_margin_left = 12.0
-texture_margin_top = 12.0
-texture_margin_right = 12.0
-texture_margin_bottom = 12.0
-modulate_color = Color(0.50608, 0.50608, 0.50608, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3vcf4"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 0.75)
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_876tx"]
-texture = ExtResource("1_8n44f")
-texture_margin_left = 12.0
-texture_margin_top = 12.0
-texture_margin_right = 12.0
-texture_margin_bottom = 12.0
-modulate_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i72pp"]
-texture = ExtResource("2_s3o3s")
-texture_margin_left = 12.0
-texture_margin_top = 12.0
-texture_margin_right = 12.0
-texture_margin_bottom = 12.0
-modulate_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjgqu"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0, 0, 0, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fv06p"]
-atlas = ExtResource("3_kcml2")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2dely"]
-atlas = ExtResource("3_kcml2")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="Image" id="Image_o6g3h"]
-data = {
-"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 13, 255, 255, 255, 96, 255, 255, 255, 136, 255, 255, 255, 173, 255, 255, 255, 173, 255, 255, 255, 136, 255, 255, 255, 95, 255, 255, 255, 11, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 56, 255, 255, 255, 171, 198, 198, 198, 255, 198, 198, 198, 255, 198, 198, 198, 255, 198, 198, 198, 255, 198, 198, 198, 255, 198, 198, 198, 255, 255, 255, 255, 168, 255, 255, 255, 51, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 56, 255, 255, 255, 191, 198, 198, 198, 255, 198, 198, 198, 255, 198, 198, 198, 255, 198, 198, 198, 255, 198, 198, 198, 255, 198, 198, 198, 255, 198, 198, 198, 255, 198, 198, 198, 255, 255, 255, 255, 190, 255, 255, 255, 50, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 12, 255, 255, 255, 171, 198, 198, 198, 255, 198, 198, 198, 255, 176, 176, 176, 255, 81, 81, 81, 255, 43, 43, 43, 255, 43, 43, 43, 255, 83, 83, 83, 255, 177, 177, 177, 255, 198, 198, 198, 255, 198, 198, 198, 255, 255, 255, 255, 168, 255, 255, 255, 10, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 198, 198, 198, 255, 198, 198, 198, 255, 176, 176, 176, 255, 37, 37, 37, 255, 26, 26, 26, 255, 26, 26, 26, 255, 26, 26, 26, 255, 26, 26, 26, 255, 39, 39, 39, 255, 179, 179, 179, 255, 198, 198, 198, 255, 198, 198, 198, 255, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 137, 198, 198, 198, 255, 198, 198, 198, 255, 81, 81, 81, 255, 26, 26, 26, 255, 26, 26, 26, 255, 26, 26, 26, 255, 26, 26, 26, 255, 26, 26, 26, 255, 26, 26, 26, 255, 86, 86, 86, 255, 198, 198, 198, 255, 198, 198, 198, 255, 255, 255, 255, 154, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 174, 198, 198, 198, 255, 198, 198, 198, 255, 43, 43, 43, 255, 26, 26, 26, 255, 26, 26, 26, 255, 26, 26, 26, 255, 26, 26, 26, 255, 26, 26, 26, 255, 26, 26, 26, 255, 43, 43, 43, 255, 198, 198, 198, 255, 198, 198, 198, 255, 255, 255, 255, 180, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 173, 198, 198, 198, 255, 198, 198, 198, 255, 43, 43, 43, 255, 26, 26, 26, 255, 26, 26, 26, 255, 26, 26, 26, 255, 26, 26, 26, 255, 26, 26, 26, 255, 26, 26, 26, 255, 44, 44, 44, 255, 198, 198, 198, 255, 198, 198, 198, 255, 255, 255, 255, 180, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 136, 198, 198, 198, 255, 198, 198, 198, 255, 83, 83, 83, 255, 26, 26, 26, 255, 26, 26, 26, 255, 26, 26, 26, 255, 26, 26, 26, 255, 26, 26, 26, 255, 26, 26, 26, 255, 88, 88, 88, 255, 198, 198, 198, 255, 198, 198, 198, 255, 255, 255, 255, 152, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 95, 198, 198, 198, 255, 198, 198, 198, 255, 178, 178, 178, 255, 39, 39, 39, 255, 26, 26, 26, 255, 26, 26, 26, 255, 26, 26, 26, 255, 26, 26, 26, 255, 42, 42, 42, 255, 181, 181, 181, 255, 198, 198, 198, 255, 198, 198, 198, 255, 255, 255, 255, 94, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 11, 255, 255, 255, 169, 198, 198, 198, 255, 198, 198, 198, 255, 179, 179, 179, 255, 86, 86, 86, 255, 43, 43, 43, 255, 44, 44, 44, 255, 88, 88, 88, 255, 181, 181, 181, 255, 198, 198, 198, 255, 198, 198, 198, 255, 255, 255, 255, 165, 255, 255, 255, 9, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 52, 255, 255, 255, 190, 198, 198, 198, 255, 198, 198, 198, 255, 198, 198, 198, 255, 198, 198, 198, 255, 198, 198, 198, 255, 198, 198, 198, 255, 198, 198, 198, 255, 198, 198, 198, 255, 255, 255, 255, 189, 255, 255, 255, 46, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 50, 255, 255, 255, 168, 198, 198, 198, 255, 198, 198, 198, 255, 198, 198, 198, 255, 198, 198, 198, 255, 198, 198, 198, 255, 198, 198, 198, 255, 255, 255, 255, 165, 255, 255, 255, 46, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 10, 255, 255, 255, 96, 255, 255, 255, 154, 255, 255, 255, 180, 255, 255, 255, 180, 255, 255, 255, 152, 255, 255, 255, 94, 255, 255, 255, 9, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
-"format": "RGBA8",
-"height": 16,
-"mipmaps": false,
-"width": 16
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_8c458"]
-image = SubResource("Image_o6g3h")
-
-[sub_resource type="Image" id="Image_h72vw"]
-data = {
-"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 9, 255, 255, 255, 49, 255, 255, 255, 77, 255, 255, 255, 90, 255, 255, 255, 90, 255, 255, 255, 77, 255, 255, 255, 49, 255, 255, 255, 9, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 32, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 90, 255, 255, 255, 31, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 32, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 31, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 9, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 224, 224, 224, 104, 124, 124, 124, 148, 97, 97, 97, 168, 97, 97, 97, 168, 125, 125, 125, 147, 224, 224, 224, 104, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 89, 255, 255, 255, 8, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 49, 255, 255, 255, 94, 255, 255, 255, 94, 224, 224, 224, 104, 94, 94, 94, 170, 87, 87, 87, 175, 87, 87, 87, 175, 87, 87, 87, 175, 87, 87, 87, 175, 95, 95, 95, 169, 224, 224, 224, 104, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 48, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 77, 255, 255, 255, 94, 255, 255, 255, 94, 124, 124, 124, 148, 87, 87, 87, 175, 87, 87, 87, 175, 87, 87, 87, 175, 87, 87, 87, 175, 87, 87, 87, 175, 87, 87, 87, 175, 125, 125, 125, 147, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 77, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 97, 97, 97, 168, 87, 87, 87, 175, 87, 87, 87, 175, 87, 87, 87, 175, 87, 87, 87, 175, 87, 87, 87, 175, 87, 87, 87, 175, 97, 97, 97, 168, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 90, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 97, 97, 97, 168, 87, 87, 87, 175, 87, 87, 87, 175, 87, 87, 87, 175, 87, 87, 87, 175, 87, 87, 87, 175, 87, 87, 87, 175, 98, 98, 98, 167, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 89, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 77, 255, 255, 255, 94, 255, 255, 255, 94, 125, 125, 125, 147, 87, 87, 87, 175, 87, 87, 87, 175, 87, 87, 87, 175, 87, 87, 87, 175, 87, 87, 87, 175, 87, 87, 87, 175, 127, 127, 127, 147, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 76, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 49, 255, 255, 255, 94, 255, 255, 255, 94, 224, 224, 224, 104, 95, 95, 95, 169, 87, 87, 87, 175, 87, 87, 87, 175, 87, 87, 87, 175, 87, 87, 87, 175, 95, 95, 95, 169, 226, 226, 226, 103, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 48, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 9, 255, 255, 255, 90, 255, 255, 255, 94, 255, 255, 255, 94, 224, 224, 224, 104, 125, 125, 125, 147, 97, 97, 97, 168, 98, 98, 98, 167, 127, 127, 127, 147, 226, 226, 226, 103, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 89, 255, 255, 255, 8, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 31, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 30, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 31, 255, 255, 255, 89, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 94, 255, 255, 255, 89, 255, 255, 255, 30, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 8, 255, 255, 255, 48, 255, 255, 255, 77, 255, 255, 255, 90, 255, 255, 255, 89, 255, 255, 255, 76, 255, 255, 255, 48, 255, 255, 255, 8, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
-"format": "RGBA8",
-"height": 16,
-"mipmaps": false,
-"width": 16
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_wrb21"]
-image = SubResource("Image_h72vw")
-
-[sub_resource type="Image" id="Image_vg414"]
-data = {
-"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 42, 42, 42, 12, 26, 26, 26, 67, 26, 26, 26, 105, 27, 27, 27, 122, 27, 27, 27, 122, 26, 26, 26, 105, 27, 27, 27, 66, 46, 46, 46, 11, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 29, 29, 29, 44, 27, 27, 27, 122, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 27, 27, 27, 122, 30, 30, 30, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 29, 29, 29, 44, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 30, 30, 30, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 42, 42, 42, 12, 27, 27, 27, 122, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 27, 27, 27, 121, 46, 46, 46, 11, 255, 255, 255, 0, 255, 255, 255, 0, 26, 26, 26, 67, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 27, 27, 27, 65, 255, 255, 255, 0, 255, 255, 255, 0, 26, 26, 26, 105, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 27, 27, 27, 104, 255, 255, 255, 0, 255, 255, 255, 0, 27, 27, 27, 122, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 27, 27, 27, 122, 255, 255, 255, 0, 255, 255, 255, 0, 27, 27, 27, 122, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 27, 27, 27, 121, 255, 255, 255, 0, 255, 255, 255, 0, 26, 26, 26, 105, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 27, 27, 27, 103, 255, 255, 255, 0, 255, 255, 255, 0, 27, 27, 27, 66, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 27, 27, 27, 65, 255, 255, 255, 0, 255, 255, 255, 0, 46, 46, 46, 11, 27, 27, 27, 122, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 27, 27, 27, 121, 51, 51, 51, 10, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 30, 30, 30, 42, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 31, 31, 31, 41, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 30, 30, 30, 42, 27, 27, 27, 121, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 26, 26, 26, 128, 27, 27, 27, 121, 31, 31, 31, 41, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 46, 46, 46, 11, 27, 27, 27, 65, 27, 27, 27, 104, 27, 27, 27, 122, 27, 27, 27, 121, 27, 27, 27, 103, 27, 27, 27, 65, 51, 51, 51, 10, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
-"format": "RGBA8",
-"height": 16,
-"mipmaps": false,
-"width": 16
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_7ydpl"]
-image = SubResource("Image_vg414")
-
-[sub_resource type="Image" id="Image_qchnr"]
-data = {
-"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 42, 42, 42, 6, 30, 30, 30, 34, 28, 28, 28, 53, 29, 29, 29, 61, 29, 29, 29, 61, 28, 28, 28, 53, 31, 31, 31, 33, 42, 42, 42, 6, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 34, 34, 34, 22, 29, 29, 29, 61, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 29, 29, 29, 61, 36, 36, 36, 21, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 34, 34, 34, 22, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 36, 36, 36, 21, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 42, 42, 42, 6, 29, 29, 29, 61, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 29, 29, 29, 61, 42, 42, 42, 6, 255, 255, 255, 0, 255, 255, 255, 0, 30, 30, 30, 34, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 31, 31, 31, 33, 255, 255, 255, 0, 255, 255, 255, 0, 28, 28, 28, 53, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 29, 29, 29, 52, 255, 255, 255, 0, 255, 255, 255, 0, 29, 29, 29, 61, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 29, 29, 29, 61, 255, 255, 255, 0, 255, 255, 255, 0, 29, 29, 29, 61, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 29, 29, 29, 61, 255, 255, 255, 0, 255, 255, 255, 0, 28, 28, 28, 53, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 29, 29, 29, 52, 255, 255, 255, 0, 255, 255, 255, 0, 31, 31, 31, 33, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 31, 31, 31, 33, 255, 255, 255, 0, 255, 255, 255, 0, 42, 42, 42, 6, 29, 29, 29, 61, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 29, 29, 29, 61, 51, 51, 51, 5, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 36, 36, 36, 21, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 36, 36, 36, 21, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 36, 36, 36, 21, 29, 29, 29, 61, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 28, 28, 28, 64, 29, 29, 29, 61, 36, 36, 36, 21, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 42, 42, 42, 6, 31, 31, 31, 33, 29, 29, 29, 52, 29, 29, 29, 61, 29, 29, 29, 61, 29, 29, 29, 52, 31, 31, 31, 33, 51, 51, 51, 5, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
-"format": "RGBA8",
-"height": 16,
-"mipmaps": false,
-"width": 16
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_fh3hg"]
-image = SubResource("Image_qchnr")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7cifi"]
-atlas = ExtResource("3_kcml2")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_agmc1"]
-atlas = ExtResource("3_kcml2")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_eq4be"]
-load_path = "res://.godot/imported/Slider_Cursor.png-bfc92a71669ba9351a4f0131722ad44d.ctex"
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ag4ht"]
-bg_color = Color(0.57, 0.1824, 0.23408, 0.52549)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 36
-corner_radius_top_right = 36
-corner_radius_bottom_right = 36
-corner_radius_bottom_left = 36
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57lwm"]
-bg_color = Color(0.564906, 0, 0.102022, 0.784314)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 36
-corner_radius_top_right = 36
-corner_radius_bottom_right = 36
-corner_radius_bottom_left = 36
-anti_aliasing = false
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jwlfd"]
-texture = ExtResource("3_loabx")
-texture_margin_left = 16.0
-texture_margin_top = 16.0
-texture_margin_right = 16.0
-texture_margin_bottom = 16.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7q0mw"]
-texture = ExtResource("3_4hii1")
-texture_margin_left = 14.0
-texture_margin_top = 14.0
-texture_margin_right = 14.0
-texture_margin_bottom = 14.0
-modulate_color = Color(0.65, 0.1495, 0.2496, 0.588235)
-
-[sub_resource type="Theme" id="Theme_vkycj"]
-default_font = ExtResource("4_ld785")
-default_font_size = 24
-Button/colors/font_color = Color(0.879274, 0.262615, 0.212781, 1)
-Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
-Button/colors/font_focus_color = Color(1, 0, 0, 1)
-Button/colors/font_hover_color = Color(1, 0, 0, 1)
-Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-Button/colors/font_outline_color = Color(0, 0, 0, 1)
-Button/colors/font_pressed_color = Color(1, 1, 1, 1)
-Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
-Button/colors/icon_focus_color = Color(1, 1, 1, 1)
-Button/colors/icon_hover_color = Color(1, 1, 1, 1)
-Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
-Button/colors/icon_normal_color = Color(1, 1, 1, 1)
-Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
-Button/constants/align_to_largest_stylebox = 0
-Button/constants/h_separation = 4
-Button/constants/icon_max_width = 0
-Button/constants/outline_size = 0
-Button/styles/disabled = SubResource("StyleBoxTexture_jqqyt")
-Button/styles/focus = SubResource("StyleBoxFlat_3vcf4")
-Button/styles/hover = SubResource("StyleBoxTexture_876tx")
-Button/styles/normal = SubResource("StyleBoxTexture_i72pp")
-Button/styles/pressed = SubResource("StyleBoxFlat_sjgqu")
-CheckBox/colors/font_color = Color(0.875, 0.875, 0.875, 1)
-CheckBox/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
-CheckBox/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
-CheckBox/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
-CheckBox/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-CheckBox/colors/font_outline_color = Color(0, 0, 0, 1)
-CheckBox/colors/font_pressed_color = Color(1, 1, 1, 1)
-CheckBox/constants/check_v_offset = 0
-CheckBox/constants/h_separation = 8
-CheckBox/constants/outline_size = 18
-CheckBox/icons/checked = SubResource("AtlasTexture_fv06p")
-CheckBox/icons/checked_disabled = SubResource("AtlasTexture_2dely")
-CheckBox/icons/radio_checked = SubResource("ImageTexture_8c458")
-CheckBox/icons/radio_checked_disabled = SubResource("ImageTexture_wrb21")
-CheckBox/icons/radio_unchecked = SubResource("ImageTexture_7ydpl")
-CheckBox/icons/radio_unchecked_disabled = SubResource("ImageTexture_fh3hg")
-CheckBox/icons/unchecked = SubResource("AtlasTexture_7cifi")
-CheckBox/icons/unchecked_disabled = SubResource("AtlasTexture_agmc1")
-CheckBox/styles/disabled = SubResource("StyleBoxTexture_jqqyt")
-CheckBox/styles/focus = SubResource("StyleBoxFlat_3vcf4")
-CheckBox/styles/hover = SubResource("StyleBoxTexture_i72pp")
-CheckBox/styles/hover_pressed = SubResource("StyleBoxTexture_i72pp")
-CheckBox/styles/normal = SubResource("StyleBoxTexture_i72pp")
-CheckBox/styles/pressed = SubResource("StyleBoxTexture_i72pp")
-HSlider/icons/grabber = ExtResource("3_uj03e")
-HSlider/icons/grabber_disabled = SubResource("CompressedTexture2D_eq4be")
-HSlider/icons/grabber_highlight = ExtResource("3_uj03e")
-HSlider/styles/grabber_area = SubResource("StyleBoxFlat_ag4ht")
-HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_57lwm")
-HSlider/styles/slider = SubResource("StyleBoxTexture_jwlfd")
-Label/colors/font_outline_color = Color(0, 0, 0, 1)
-Label/constants/outline_size = 16
-Panel/styles/panel = SubResource("StyleBoxTexture_7q0mw")
-PanelContainer/styles/panel = SubResource("StyleBoxTexture_7q0mw")
-RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
-RichTextLabel/constants/outline_size = 16
-
-[node name="Pause Menu" type="Control"]
+[node name="PauseMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_vkycj")
+theme = ExtResource("1_rb18g")
+script = ExtResource("8_1ag2x")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -270,9 +39,6 @@ size_flags_vertical = 0
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme_override_colors/font_color = Color(0.77, 0, 0.0641668, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 40
 theme_override_font_sizes/font_size = 72
 text = "PAUSED"
 horizontal_alignment = 1
@@ -290,29 +56,34 @@ theme_override_constants/margin_bottom = 18
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Buttons Container" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Buttons Container" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
-size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Buttons Container"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/Buttons Container"]
 layout_mode = 2
+theme_override_constants/separation = 36
+alignment = 1
 
-[node name="Resume Button" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Buttons Container/VBoxContainer"]
+[node name="Resume Button" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/Buttons Container/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0.588235)
 theme_override_constants/outline_size = 18
 theme_override_font_sizes/font_size = 56
 text = "Resume"
 
-[node name="Restart Button" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Buttons Container/VBoxContainer"]
+[node name="Restart Button" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/Buttons Container/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0.588235)
 theme_override_constants/outline_size = 18
 theme_override_font_sizes/font_size = 56
 text = " Restart Level "
 
-[node name="Main Menu Button" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Buttons Container/VBoxContainer"]
+[node name="Main Menu Button" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/Buttons Container/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0.588235)
 theme_override_constants/outline_size = 18
@@ -324,53 +95,150 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container"]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/VBoxContainer"]
-self_modulate = Color(0, 0, 0, 1)
-layout_mode = 2
 size_flags_vertical = 6
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/VBoxContainer/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer"]
 layout_mode = 2
 
-[node name="Options Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/VBoxContainer/PanelContainer/VBoxContainer"]
+[node name="Options Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MusicSlider" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/VBoxContainer/PanelContainer/VBoxContainer"]
+[node name="Overall Volume" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/VBoxContainer/PanelContainer/VBoxContainer/MusicSlider"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/Overall Volume"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.979404, 0.521309, 0.487011, 1)
+theme_override_colors/font_color = Color(0.898039, 0.219608, 0.231373, 1)
+text = "Overall Volume"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/Overall Volume"]
+layout_mode = 2
+max_value = 10.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MusicSlider" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/MusicSlider"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.898039, 0.219608, 0.231373, 1)
 text = "Music Volume"
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/VBoxContainer/PanelContainer/VBoxContainer/MusicSlider"]
+[node name="HSlider" type="HSlider" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/MusicSlider"]
 layout_mode = 2
 max_value = 10.0
 
-[node name="SFXSlider" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/VBoxContainer/PanelContainer/VBoxContainer"]
+[node name="SFXSlider" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/VBoxContainer/PanelContainer/VBoxContainer/SFXSlider"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/SFXSlider"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.979404, 0.521309, 0.487011, 1)
+theme_override_colors/font_color = Color(0.898039, 0.219608, 0.231373, 1)
 text = "SFX Volume"
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/VBoxContainer/PanelContainer/VBoxContainer/SFXSlider"]
+[node name="HSlider" type="HSlider" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/SFXSlider"]
 layout_mode = 2
 max_value = 10.0
 
-[node name="Shadows Checkbox" type="CheckBox" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/VBoxContainer/PanelContainer/VBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-size_flags_horizontal = 0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Ambience Volume" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2/Ambience Volume"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.898039, 0.219608, 0.231373, 1)
+text = "Ambience Volume"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2/Ambience Volume"]
+layout_mode = 2
+max_value = 10.0
+
+[node name="Voice Volume" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2/Voice Volume"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.898039, 0.219608, 0.231373, 1)
+text = "Voice Volume"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2/Voice Volume"]
+layout_mode = 2
+max_value = 10.0
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer"]
+modulate = Color(0, 0, 0, 0)
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 0
+
+[node name="Shadows Checkbox" type="CheckBox" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 0
+theme_override_colors/font_pressed_color = Color(0.827451, 0.827451, 0.827451, 1)
+theme_override_colors/font_color = Color(0.827451, 0.827451, 0.827451, 1)
 button_pressed = true
 text = "Shadows"
 alignment = 2
+
+[node name="Subtitles" type="CheckBox" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/font_pressed_color = Color(0.827451, 0.827451, 0.827451, 1)
+theme_override_colors/font_color = Color(0.827451, 0.827451, 0.827451, 1)
+button_pressed = true
+text = "Subtitles"
+alignment = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Lighting" type="CheckBox" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_pressed_color = Color(0.827451, 0.827451, 0.827451, 1)
+theme_override_colors/font_color = Color(0.827451, 0.827451, 0.827451, 1)
+text = "Lighter Environment"
+alignment = 2
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/Buttons Container/VBoxContainer/Resume Button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/Buttons Container/VBoxContainer/Restart Button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/Buttons Container/VBoxContainer/Main Menu Button" to="." method="_on_main_menu_button_pressed"]
+[connection signal="value_changed" from="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/Overall Volume/HSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/MusicSlider/HSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/SFXSlider/HSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2/Ambience Volume/HSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2/Voice Volume/HSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="toggled" from="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer/Shadows Checkbox" to="." method="_on_shadows_checkbox_toggled"]
+[connection signal="toggled" from="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer/Subtitles" to="." method="_on_subtitles_toggled"]
+[connection signal="toggled" from="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer2/Lighting" to="." method="_on_lighting_toggled"]

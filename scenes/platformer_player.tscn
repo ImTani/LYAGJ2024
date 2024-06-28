@@ -321,13 +321,13 @@ bus = &"SFX"
 [node name="Hurt" type="AudioStreamPlayer2D" parent="Sounds"]
 position = Vector2(2, -6)
 stream = SubResource("AudioStreamRandomizer_elyvc")
-volume_db = -10.0
+volume_db = -20.0
 bus = &"SFX"
 
 [node name="Stab" type="AudioStreamPlayer2D" parent="Sounds"]
 position = Vector2(2, -6)
 stream = SubResource("AudioStreamRandomizer_3qc7k")
-volume_db = -10.0
+volume_db = -20.0
 bus = &"SFX"
 
 [node name="Landing" type="AudioStreamPlayer2D" parent="Sounds"]
@@ -355,7 +355,7 @@ bus = &"SFX"
 
 [node name="RespawnSound" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("22_rg00y")
-volume_db = -10.0
+volume_db = -20.0
 bus = &"SFX"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

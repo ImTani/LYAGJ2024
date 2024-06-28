@@ -28,9 +28,16 @@ func pick_up(item: Item) -> void:
 func hold_item(item: Item) -> void:
 	var item_pos = item.global_position
 	item.get_parent().remove_child.call_deferred(item)
+	
 	current_item = item
+	
 	hold_location.add_child.call_deferred(item)
+	
+	item.held = true
+	item.broken.connect(remove_current_item)
+	
 	item.set_global_position.call_deferred(item_pos)
+	
 	var pos_tween = create_tween()
 	pos_tween.tween_property.call_deferred(item, "position", Vector2.ZERO, 0.2)
 

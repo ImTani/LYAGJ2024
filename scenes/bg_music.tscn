@@ -3,6 +3,7 @@
 [ext_resource type="AudioStream" uid="uid://f288kp7yipbq" path="res://assets/sounds/piano-bg.mp3" id="1_u8y0b"]
 
 [node name="BG Music" type="AudioStreamPlayer"]
+process_mode = 3
 stream = ExtResource("1_u8y0b")
 volume_db = -15.0
 autoplay = true

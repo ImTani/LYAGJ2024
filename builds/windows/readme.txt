@@ -1,0 +1,1 @@
+Left/Right or A/D to move, Space to jump, left click to drop item. Items dont do anything yet, every things is a WIP.

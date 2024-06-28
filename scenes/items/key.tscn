@@ -9,6 +9,7 @@
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource("2_u0v7x")
 
-[node name="KeyComponent" type="Node" parent="." index="2" node_paths=PackedStringArray("DetectionArea")]
+[node name="KeyComponent" type="Node" parent="." index="2" node_paths=PackedStringArray("key", "DetectionArea")]
 script = ExtResource("2_s7kmd")
+key = NodePath("..")
 DetectionArea = NodePath("../DetectionArea")
