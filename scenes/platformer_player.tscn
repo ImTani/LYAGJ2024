@@ -1,17 +1,23 @@
-[gd_scene load_steps=53 format=3 uid="uid://eohbogu0cec3"]
+[gd_scene load_steps=60 format=3 uid="uid://eohbogu0cec3"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_w4a55"]
 [ext_resource type="Shader" uid="uid://tlm38mqaeaqj" path="res://shaders/wave_shader.tres" id="2_gjjn1"]
 [ext_resource type="Texture2D" uid="uid://cikmgyfofq6wh" path="res://assets/player_sprites/tile000.png" id="2_mw1do"]
+[ext_resource type="AudioStream" uid="uid://csvav8edh423y" path="res://assets/sounds/sfx/fire_crackle.mp3" id="3_0ohdl"]
 [ext_resource type="Script" path="res://scripts/components/GravityComponent.gd" id="3_ekt3m"]
+[ext_resource type="AudioStream" uid="uid://c4whsr5sv2g7w" path="res://assets/sounds/sfx/footsteps/footstep1.mp3" id="3_fttdc"]
 [ext_resource type="Script" path="res://scripts/components/InputComponent.gd" id="4_7u3fe"]
+[ext_resource type="AudioStream" uid="uid://boea8b84y58d3" path="res://assets/sounds/sfx/footsteps/footstep2.mp3" id="4_l0h3l"]
+[ext_resource type="AudioStream" uid="uid://cgvq88cucd1pd" path="res://assets/sounds/sfx/footsteps/footstep3.mp3" id="5_jxxev"]
 [ext_resource type="Script" path="res://scripts/components/MovementComponent.gd" id="5_s1r2c"]
 [ext_resource type="Script" path="res://scripts/components/AnimationComponent.gd" id="6_5778f"]
+[ext_resource type="AudioStream" uid="uid://db6sskxc5gh6t" path="res://assets/sounds/sfx/footsteps/footstep4.mp3" id="6_occys"]
 [ext_resource type="Script" path="res://scripts/components/AdvancedJumpComponent.gd" id="7_w0ux2"]
 [ext_resource type="Texture2D" uid="uid://c80r68bgsycdm" path="res://assets/player_sprites/tile001.png" id="8_8puch"]
 [ext_resource type="Script" path="res://scripts/components/ThrowerComponent.gd" id="8_pmtx5"]
 [ext_resource type="Texture2D" uid="uid://1aiqbj63232m" path="res://assets/player_sprites/tile024.png" id="9_4khc8"]
 [ext_resource type="Texture2D" uid="uid://bf1wlgc4pm2jd" path="res://assets/player_sprites/tile025.png" id="10_2s1ll"]
+[ext_resource type="Script" path="res://scripts/components/AudioComponent.gd" id="10_3vih5"]
 [ext_resource type="Script" path="res://scripts/components/HealthComponent.gd" id="10_nufit"]
 [ext_resource type="Texture2D" uid="uid://mfjfdw8cdrat" path="res://assets/player_sprites/tile026.png" id="11_qr8tr"]
 [ext_resource type="Texture2D" uid="uid://0ns87d4r52fp" path="res://assets/player_sprites/tile027.png" id="12_thoei"]
@@ -66,6 +72,13 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.3, 0.5)
 metadata/_snap_enabled = true
 metadata/_snap_count = 20
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fvi66"]
+streams_count = 4
+stream_0/stream = ExtResource("3_fttdc")
+stream_1/stream = ExtResource("4_l0h3l")
+stream_2/stream = ExtResource("5_jxxev")
+stream_3/stream = ExtResource("6_occys")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_km53y"]
 size = Vector2(11, 28)
@@ -188,7 +201,7 @@ _data = {
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pbjj8"]
 polygon = PackedVector2Array(-6, -14, -6, -13, -7, -13, -7, -12, -8, -12, -8, -11, -9, -11, -9, -9, -10, -9, -10, -3, -9, -3, -9, -2, -7, -2, -7, -1, -8, -1, -8, 2, -9, 2, -9, 6, -10, 6, -10, 11, -9, 11, -9, 12, -8, 12, -8, 13, -5, 13, -5, 14, -4, 14, -4, 16, -1, 16, -1, 13, 1, 13, 1, 16, 4, 16, 4, 13, 6, 13, 6, 12, 7, 12, 7, 11, 8, 11, 8, 3, 7, 3, 7, -1, 6, -1, 6, -2, 7, -2, 7, -10, 6, -10, 6, -11, 5, -11, 5, -12, 4, -12, 4, -13, 3, -13, 3, -14)
 
-[node name="PlatformerPlayer" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "animation_component", "holder_component", "thrower_component", "respawn_component", "health_component", "flame_position_flipping_component")]
+[node name="PlatformerPlayer" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "jump_component", "animation_component", "holder_component", "thrower_component", "respawn_component", "health_component", "audio_component", "flame_position_flipping_component")]
 modulate = Color(0.70342, 0.70342, 0.703419, 1)
 position = Vector2(0, -14)
 script = ExtResource("1_w4a55")
@@ -201,6 +214,7 @@ holder_component = NodePath("HolderComponent")
 thrower_component = NodePath("ThrowerComponent")
 respawn_component = NodePath("RespawnComponent")
 health_component = NodePath("HealthComponent")
+audio_component = NodePath("AudioComponent")
 flame_position_flipping_component = NodePath("FlamePositionFlippingComponent")
 metadata/_edit_group_ = true
 
@@ -239,6 +253,33 @@ range_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_y7n8f")
 texture_scale = 0.1
 
+[node name="FireCrackle" type="AudioStreamPlayer2D" parent="Flame"]
+position = Vector2(0, 18)
+stream = ExtResource("3_0ohdl")
+volume_db = -15.0
+autoplay = true
+panning_strength = 50.0
+bus = &"SFX"
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="Sounds"]
+position = Vector2(2, -6)
+bus = &"SFX"
+
+[node name="Footsteps" type="AudioStreamPlayer2D" parent="Sounds"]
+position = Vector2(1, 14)
+stream = SubResource("AudioStreamRandomizer_fvi66")
+volume_db = -4.0
+autoplay = true
+bus = &"SFX"
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="Sounds"]
+bus = &"SFX"
+
+[node name="RespawnSound" type="AudioStreamPlayer2D" parent="Sounds"]
+bus = &"SFX"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_km53y")
@@ -258,6 +299,13 @@ jump_velocity = -300.0
 script = ExtResource("6_5778f")
 sprite = NodePath("../Sprite2D")
 animation_player = NodePath("../AnimationPlayer")
+
+[node name="AudioComponent" type="Node" parent="." node_paths=PackedStringArray("footsteps_audio_player", "jump_audio_player", "death_audio_player", "respawn_audio_player")]
+script = ExtResource("10_3vih5")
+footsteps_audio_player = NodePath("../Sounds/Footsteps")
+jump_audio_player = NodePath("../Sounds/Jump")
+death_audio_player = NodePath("../Sounds/DeathSound")
+respawn_audio_player = NodePath("../Sounds/RespawnSound")
 
 [node name="FlamePositionFlippingComponent" type="Node" parent="." node_paths=PackedStringArray("object_to_flip")]
 script = ExtResource("37_2aae6")

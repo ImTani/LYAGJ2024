@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://ckry5eecdpv3v"]
+[gd_scene load_steps=11 format=3 uid="uid://ckry5eecdpv3v"]
 
 [ext_resource type="Script" path="res://scripts/checkpoint.gd" id="1_qau4h"]
 [ext_resource type="Texture2D" uid="uid://eueyuobot22u" path="res://assets/kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="2_3dcw4"]
+[ext_resource type="AudioStream" uid="uid://cvgojpt6qm2fp" path="res://assets/sounds/sfx/flag-wave.mp3" id="3_qavov"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_buxif"]
 size = Vector2(18, 180)
@@ -212,5 +213,10 @@ region_rect = Rect2(198, 90, 18, 18)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Sprites/Flag"]
 occluder = SubResource("OccluderPolygon2D_70yqy")
+
+[node name="FlagWave" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_qavov")
+volume_db = -0.145
+bus = &"SFX"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_checkpoint_entered"]

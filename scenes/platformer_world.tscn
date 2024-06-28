@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://c4ouhrq4y2h4q"]
+[gd_scene load_steps=40 format=4 uid="uid://c4ouhrq4y2h4q"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_q4wr6"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_vyy81"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://b52u60dngu6ot" path="res://scenes/hazards/void.tscn" id="17_xqpsc"]
 [ext_resource type="PackedScene" uid="uid://cr17uy2pbpd8v" path="res://scenes/door.tscn" id="18_3e2js"]
 [ext_resource type="PackedScene" uid="uid://dlkthuhdkymnc" path="res://scenes/UI/pause_menu.tscn" id="20_rdc51"]
+[ext_resource type="AudioStream" uid="uid://ddvdjsfnalh8k" path="res://assets/sounds/sfx/ambience.mp3" id="21_ebymm"]
 
 [sub_resource type="Resource" id="Resource_01jbi"]
 script = ExtResource("3_lp4lg")
@@ -554,7 +555,7 @@ position = Vector2(9, 9)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(-135, -63)
+position = Vector2(-139, -63)
 zoom = Vector2(2, 2)
 limit_bottom = 108
 
@@ -562,7 +563,7 @@ limit_bottom = 108
 script = ExtResource("1_q4wr6")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
-position = Vector2(-135, -63)
+position = Vector2(-139, -63)
 script = ExtResource("2_vyy81")
 follow_mode = 2
 follow_target = NodePath("../Player")
@@ -651,7 +652,7 @@ tile_map_data = PackedByteArray("AAAGAP3/AAAAAAAAAQAJAP3/AAAAAAAAAgD6////AAAAAAA
 tile_set = SubResource("TileSet_ttr45")
 
 [node name="Player" parent="." instance=ExtResource("15_wvaci")]
-position = Vector2(-135, -63)
+position = Vector2(-139, -17)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4dr5n")
@@ -663,3 +664,9 @@ color = Color(0.301251, 0.0316735, 0.0393026, 1)
 
 [node name="Pause Menu" parent="UI" instance=ExtResource("20_rdc51")]
 visible = false
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_ebymm")
+volume_db = -15.0
+autoplay = true
+bus = &"Ambience"

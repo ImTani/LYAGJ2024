@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var thrower_component: ThrowerComponent
 @export var respawn_component: RespawnComponent
 @export var health_component: HealthComponent
+@export var audio_component: AudioComponent
 @export var flame_position_flipping_component: PositionFlippingComponent
 
 func _ready() -> void:
@@ -37,6 +38,8 @@ func _physics_process(delta: float) -> void:
 
 		animation_component.handle_move_animation(horizontal_input, velocity, is_on_floor())
 		animation_component.handle_jump_animation(jump_component.is_going_up, gravity_component.is_falling, jump_component.has_just_landed(self))
+		audio_component.handle_footsteps_sfx(horizontal_input)
+
 	
 	animation_component.handle_death_animation(is_dead)
 	health_component.handle_health()

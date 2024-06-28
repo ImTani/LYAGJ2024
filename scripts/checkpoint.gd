@@ -15,6 +15,7 @@ func _on_checkpoint_entered(body: Node2D) -> void:
 	
 	if animation_player.current_animation:
 		animation_player.play(rise_animation)
-		await animation_player.animation_finished
+		$FlagWave.play()
+		await $FlagWave.finished
 
 	set_process_mode.call_deferred(PROCESS_MODE_DISABLED)
