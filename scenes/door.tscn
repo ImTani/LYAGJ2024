@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cr17uy2pbpd8v"]
+[gd_scene load_steps=8 format=3 uid="uid://cr17uy2pbpd8v"]
 
-[ext_resource type="Script" path="res://scenes/Door.gd" id="1_2jibq"]
+[ext_resource type="Script" path="res://scripts/Door.gd" id="1_2jibq"]
 [ext_resource type="Texture2D" uid="uid://eueyuobot22u" path="res://assets/kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="1_mecdj"]
 [ext_resource type="Script" path="res://scripts/components/UnlockableComponent.gd" id="2_f3ru1"]
 
@@ -12,14 +12,12 @@ size = Vector2(18, 18)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gnyy7"]
 size = Vector2(20, 54)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_380h3"]
+polygon = PackedVector2Array(-8, -8, -9, -8, -9, 8, -8, 8, -8, 9, 8, 9, 8, 8, 9, 8, 9, -8, 8, -8, 8, -9, -8, -9)
+
 [node name="Door" type="Node2D" node_paths=PackedStringArray("unlockable_component")]
 script = ExtResource("1_2jibq")
 unlockable_component = NodePath("UnlockableComponent")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_mecdj")
-region_enabled = true
-region_rect = Rect2(144, 18, 18, 18)
 
 [node name="Collision" type="StaticBody2D" parent="."]
 
@@ -41,6 +39,15 @@ debug_color = Color(0, 0.600006, 0.699966, 0.42)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NeighbourDetectionArea"]
 shape = SubResource("RectangleShape2D_gnyy7")
 debug_color = Color(0, 0.600006, 0.699966, 0.42)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_380h3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 2
+texture = ExtResource("1_mecdj")
+region_enabled = true
+region_rect = Rect2(144, 18, 18, 18)
 
 [connection signal="area_entered" from="KeyDetectionArea" to="UnlockableComponent" method="_on_detector_area_entered"]
 [connection signal="body_entered" from="NeighbourDetectionArea" to="UnlockableComponent" method="_on_neighbour_detection_area_body_entered"]

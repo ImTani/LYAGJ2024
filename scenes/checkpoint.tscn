@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckry5eecdpv3v"]
+[gd_scene load_steps=10 format=3 uid="uid://ckry5eecdpv3v"]
 
 [ext_resource type="Script" path="res://scripts/checkpoint.gd" id="1_qau4h"]
 [ext_resource type="Texture2D" uid="uid://eueyuobot22u" path="res://assets/kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="2_3dcw4"]
@@ -51,6 +51,18 @@ tracks/3/path = NodePath("Sprites/Flag:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprites/Flag/LightOccluder2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -137,6 +149,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -18)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprites/Flag/LightOccluder2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4v36d"]
 _data = {
@@ -144,6 +168,12 @@ _data = {
 "idle": SubResource("Animation_17v7k"),
 "rise": SubResource("Animation_yx0vs")
 }
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vg00n"]
+polygon = PackedVector2Array(-9, 9, -3, 9, -3, -9, -9, -9)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_70yqy"]
+polygon = PackedVector2Array(-8, -8, -9, -8, -9, 9, -3, 9, -3, 5, -2, 5, -2, 6, 5, 6, 5, 5, 8, 5, 8, 4, 9, 4, 9, -6, 8, -6, 8, -7, 3, -7, 3, -6, 0, -6, 0, -7, -3, -7, -3, -8, -4, -8, -4, -9, -8, -9)
 
 [node name="Checkpoint" type="Node2D" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("1_qau4h")
@@ -165,14 +195,22 @@ autoplay = "idle"
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="Pole" type="Sprite2D" parent="Sprites"]
+light_mask = 2
 texture = ExtResource("2_3dcw4")
 region_enabled = true
 region_rect = Rect2(216, 90, 18, 18)
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprites/Pole"]
+occluder = SubResource("OccluderPolygon2D_vg00n")
+
 [node name="Flag" type="Sprite2D" parent="Sprites"]
 visible = false
+light_mask = 2
 texture = ExtResource("2_3dcw4")
 region_enabled = true
 region_rect = Rect2(198, 90, 18, 18)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprites/Flag"]
+occluder = SubResource("OccluderPolygon2D_70yqy")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_checkpoint_entered"]

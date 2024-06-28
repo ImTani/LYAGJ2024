@@ -1,10 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://1rsft48n2dji"]
+[gd_scene load_steps=9 format=3 uid="uid://1rsft48n2dji"]
 
 [ext_resource type="Script" path="res://scripts/components/PickupComponent.gd" id="1_1yano"]
 [ext_resource type="Script" path="res://scripts/item.gd" id="1_02ldc"]
 [ext_resource type="Shader" uid="uid://tlm38mqaeaqj" path="res://shaders/wave_shader.tres" id="3_c8ag3"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_wfi8y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k6dif"]
 shader = ExtResource("3_c8ag3")
@@ -14,9 +12,23 @@ shader_parameter/wave_intensity = 1.0
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_m6v72"]
 size = Vector2(18, 18)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_wfi8y"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bixo0"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_j0ewt"]
+_data = [Vector2(0.00761555, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Item" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_02ldc")
 sprite = NodePath("Sprite")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+light_mask = 2
+material = SubResource("ShaderMaterial_k6dif")
+texture = SubResource("PlaceholderTexture2D_m6v72")
 
 [node name="DetectionArea" type="Area2D" parent="."]
 
@@ -29,6 +41,15 @@ script = ExtResource("1_1yano")
 detection_area = NodePath("../DetectionArea")
 item = NodePath("..")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_k6dif")
-texture = SubResource("PlaceholderTexture2D_m6v72")
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_bixo0")
+amount = 10
+emission_shape = 2
+emission_sphere_radius = 9.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_j0ewt")
+color = Color(2, 2, 2, 1)

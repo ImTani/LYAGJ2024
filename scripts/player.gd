@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var thrower_component: ThrowerComponent
 @export var respawn_component: RespawnComponent
 @export var health_component: HealthComponent
+@export var flame_position_flipping_component: PositionFlippingComponent
 
 func _ready() -> void:
 	thrower_component.item_thrown.connect(holder_component.remove_current_item)
@@ -29,6 +30,7 @@ func _physics_process(delta: float) -> void:
 
 	if not immobile:
 		holder_component.handle_hold_location_update(horizontal_input)
+		flame_position_flipping_component.handle_flipping(horizontal_input)
 		thrower_component.handle_item_throw(holder_component.current_item, input_component.get_mouse_click(), input_component.get_mouse_position())
 
 		jump_component.handle_jump(self, input_component.get_jump_input(), input_component.get_jump_input_released())
