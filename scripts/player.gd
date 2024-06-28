@@ -17,6 +17,8 @@ func _ready() -> void:
 	thrower_component.item_thrown.connect(holder_component.remove_current_item)
 	health_component.died.connect(respawn_component.respawn)
 	health_component.died.connect(thrower_component.throw_item)
+	health_component.died.connect(audio_component.handle_death_sfx)
+	respawn_component.respawned.connect(audio_component.handle_respawn_sfx)
 
 func _physics_process(delta: float) -> void:
 
@@ -38,8 +40,12 @@ func _physics_process(delta: float) -> void:
 
 		animation_component.handle_move_animation(horizontal_input, velocity, is_on_floor())
 		animation_component.handle_jump_animation(jump_component.is_going_up, gravity_component.is_falling, jump_component.has_just_landed(self))
+		
 		audio_component.handle_footsteps_sfx(horizontal_input)
-
+		audio_component.handle_jumping_sfx(jump_component.is_going_up)
+		audio_component.handle_falling_sfx(gravity_component.is_falling)
+		audio_component.handle_landing_sfx(jump_component.has_just_landed(self))
+		audio_component.handle_hurt_sfx(is_invincible)
 	
 	animation_component.handle_death_animation(is_dead)
 	health_component.handle_health()

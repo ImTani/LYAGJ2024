@@ -17,10 +17,11 @@ func handle_item_throw(item: Item, want_to_throw: bool, target_position: Vector2
 
 func throw_item() -> void:
 	if item_to_throw:
+		
 		var item_position = item_to_throw.global_position
 		item_to_throw.get_parent().remove_child.call_deferred(item_to_throw)
 
 		item_thrown.emit()
 		
-		item_to_throw.set_global_position.call_deferred(item_position)
 		utils._add_platformer_world_tilemap_child(item_to_throw)
+		item_to_throw.set_global_position.call_deferred(item_position)

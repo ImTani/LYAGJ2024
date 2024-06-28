@@ -1,6 +1,8 @@
 extends Node
 class_name RespawnComponent
 
+signal respawned
+
 @export_subgroup("Settings")
 @export var body: CharacterBody2D
 @export var respawn_time: float = 1.0
@@ -18,6 +20,8 @@ func respawn() -> void:
 
 	body.global_position = respawn_point
 	handle_respawn_particles()
+	
+	respawned.emit()
 	
 	var animation_component: AnimationComponent = utils.get_component(body, "AnimationComponent")
 	if animation_component:

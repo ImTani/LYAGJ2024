@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://eohbogu0cec3"]
+[gd_scene load_steps=76 format=3 uid="uid://eohbogu0cec3"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_w4a55"]
 [ext_resource type="Shader" uid="uid://tlm38mqaeaqj" path="res://shaders/wave_shader.tres" id="2_gjjn1"]
@@ -25,10 +25,8 @@
 [ext_resource type="Script" path="res://scripts/components/ThrowerComponent.gd" id="8_pmtx5"]
 [ext_resource type="AudioStream" uid="uid://cmrvpwjdjq16k" path="res://assets/sounds/sfx/hurt/hurt (5).mp3" id="8_qyrj8"]
 [ext_resource type="Texture2D" uid="uid://1aiqbj63232m" path="res://assets/player_sprites/tile024.png" id="9_4khc8"]
-[ext_resource type="AudioStream" uid="uid://deu5rmilvw3vp" path="res://assets/sounds/sfx/stab/stab1.mp3" id="9_66aee"]
 [ext_resource type="Texture2D" uid="uid://bf1wlgc4pm2jd" path="res://assets/player_sprites/tile025.png" id="10_2s1ll"]
 [ext_resource type="Script" path="res://scripts/components/AudioComponent.gd" id="10_3vih5"]
-[ext_resource type="AudioStream" uid="uid://b5yosdnct64by" path="res://assets/sounds/sfx/stab/stab4.mp3" id="10_d053t"]
 [ext_resource type="Script" path="res://scripts/components/HealthComponent.gd" id="10_nufit"]
 [ext_resource type="Texture2D" uid="uid://mfjfdw8cdrat" path="res://assets/player_sprites/tile026.png" id="11_qr8tr"]
 [ext_resource type="Texture2D" uid="uid://0ns87d4r52fp" path="res://assets/player_sprites/tile027.png" id="12_thoei"]
@@ -45,7 +43,6 @@
 [ext_resource type="Texture2D" uid="uid://dx3n7ud2vpknd" path="res://assets/player_sprites/tile044.png" id="20_u0av2"]
 [ext_resource type="Texture2D" uid="uid://bjxeey86ai43o" path="res://assets/player_sprites/tile045.png" id="21_5famu"]
 [ext_resource type="Texture2D" uid="uid://dao018728cjlp" path="res://assets/player_sprites/tile046.png" id="22_566we"]
-[ext_resource type="AudioStream" uid="uid://c50h5gseu0ywo" path="res://assets/sounds/sfx/respawn.mp3" id="22_rg00y"]
 [ext_resource type="Texture2D" uid="uid://xdebetjmgsxl" path="res://assets/player_sprites/tile047.png" id="23_xxvcf"]
 [ext_resource type="Texture2D" uid="uid://xanmpqen810q" path="res://assets/player_sprites/tile048.png" id="24_thyem"]
 [ext_resource type="Script" path="res://scripts/components/HolderComponent.gd" id="25_nfach"]
@@ -97,11 +94,6 @@ stream_1/stream = ExtResource("5_82x4m")
 stream_2/stream = ExtResource("6_bxgyf")
 stream_3/stream = ExtResource("7_deuyq")
 stream_4/stream = ExtResource("8_qyrj8")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3qc7k"]
-streams_count = 2
-stream_0/stream = ExtResource("9_66aee")
-stream_1/stream = ExtResource("10_d053t")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_c1rav"]
 streams_count = 3
@@ -318,12 +310,6 @@ stream = SubResource("AudioStreamRandomizer_elyvc")
 volume_db = -10.0
 bus = &"SFX"
 
-[node name="Stab" type="AudioStreamPlayer2D" parent="Sounds"]
-position = Vector2(2, -6)
-stream = SubResource("AudioStreamRandomizer_3qc7k")
-volume_db = -10.0
-bus = &"SFX"
-
 [node name="Landing" type="AudioStreamPlayer2D" parent="Sounds"]
 position = Vector2(2, -6)
 stream = SubResource("AudioStreamRandomizer_c1rav")
@@ -339,7 +325,7 @@ bus = &"SFX"
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = SubResource("AudioStreamRandomizer_5tk2x")
-volume_db = -10.0
+volume_db = -2.0
 bus = &"SFX"
 
 [node name="FallingSound" type="AudioStreamPlayer2D" parent="Sounds"]
@@ -348,8 +334,6 @@ volume_db = -10.0
 bus = &"SFX"
 
 [node name="RespawnSound" type="AudioStreamPlayer2D" parent="Sounds"]
-stream = ExtResource("22_rg00y")
-volume_db = -10.0
 bus = &"SFX"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -372,7 +356,7 @@ script = ExtResource("6_5778f")
 sprite = NodePath("../Sprite2D")
 animation_player = NodePath("../AnimationPlayer")
 
-[node name="AudioComponent" type="Node" parent="." node_paths=PackedStringArray("footsteps_audio_player", "jump_audio_player", "death_audio_player", "respawn_audio_player", "fall_audio_player", "landing_audio_player", "hurt_audio_player", "stab_audio_player")]
+[node name="AudioComponent" type="Node" parent="." node_paths=PackedStringArray("footsteps_audio_player", "jump_audio_player", "death_audio_player", "respawn_audio_player", "fall_audio_player", "landing_audio_player", "hurt_audio_player")]
 script = ExtResource("10_3vih5")
 footsteps_audio_player = NodePath("../Sounds/Footsteps")
 jump_audio_player = NodePath("../Sounds/Jump")
@@ -381,7 +365,6 @@ respawn_audio_player = NodePath("../Sounds/RespawnSound")
 fall_audio_player = NodePath("../Sounds/FallingSound")
 landing_audio_player = NodePath("../Sounds/Landing")
 hurt_audio_player = NodePath("../Sounds/Hurt")
-stab_audio_player = NodePath("../Sounds/Stab")
 
 [node name="FlamePositionFlippingComponent" type="Node" parent="." node_paths=PackedStringArray("object_to_flip")]
 script = ExtResource("37_2aae6")

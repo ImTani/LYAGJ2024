@@ -1,4 +1,11 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://di8vhtts2xs67"]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://di8vhtts2xs67"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_th4wi"]
+resource_name = "Reverb"
+room_size = 0.4
+damping = 0.2
+spread = 0.3
+wet = 0.4
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_g6ltx"]
 resource_name = "Reverb"
@@ -7,12 +14,15 @@ damping = 0.22
 wet = 0.7
 
 [resource]
+bus/0/volume_db = -0.994855
 bus/1/name = &"SFX"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
 bus/1/volume_db = 0.0
 bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectReverb_th4wi")
+bus/1/effect/0/enabled = true
 bus/2/name = &"Music"
 bus/2/solo = false
 bus/2/mute = false
