@@ -1,6 +1,7 @@
-[gd_scene load_steps=51 format=3 uid="uid://eohbogu0cec3"]
+[gd_scene load_steps=53 format=3 uid="uid://eohbogu0cec3"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_w4a55"]
+[ext_resource type="Shader" uid="uid://tlm38mqaeaqj" path="res://shaders/wave_shader.tres" id="2_gjjn1"]
 [ext_resource type="Texture2D" uid="uid://cikmgyfofq6wh" path="res://assets/player_sprites/tile000.png" id="2_mw1do"]
 [ext_resource type="Script" path="res://scripts/components/GravityComponent.gd" id="3_ekt3m"]
 [ext_resource type="Script" path="res://scripts/components/InputComponent.gd" id="4_7u3fe"]
@@ -37,6 +38,11 @@
 [ext_resource type="PackedScene" uid="uid://ci1f3gr7y3awr" path="res://scenes/particles/hurt_particle.tscn" id="35_1k2uy"]
 [ext_resource type="PackedScene" uid="uid://lnkh6yfc1ypy" path="res://scenes/particles/spawn_particle.tscn" id="36_5rxl6"]
 [ext_resource type="Script" path="res://scripts/components/PositionFlippingComponent.gd" id="37_2aae6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2hiwt"]
+shader = ExtResource("2_gjjn1")
+shader_parameter/wave_speed = 10.0
+shader_parameter/wave_intensity = 0.5
 
 [sub_resource type="Curve" id="Curve_wpwl7"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -199,6 +205,8 @@ flame_position_flipping_component = NodePath("FlamePositionFlippingComponent")
 metadata/_edit_group_ = true
 
 [node name="Flame" type="CPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_2hiwt")
+position = Vector2(0, -18)
 amount = 20
 lifetime = 0.5
 lifetime_randomness = 0.3
@@ -213,6 +221,7 @@ scale_amount_curve = SubResource("Curve_wpwl7")
 color_ramp = SubResource("Gradient_5nuw6")
 
 [node name="LightForOthers" type="PointLight2D" parent="Flame"]
+use_parent_material = true
 scale = Vector2(9.375, 9.375)
 color = Color(0, 1.2, 1.2, 1)
 shadow_enabled = true
@@ -223,6 +232,7 @@ texture = SubResource("GradientTexture2D_y7n8f")
 texture_scale = 0.1
 
 [node name="LightForSelf" type="PointLight2D" parent="Flame"]
+use_parent_material = true
 scale = Vector2(9.375, 9.375)
 color = Color(0.5, 1.2, 1.2, 1)
 range_item_cull_mask = 2

@@ -6,9 +6,9 @@
 
 [node name="Key" instance=ExtResource("1_d7arl")]
 
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_u0v7x")
+
 [node name="KeyComponent" type="Node" parent="." index="2" node_paths=PackedStringArray("DetectionArea")]
 script = ExtResource("2_s7kmd")
 DetectionArea = NodePath("../DetectionArea")
-
-[node name="Sprite" parent="." index="3"]
-texture = ExtResource("2_u0v7x")

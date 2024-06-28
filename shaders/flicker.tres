@@ -1,0 +1,48 @@
+[gd_resource type="VisualShader" load_steps=3 format=3 uid="uid://jmn2452ofcha"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_0vxqh"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeRandomRange" id="VisualShaderNodeRandomRange_tevvy"]
+default_input_values = [0, Vector3(1, 1, 1), 1, 0.2, 2, 1.0]
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+
+
+
+
+// 3D Noise with friendly permission by Inigo Quilez
+vec3 hash_noise_range( vec3 p ) {
+	p *= mat3(vec3(127.1, 311.7, -53.7), vec3(269.5, 183.3, 77.1), vec3(-301.7, 27.3, 215.3));
+	return 2.0 * fract(fract(p)*4375.55) -1.;
+}
+
+
+void fragment() {
+// Input:2
+	float n_out2p0 = TIME;
+
+
+// RandomRange:3
+	float n_in3p1 = 0.20000;
+	float n_in3p2 = 1.00000;
+	float n_out3p0 = mix(n_in3p1, n_in3p2, hash_noise_range(vec3(n_out2p0)).x);
+
+
+// Output:0
+	COLOR.a = n_out3p0;
+
+
+}
+"
+graph_offset = Vector2(-56.4641, 225.223)
+mode = 1
+flags/light_only = false
+nodes/fragment/2/node = SubResource("VisualShaderNodeInput_0vxqh")
+nodes/fragment/2/position = Vector2(-300, 240)
+nodes/fragment/3/node = SubResource("VisualShaderNodeRandomRange_tevvy")
+nodes/fragment/3/position = Vector2(140, 280)
+nodes/fragment/connections = PackedInt32Array(3, 0, 0, 1, 2, 0, 3, 0)
