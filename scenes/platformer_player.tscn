@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://eohbogu0cec3"]
+[gd_scene load_steps=82 format=3 uid="uid://eohbogu0cec3"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_w4a55"]
 [ext_resource type="Shader" uid="uid://tlm38mqaeaqj" path="res://shaders/wave_shader.tres" id="2_gjjn1"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/components/InputComponent.gd" id="4_7u3fe"]
 [ext_resource type="AudioStream" uid="uid://boea8b84y58d3" path="res://assets/sounds/sfx/footsteps/footstep2.mp3" id="4_l0h3l"]
 [ext_resource type="AudioStream" uid="uid://dm1t02fttnr60" path="res://assets/sounds/sfx/hurt/hurt (1).mp3" id="4_lj1xh"]
+[ext_resource type="AudioStream" uid="uid://b5m0dqldibft4" path="res://assets/sounds/sfx/jumps/jump_1.mp3" id="4_t8jaf"]
 [ext_resource type="AudioStream" uid="uid://dd8alt8k11ruv" path="res://assets/sounds/sfx/landings/land1.mp3" id="4_xgps4"]
 [ext_resource type="AudioStream" uid="uid://b0kp5djf5r4j5" path="res://assets/sounds/sfx/hurt/hurt (2).mp3" id="5_82x4m"]
 [ext_resource type="AudioStream" uid="uid://cgvq88cucd1pd" path="res://assets/sounds/sfx/footsteps/footstep3.mp3" id="5_jxxev"]
@@ -17,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://ba2u468tkium7" path="res://assets/sounds/sfx/landings/land3.mp3" id="6_2sj64"]
 [ext_resource type="Script" path="res://scripts/components/AnimationComponent.gd" id="6_5778f"]
 [ext_resource type="AudioStream" uid="uid://ddp8wokgly4gu" path="res://assets/sounds/sfx/hurt/hurt (3).mp3" id="6_bxgyf"]
+[ext_resource type="AudioStream" uid="uid://c40auhrxs50yr" path="res://assets/sounds/sfx/jumps/jump_3.mp3" id="6_myege"]
 [ext_resource type="AudioStream" uid="uid://db6sskxc5gh6t" path="res://assets/sounds/sfx/footsteps/footstep4.mp3" id="6_occys"]
 [ext_resource type="AudioStream" uid="uid://cqj3b77nx6l10" path="res://assets/sounds/sfx/hurt/hurt (4).mp3" id="7_deuyq"]
 [ext_resource type="Script" path="res://scripts/components/AdvancedJumpComponent.gd" id="7_w0ux2"]
@@ -89,6 +91,10 @@ metadata/_snap_enabled = true
 metadata/_snap_count = 20
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4ycvb"]
+playback_mode = 1
+streams_count = 2
+stream_0/stream = ExtResource("4_t8jaf")
+stream_1/stream = ExtResource("6_myege")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_elyvc"]
 streams_count = 5

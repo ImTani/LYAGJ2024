@@ -18,27 +18,21 @@ func _ready() -> void:
 
 func change_audio_bus_volume(value: float):
 	AudioServer.set_bus_volume_db(master_bus, value)
-
-func handle_audio_playback(move_input: float, is_falling: bool) -> void:
-	handle_footsteps_sfx(move_input)
-	handle_falling_sfx(is_falling)
-	#handle_jump_sfx()
-	#handle_death_sfx()
-	#handle_respawn_sfx()
 	
 func handle_footsteps_sfx(move_input: float) -> void:
 	if move_input != 0 and not footsteps_audio_player.playing:
 		footsteps_audio_player.play()
 	
 func handle_falling_sfx(is_falling: bool) -> void:
-	if OS.get_name() == "Web": return #temporary, this sfx is bugged on web
+	#if OS.get_name() == "Web":
+	return
 	if is_falling and not fall_audio_player.playing:
 		fall_audio_player.play()
 	elif not is_falling:
 		fall_audio_player.stop()
 
-func handle_jumping_sfx(is_jumping: bool) -> void:
-	if is_jumping and not jump_audio_player.playing:
+func handle_jumping_sfx() -> void:
+	if not jump_audio_player.playing:
 		jump_audio_player.play()
 
 func handle_landing_sfx(has_just_landed: bool) -> void:

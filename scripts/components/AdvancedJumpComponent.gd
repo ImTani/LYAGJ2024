@@ -1,6 +1,8 @@
 extends Node
 class_name AdvancedJumpComponent
 
+signal jumped
+
 @export_subgroup("Settings")
 @export var jump_velocity: float = -250.0
 @export var jump_buffer_time: float = 0.1
@@ -59,6 +61,8 @@ func handle_coyote_time(body: CharacterBody2D) -> void:
 		body.velocity.y = 0
 
 func jump(body: CharacterBody2D) -> void:
+	jumped.emit()
+	
 	body.velocity.y = jump_velocity
 	is_jumping = true
 	jump_buffer_timer.stop()

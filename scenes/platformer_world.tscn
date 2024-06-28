@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://c4ouhrq4y2h4q"]
+[gd_scene load_steps=71 format=4 uid="uid://c4ouhrq4y2h4q"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_q4wr6"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_vyy81"]
@@ -19,8 +19,16 @@
 [ext_resource type="PackedScene" uid="uid://ckry5eecdpv3v" path="res://scenes/checkpoint.tscn" id="16_jlkes"]
 [ext_resource type="PackedScene" uid="uid://b52u60dngu6ot" path="res://scenes/hazards/void.tscn" id="17_xqpsc"]
 [ext_resource type="PackedScene" uid="uid://cr17uy2pbpd8v" path="res://scenes/door.tscn" id="18_3e2js"]
+[ext_resource type="Texture2D" uid="uid://dsp1ippr2e7mc" path="res://assets/kenney_fantasy_ui_borders/PNG/Default/Transparent center/panel-transparent-center-000.png" id="20_e34wp"]
 [ext_resource type="PackedScene" uid="uid://dlkthuhdkymnc" path="res://scenes/UI/pause_menu.tscn" id="20_rdc51"]
 [ext_resource type="AudioStream" uid="uid://ddvdjsfnalh8k" path="res://assets/sounds/sfx/ambience.mp3" id="21_ebymm"]
+[ext_resource type="Texture2D" uid="uid://vi47jt7incm7" path="res://assets/kenney_fantasy_ui_borders/PNG/Default/Panel/panel-000.png" id="21_pf7ms"]
+[ext_resource type="Texture2D" uid="uid://0gfyjmsc7xas" path="res://assets/kenney_fantasy_ui_borders/PNG/Default/Cursors/Check_Box.png" id="22_dhyai"]
+[ext_resource type="Texture2D" uid="uid://rlyxcu81sfg2" path="res://assets/kenney_fantasy_ui_borders/PNG/Default/Cursors/Slider_Cursor.png" id="23_pei8x"]
+[ext_resource type="Texture2D" uid="uid://mblx6u2f4na8" path="res://assets/kenney_fantasy_ui_borders/PNG/Default/Border/panel-border-017.png" id="24_uw33u"]
+[ext_resource type="Texture2D" uid="uid://bx0vpyyyeci6a" path="res://assets/kenney_fantasy_ui_borders/PNG/Default/Transparent center/panel-transparent-center-023.png" id="25_n3ndn"]
+[ext_resource type="FontFile" uid="uid://55ya5v6mg0jv" path="res://assets/font/static/PixelifySans-Medium.ttf" id="26_3irys"]
+[ext_resource type="AudioStream" uid="uid://b84nu5xt62uov" path="res://assets/sounds/voice_lines/antag_delay_the_inevtiable.mp3" id="29_2655i"]
 
 [sub_resource type="Resource" id="Resource_01jbi"]
 script = ExtResource("3_lp4lg")
@@ -550,6 +558,233 @@ glow_intensity = 1.5
 glow_strength = 1.5
 glow_hdr_threshold = 0.9
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jqqyt"]
+texture = ExtResource("20_e34wp")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.50608, 0.50608, 0.50608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3vcf4"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_876tx"]
+texture = ExtResource("21_pf7ms")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i72pp"]
+texture = ExtResource("20_e34wp")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjgqu"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fv06p"]
+atlas = ExtResource("22_dhyai")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dely"]
+atlas = ExtResource("22_dhyai")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="Image" id="Image_o6g3h"]
+data = {
+"data": PackedByteArray("////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8N////YP///4j///+t////rf///4j///9f////C////wD///8A////AP///wD///8A////AP///wD///84////q8bGxv/Gxsb/xsbG/8bGxv/Gxsb/xsbG/////6j///8z////AP///wD///8A////AP///wD///84////v8bGxv/Gxsb/xsbG/8bGxv/Gxsb/xsbG/8bGxv/Gxsb/////vv///zL///8A////AP///wD///8M////q8bGxv/Gxsb/sLCw/1FRUf8rKyv/Kysr/1NTU/+xsbH/xsbG/8bGxv////+o////Cv///wD///8A////YcbGxv/Gxsb/sLCw/yUlJf8aGhr/Ghoa/xoaGv8aGhr/Jycn/7Ozs//Gxsb/xsbG/////2D///8A////AP///4nGxsb/xsbG/1FRUf8aGhr/Ghoa/xoaGv8aGhr/Ghoa/xoaGv9WVlb/xsbG/8bGxv////+a////AP///wD///+uxsbG/8bGxv8rKyv/Ghoa/xoaGv8aGhr/Ghoa/xoaGv8aGhr/Kysr/8bGxv/Gxsb/////tP///wD///8A////rcbGxv/Gxsb/Kysr/xoaGv8aGhr/Ghoa/xoaGv8aGhr/Ghoa/ywsLP/Gxsb/xsbG/////7T///8A////AP///4jGxsb/xsbG/1NTU/8aGhr/Ghoa/xoaGv8aGhr/Ghoa/xoaGv9YWFj/xsbG/8bGxv////+Y////AP///wD///9fxsbG/8bGxv+ysrL/Jycn/xoaGv8aGhr/Ghoa/xoaGv8qKir/tbW1/8bGxv/Gxsb/////Xv///wD///8A////C////6nGxsb/xsbG/7Ozs/9WVlb/Kysr/ywsLP9YWFj/tbW1/8bGxv/Gxsb/////pf///wn///8A////AP///wD///80////vsbGxv/Gxsb/xsbG/8bGxv/Gxsb/xsbG/8bGxv/Gxsb/////vf///y7///8A////AP///wD///8A////AP///zL///+oxsbG/8bGxv/Gxsb/xsbG/8bGxv/Gxsb/////pf///y7///8A////AP///wD///8A////AP///wD///8A////Cv///2D///+a////tP///7T///+Y////Xv///wn///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AA=="),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_8c458"]
+image = SubResource("Image_o6g3h")
+
+[sub_resource type="Image" id="Image_h72vw"]
+data = {
+"data": PackedByteArray("////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8J////Mf///03///9a////Wv///03///8x////Cf///wD///8A////AP///wD///8A////AP///wD///8g////Wv///17///9e////Xv///17///9e////Xv///1r///8f////AP///wD///8A////AP///wD///8g////Xv///17///9e////Xv///17///9e////Xv///17///9e////Xv///x////8A////AP///wD///8J////Wv///17///9e4ODgaHx8fJRhYWGoYWFhqH19fZPg4OBo////Xv///17///9Z////CP///wD///8A////Mf///17///9e4ODgaF5eXqpXV1evV1dXr1dXV69XV1evX19fqeDg4Gj///9e////Xv///zD///8A////AP///03///9e////Xnx8fJRXV1evV1dXr1dXV69XV1evV1dXr1dXV699fX2T////Xv///17///9N////AP///wD///9a////Xv///15hYWGoV1dXr1dXV69XV1evV1dXr1dXV69XV1evYWFhqP///17///9e////Wv///wD///8A////Wv///17///9eYWFhqFdXV69XV1evV1dXr1dXV69XV1evV1dXr2JiYqf///9e////Xv///1n///8A////AP///03///9e////Xn19fZNXV1evV1dXr1dXV69XV1evV1dXr1dXV69/f3+T////Xv///17///9M////AP///wD///8x////Xv///17g4OBoX19fqVdXV69XV1evV1dXr1dXV69fX1+p4uLiZ////17///9e////MP///wD///8A////Cf///1r///9e////XuDg4Gh9fX2TYWFhqGJiYqd/f3+T4uLiZ////17///9e////Wf///wj///8A////AP///wD///8f////Xv///17///9e////Xv///17///9e////Xv///17///9e////Xv///x7///8A////AP///wD///8A////AP///x////9Z////Xv///17///9e////Xv///17///9e////Wf///x7///8A////AP///wD///8A////AP///wD///8A////CP///zD///9N////Wv///1n///9M////MP///wj///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AA=="),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_wrb21"]
+image = SubResource("Image_h72vw")
+
+[sub_resource type="Image" id="Image_vg414"]
+data = {
+"data": PackedByteArray("////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wAqKioMGhoaQxoaGmkbGxt6GxsbehoaGmkbGxtCLi4uC////wD///8A////AP///wD///8A////AP///wAdHR0sGxsbehoaGoAaGhqAGhoagBoaGoAaGhqAGhoagBsbG3oeHh4q////AP///wD///8A////AP///wAdHR0sGhoagBoaGoAaGhqAGhoagBoaGoAaGhqAGhoagBoaGoAaGhqAGhoagB4eHir///8A////AP///wAqKioMGxsbehoaGoAaGhqAGhoagBoaGoAaGhqAGhoagBoaGoAaGhqAGhoagBoaGoAbGxt5Li4uC////wD///8AGhoaQxoaGoAaGhqAGhoagBoaGoAaGhqAGhoagBoaGoAaGhqAGhoagBoaGoAaGhqAGhoagBsbG0H///8A////ABoaGmkaGhqAGhoagBoaGoAaGhqAGhoagBoaGoAaGhqAGhoagBoaGoAaGhqAGhoagBoaGoAbGxto////AP///wAbGxt6GhoagBoaGoAaGhqAGhoagBoaGoAaGhqAGhoagBoaGoAaGhqAGhoagBoaGoAaGhqAGxsbev///wD///8AGxsbehoaGoAaGhqAGhoagBoaGoAaGhqAGhoagBoaGoAaGhqAGhoagBoaGoAaGhqAGhoagBsbG3n///8A////ABoaGmkaGhqAGhoagBoaGoAaGhqAGhoagBoaGoAaGhqAGhoagBoaGoAaGhqAGhoagBoaGoAbGxtn////AP///wAbGxtCGhoagBoaGoAaGhqAGhoagBoaGoAaGhqAGhoagBoaGoAaGhqAGhoagBoaGoAaGhqAGxsbQf///wD///8ALi4uCxsbG3oaGhqAGhoagBoaGoAaGhqAGhoagBoaGoAaGhqAGhoagBoaGoAaGhqAGxsbeTMzMwr///8A////AP///wAeHh4qGhoagBoaGoAaGhqAGhoagBoaGoAaGhqAGhoagBoaGoAaGhqAGhoagB8fHyn///8A////AP///wD///8A////AB4eHiobGxt5GhoagBoaGoAaGhqAGhoagBoaGoAaGhqAGxsbeR8fHyn///8A////AP///wD///8A////AP///wD///8ALi4uCxsbG0EbGxtoGxsbehsbG3kbGxtnGxsbQTMzMwr///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AA=="),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_7ydpl"]
+image = SubResource("Image_vg414")
+
+[sub_resource type="Image" id="Image_qchnr"]
+data = {
+"data": PackedByteArray("////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wAqKioGHh4eIhwcHDUdHR09HR0dPRwcHDUfHx8hKioqBv///wD///8A////AP///wD///8A////AP///wAiIiIWHR0dPRwcHEAcHBxAHBwcQBwcHEAcHBxAHBwcQB0dHT0kJCQV////AP///wD///8A////AP///wAiIiIWHBwcQBwcHEAcHBxAHBwcQBwcHEAcHBxAHBwcQBwcHEAcHBxAHBwcQCQkJBX///8A////AP///wAqKioGHR0dPRwcHEAcHBxAHBwcQBwcHEAcHBxAHBwcQBwcHEAcHBxAHBwcQBwcHEAdHR09KioqBv///wD///8AHh4eIhwcHEAcHBxAHBwcQBwcHEAcHBxAHBwcQBwcHEAcHBxAHBwcQBwcHEAcHBxAHBwcQB8fHyH///8A////ABwcHDUcHBxAHBwcQBwcHEAcHBxAHBwcQBwcHEAcHBxAHBwcQBwcHEAcHBxAHBwcQBwcHEAdHR00////AP///wAdHR09HBwcQBwcHEAcHBxAHBwcQBwcHEAcHBxAHBwcQBwcHEAcHBxAHBwcQBwcHEAcHBxAHR0dPf///wD///8AHR0dPRwcHEAcHBxAHBwcQBwcHEAcHBxAHBwcQBwcHEAcHBxAHBwcQBwcHEAcHBxAHBwcQB0dHT3///8A////ABwcHDUcHBxAHBwcQBwcHEAcHBxAHBwcQBwcHEAcHBxAHBwcQBwcHEAcHBxAHBwcQBwcHEAdHR00////AP///wAfHx8hHBwcQBwcHEAcHBxAHBwcQBwcHEAcHBxAHBwcQBwcHEAcHBxAHBwcQBwcHEAcHBxAHx8fIf///wD///8AKioqBh0dHT0cHBxAHBwcQBwcHEAcHBxAHBwcQBwcHEAcHBxAHBwcQBwcHEAcHBxAHR0dPTMzMwX///8A////AP///wAkJCQVHBwcQBwcHEAcHBxAHBwcQBwcHEAcHBxAHBwcQBwcHEAcHBxAHBwcQCQkJBX///8A////AP///wD///8A////ACQkJBUdHR09HBwcQBwcHEAcHBxAHBwcQBwcHEAcHBxAHR0dPSQkJBX///8A////AP///wD///8A////AP///wD///8AKioqBh8fHyEdHR00HR0dPR0dHT0dHR00Hx8fITMzMwX///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AA=="),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_fh3hg"]
+image = SubResource("Image_qchnr")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cifi"]
+atlas = ExtResource("22_dhyai")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agmc1"]
+atlas = ExtResource("22_dhyai")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_eq4be"]
+load_path = "res://.godot/imported/Slider_Cursor.png-bfc92a71669ba9351a4f0131722ad44d.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ag4ht"]
+bg_color = Color(0.57, 0.1824, 0.23408, 0.52549)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 36
+corner_radius_top_right = 36
+corner_radius_bottom_right = 36
+corner_radius_bottom_left = 36
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57lwm"]
+bg_color = Color(0.564906, 0, 0.102022, 0.784314)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 36
+corner_radius_top_right = 36
+corner_radius_bottom_right = 36
+corner_radius_bottom_left = 36
+anti_aliasing = false
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jwlfd"]
+texture = ExtResource("24_uw33u")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7q0mw"]
+texture = ExtResource("25_n3ndn")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+modulate_color = Color(0.65, 0.1495, 0.2496, 0.588235)
+
+[sub_resource type="Theme" id="Theme_d2rb8"]
+default_font = ExtResource("26_3irys")
+default_font_size = 24
+Button/colors/font_color = Color(0.879274, 0.262615, 0.212781, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(1, 0, 0, 1)
+Button/colors/font_hover_color = Color(1, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/styles/disabled = SubResource("StyleBoxTexture_jqqyt")
+Button/styles/focus = SubResource("StyleBoxFlat_3vcf4")
+Button/styles/hover = SubResource("StyleBoxTexture_876tx")
+Button/styles/normal = SubResource("StyleBoxTexture_i72pp")
+Button/styles/pressed = SubResource("StyleBoxFlat_sjgqu")
+CheckBox/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+CheckBox/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+CheckBox/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+CheckBox/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+CheckBox/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+CheckBox/colors/font_outline_color = Color(0, 0, 0, 1)
+CheckBox/colors/font_pressed_color = Color(1, 1, 1, 1)
+CheckBox/constants/check_v_offset = 0
+CheckBox/constants/h_separation = 8
+CheckBox/constants/outline_size = 18
+CheckBox/icons/checked = SubResource("AtlasTexture_fv06p")
+CheckBox/icons/checked_disabled = SubResource("AtlasTexture_2dely")
+CheckBox/icons/radio_checked = SubResource("ImageTexture_8c458")
+CheckBox/icons/radio_checked_disabled = SubResource("ImageTexture_wrb21")
+CheckBox/icons/radio_unchecked = SubResource("ImageTexture_7ydpl")
+CheckBox/icons/radio_unchecked_disabled = SubResource("ImageTexture_fh3hg")
+CheckBox/icons/unchecked = SubResource("AtlasTexture_7cifi")
+CheckBox/icons/unchecked_disabled = SubResource("AtlasTexture_agmc1")
+CheckBox/styles/disabled = SubResource("StyleBoxTexture_jqqyt")
+CheckBox/styles/focus = SubResource("StyleBoxFlat_3vcf4")
+CheckBox/styles/hover = SubResource("StyleBoxTexture_i72pp")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxTexture_i72pp")
+CheckBox/styles/normal = SubResource("StyleBoxTexture_i72pp")
+CheckBox/styles/pressed = SubResource("StyleBoxTexture_i72pp")
+HSlider/icons/grabber = ExtResource("23_pei8x")
+HSlider/icons/grabber_disabled = SubResource("CompressedTexture2D_eq4be")
+HSlider/icons/grabber_highlight = ExtResource("23_pei8x")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_ag4ht")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_57lwm")
+HSlider/styles/slider = SubResource("StyleBoxTexture_jwlfd")
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 16
+Panel/styles/panel = SubResource("StyleBoxTexture_7q0mw")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_7q0mw")
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/outline_size = 16
+
 [node name="PlatformerWorld" type="Node2D"]
 position = Vector2(9, 9)
 
@@ -662,11 +897,53 @@ color = Color(0.301251, 0.0316735, 0.0393026, 1)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Pause Menu" parent="UI" instance=ExtResource("20_rdc51")]
+[node name="Theme" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_d2rb8")
+
+[node name="Pause Menu" parent="UI/Theme" instance=ExtResource("20_rdc51")]
 visible = false
+layout_mode = 1
+
+[node name="Subtitles" type="Control" parent="UI/Theme"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Theme/Subtitles"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 36
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 36
+
+[node name="SubtitleLabel" type="Label" parent="UI/Theme/Subtitles/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("21_ebymm")
 volume_db = -15.0
 autoplay = true
 bus = &"Ambience"
+
+[node name="Dialogues" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("29_2655i")
+volume_db = -15.0
+panning_strength = 0.0
+bus = &"Voice"

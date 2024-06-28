@@ -22,6 +22,7 @@ PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_came
 Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 utils="*res://scripts/Utils.gd"
 BackgroundMusic="*res://scenes/bg_music.tscn"
+DialogManager="*res://scripts/components/DialogueAndSubtitlesComponent.gd"
 
 [display]
 
