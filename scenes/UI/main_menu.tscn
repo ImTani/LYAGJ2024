@@ -822,7 +822,6 @@ tile_set = SubResource("TileSet_swsl7")
 [node name="BG_Particles" type="CPUParticles2D" parent="Tilemap"]
 material = SubResource("CanvasItemMaterial_qda00")
 position = Vector2(52.7815, -105.563)
-scale = Vector2(1, 1)
 amount = 2000
 lifetime = 10.0
 preprocess = 5.0

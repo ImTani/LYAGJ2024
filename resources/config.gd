@@ -12,5 +12,3 @@ var overall_volume: float
 var shadows_enabled: bool
 var subtitles_enabled: bool
 var light_environment_enabled: bool
-
-#TODO making settings resource

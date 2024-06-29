@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dlkthuhdkymnc"]
 
 [ext_resource type="Theme" uid="uid://b6m5m23f256la" path="res://resources/theme.tres" id="1_rb18g"]
-[ext_resource type="PackedScene" uid="uid://bek5u6hspqgem" path="res://scenes/UI/options_container.tscn" id="3_cg00g"]
+[ext_resource type="PackedScene" uid="uid://bek5u6hspqgem" path="res://scenes/UI/options_menu.tscn" id="3_cg00g"]
 [ext_resource type="Script" path="res://scripts/UI/pause_menu.gd" id="8_1ag2x"]
 
 [node name="PauseMenu" type="Control"]
@@ -91,7 +91,7 @@ theme_override_constants/outline_size = 18
 theme_override_font_sizes/font_size = 56
 text = "Main Menu"
 
-[node name="Options Container" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_cg00g")]
+[node name="OptionsMenu" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_cg00g")]
 layout_mode = 2
 
 [connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/Buttons Container/VBoxContainer/Resume Button" to="." method="_on_resume_button_pressed"]

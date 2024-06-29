@@ -1,13 +1,27 @@
-[gd_scene format=3 uid="uid://bek5u6hspqgem"]
+[gd_scene load_steps=3 format=3 uid="uid://bek5u6hspqgem"]
 
-[node name="Options Container" type="HBoxContainer"]
+[ext_resource type="Theme" uid="uid://b6m5m23f256la" path="res://resources/theme.tres" id="1_mrf67"]
+[ext_resource type="Script" path="res://scripts/UI/options_menu.gd" id="2_ars7o"]
+
+[node name="OptionsMenu" type="HBoxContainer" node_paths=PackedStringArray("overall_volume_slider", "music_volume_slider", "sfx_volume_slider", "voice_volume_slider")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
+size_flags_vertical = 3
+theme = ExtResource("1_mrf67")
+script = ExtResource("2_ars7o")
+overall_volume_slider = NodePath("PanelContainer/VBoxContainer/Overall Volume/OverallVolumeSlider")
+music_volume_slider = NodePath("PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/MusicSlider/MusicVolumeSlider")
+sfx_volume_slider = NodePath("PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/SFXSlider/SFXVolumeSlider")
+voice_volume_slider = NodePath("PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2/Voice Volume/VoiceVolumeSlider")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 6
+size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -27,9 +41,10 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.898039, 0.219608, 0.231373, 1)
 text = "Overall Volume"
 
-[node name="HSlider" type="HSlider" parent="PanelContainer/VBoxContainer/Overall Volume"]
+[node name="OverallVolumeSlider" type="HSlider" parent="PanelContainer/VBoxContainer/Overall Volume"]
 layout_mode = 2
-max_value = 10.0
+max_value = 1.0
+step = 0.01
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -46,9 +61,10 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.898039, 0.219608, 0.231373, 1)
 text = "Music Volume"
 
-[node name="HSlider" type="HSlider" parent="PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/MusicSlider"]
+[node name="MusicVolumeSlider" type="HSlider" parent="PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/MusicSlider"]
 layout_mode = 2
-max_value = 10.0
+max_value = 1.0
+step = 0.01
 
 [node name="SFXSlider" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
 layout_mode = 2
@@ -58,9 +74,10 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.898039, 0.219608, 0.231373, 1)
 text = "SFX Volume"
 
-[node name="HSlider" type="HSlider" parent="PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/SFXSlider"]
+[node name="SFXVolumeSlider" type="HSlider" parent="PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/SFXSlider"]
 layout_mode = 2
-max_value = 10.0
+max_value = 1.0
+step = 0.01
 
 [node name="VSeparator" type="VSeparator" parent="PanelContainer/VBoxContainer/HBoxContainer3"]
 modulate = Color(1, 1, 1, 0)
@@ -78,22 +95,26 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.898039, 0.219608, 0.231373, 1)
 text = "Voice Volume"
 
-[node name="HSlider" type="HSlider" parent="PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2/Voice Volume"]
+[node name="VoiceVolumeSlider" type="HSlider" parent="PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2/Voice Volume"]
 layout_mode = 2
-max_value = 10.0
+max_value = 1.0
+step = 0.01
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer"]
 modulate = Color(0, 0, 0, 0)
 layout_mode = 2
 theme_override_constants/separation = 9
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/VBoxContainer3"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
 theme_override_constants/separation = 0
 
-[node name="Shadows Checkbox" type="CheckBox" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Shadows Checkbox" type="CheckBox" parent="PanelContainer/VBoxContainer/VBoxContainer3/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -103,7 +124,7 @@ button_pressed = true
 text = "Shadows"
 alignment = 2
 
-[node name="Subtitles" type="CheckBox" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Subtitles" type="CheckBox" parent="PanelContainer/VBoxContainer/VBoxContainer3/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -113,13 +134,13 @@ button_pressed = true
 text = "Subtitles"
 alignment = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/VBoxContainer3"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Lighting" type="CheckBox" parent="PanelContainer/VBoxContainer/HBoxContainer2"]
+[node name="Lighting" type="CheckBox" parent="PanelContainer/VBoxContainer/VBoxContainer3/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
@@ -127,3 +148,8 @@ theme_override_colors/font_pressed_color = Color(0.827451, 0.827451, 0.827451, 1
 theme_override_colors/font_color = Color(0.827451, 0.827451, 0.827451, 1)
 text = "Lighter Environment"
 alignment = 2
+
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/Overall Volume/OverallVolumeSlider" to="." method="_on_overall_volume_slider_value_changed"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/MusicSlider/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/SFXSlider/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2/Voice Volume/VoiceVolumeSlider" to="." method="_on_voice_volume_slider_value_changed"]
