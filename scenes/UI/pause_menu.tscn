@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlkthuhdkymnc"]
+[gd_scene load_steps=4 format=3 uid="uid://dlkthuhdkymnc"]
 
 [ext_resource type="Theme" uid="uid://b6m5m23f256la" path="res://resources/theme.tres" id="1_rb18g"]
+[ext_resource type="PackedScene" uid="uid://bek5u6hspqgem" path="res://scenes/UI/options_container.tscn" id="3_cg00g"]
 [ext_resource type="Script" path="res://scripts/UI/pause_menu.gd" id="8_1ag2x"]
 
 [node name="PauseMenu" type="Control"]
@@ -90,155 +91,9 @@ theme_override_constants/outline_size = 18
 theme_override_font_sizes/font_size = 56
 text = "Main Menu"
 
-[node name="Options Container" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Options Container" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_cg00g")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer"]
-layout_mode = 2
-
-[node name="Options Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "Options"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Overall Volume" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/Overall Volume"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.898039, 0.219608, 0.231373, 1)
-text = "Overall Volume"
-
-[node name="HSlider" type="HSlider" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/Overall Volume"]
-layout_mode = 2
-max_value = 10.0
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MusicSlider" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/MusicSlider"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.898039, 0.219608, 0.231373, 1)
-text = "Music Volume"
-
-[node name="HSlider" type="HSlider" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/MusicSlider"]
-layout_mode = 2
-max_value = 10.0
-
-[node name="SFXSlider" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/SFXSlider"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.898039, 0.219608, 0.231373, 1)
-text = "SFX Volume"
-
-[node name="HSlider" type="HSlider" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/SFXSlider"]
-layout_mode = 2
-max_value = 10.0
-
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Ambience Volume" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2/Ambience Volume"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.898039, 0.219608, 0.231373, 1)
-text = "Ambience Volume"
-
-[node name="HSlider" type="HSlider" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2/Ambience Volume"]
-layout_mode = 2
-max_value = 10.0
-
-[node name="Voice Volume" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2/Voice Volume"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.898039, 0.219608, 0.231373, 1)
-text = "Voice Volume"
-
-[node name="HSlider" type="HSlider" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2/Voice Volume"]
-layout_mode = 2
-max_value = 10.0
-
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer"]
-modulate = Color(0, 0, 0, 0)
-layout_mode = 2
-theme_override_constants/separation = 9
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.0
-theme_override_constants/separation = 0
-
-[node name="Shadows Checkbox" type="CheckBox" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_colors/font_pressed_color = Color(0.827451, 0.827451, 0.827451, 1)
-theme_override_colors/font_color = Color(0.827451, 0.827451, 0.827451, 1)
-button_pressed = true
-text = "Shadows"
-alignment = 2
-
-[node name="Subtitles" type="CheckBox" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_colors/font_pressed_color = Color(0.827451, 0.827451, 0.827451, 1)
-theme_override_colors/font_color = Color(0.827451, 0.827451, 0.827451, 1)
-button_pressed = true
-text = "Subtitles"
-alignment = 2
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 0
-alignment = 1
-
-[node name="Lighting" type="CheckBox" parent="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
-theme_override_colors/font_pressed_color = Color(0.827451, 0.827451, 0.827451, 1)
-theme_override_colors/font_color = Color(0.827451, 0.827451, 0.827451, 1)
-text = "Lighter Environment"
-alignment = 2
 
 [connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/Buttons Container/VBoxContainer/Resume Button" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/Buttons Container/VBoxContainer/Restart Button" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer/Buttons Container/VBoxContainer/Main Menu Button" to="." method="_on_main_menu_button_pressed"]
-[connection signal="value_changed" from="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/Overall Volume/HSlider" to="." method="_on_music_slider_value_changed"]
-[connection signal="value_changed" from="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/MusicSlider/HSlider" to="." method="_on_music_slider_value_changed"]
-[connection signal="value_changed" from="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/SFXSlider/HSlider" to="." method="_on_sfx_slider_value_changed"]
-[connection signal="value_changed" from="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2/Ambience Volume/HSlider" to="." method="_on_music_slider_value_changed"]
-[connection signal="value_changed" from="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2/Voice Volume/HSlider" to="." method="_on_sfx_slider_value_changed"]
-[connection signal="toggled" from="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer/Shadows Checkbox" to="." method="_on_shadows_checkbox_toggled"]
-[connection signal="toggled" from="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer/Subtitles" to="." method="_on_subtitles_toggled"]
-[connection signal="toggled" from="MarginContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer/Options Container/PanelContainer/VBoxContainer/HBoxContainer2/Lighting" to="." method="_on_lighting_toggled"]

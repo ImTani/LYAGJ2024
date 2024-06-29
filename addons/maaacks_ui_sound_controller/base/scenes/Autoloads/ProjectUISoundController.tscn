@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://cc37235kj4384"]
+[gd_scene load_steps=6 format=3 uid="uid://cc37235kj4384"]
 
 [ext_resource type="Script" path="res://addons/maaacks_ui_sound_controller/base/scripts/UISoundController.gd" id="1_dmagn"]
+[ext_resource type="AudioStream" uid="uid://umpu7umu2rc7" path="res://assets/sounds/ui/Fantasy UI SFX/Fantasy/Fantasy_UI (24).wav" id="2_0u1oc"]
+[ext_resource type="AudioStream" uid="uid://cqhtfmr8lbb31" path="res://assets/sounds/ui/Fantasy UI SFX/Fantasy/Fantasy_UI (7).wav" id="3_tl6vw"]
+[ext_resource type="AudioStream" uid="uid://d4j184rp6exkh" path="res://assets/sounds/ui/Fantasy UI SFX/Fantasy/Fantasy_UI (1).wav" id="4_nay56"]
+[ext_resource type="AudioStream" uid="uid://dcs2pd2ewv5nt" path="res://assets/sounds/ui/Fantasy UI SFX/Fantasy/Fantasy_UI (4).wav" id="5_17w2b"]
 
 [node name="ProjectUISoundController" type="Node"]
 script = ExtResource("1_dmagn")
+audio_bus = &"UI"
+button_hovered = ExtResource("2_0u1oc")
+button_pressed = ExtResource("3_tl6vw")
+slider_hovered = ExtResource("2_0u1oc")
+slider_drag_started = ExtResource("4_nay56")
+slider_drag_ended = ExtResource("5_17w2b")

@@ -9,6 +9,6 @@ var played: bool = false
 func _on_body_entered(body: Node2D) -> void:
 	if utils.get_component(body, "InputComponent") and not played:
 		if dialogue_audio and dialogue_text:
-			DialogManager.dialogue_player.volume_db = dialogue_volume
+			%DialogueManager.dialogue_player.volume_db = dialogue_volume
 			played = true
-			DialogManager.play_dialogue(dialogue_audio, dialogue_text)
+			%DialogueManager.play_dialogue(dialogue_audio, dialogue_text)

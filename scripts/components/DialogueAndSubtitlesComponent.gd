@@ -1,5 +1,5 @@
 extends Node
-class_name DialogueAndSubtitlesComponent
+class_name DialogueManager
 
 @onready var subtitles: Label = get_node("/root/PlatformerWorld/UI/Theme/Subtitles/MarginContainer/SubtitleLabel")
 @onready var dialogue_player: AudioStreamPlayer2D = get_node("/root/PlatformerWorld/Player/Dialogues")

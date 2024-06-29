@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://c4ouhrq4y2h4q"]
+[gd_scene load_steps=49 format=4 uid="uid://c4ouhrq4y2h4q"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_q4wr6"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_vyy81"]
@@ -26,6 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://jj12anm1y3ua" path="res://assets/sounds/voice_lines/beginning/antag1.mp3" id="21_xwkfs"]
 [ext_resource type="Script" path="res://scripts/UI/ui_manager.gd" id="23_5irjn"]
 [ext_resource type="Theme" uid="uid://b6m5m23f256la" path="res://resources/theme.tres" id="25_061aw"]
+[ext_resource type="Script" path="res://scripts/components/DialogueAndSubtitlesComponent.gd" id="28_jw2mb"]
 [ext_resource type="AudioStream" uid="uid://b84nu5xt62uov" path="res://assets/sounds/voice_lines/antag_delay_the_inevtiable.mp3" id="29_2655i"]
 
 [sub_resource type="Resource" id="Resource_01jbi"]
@@ -34,7 +35,7 @@ duration = 1.0
 transition = 0
 ease = 2
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o84vp"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1qpa7"]
 texture = ExtResource("4_2scoa")
 texture_region_size = Vector2i(24, 24)
 0:0/0 = 0
@@ -42,7 +43,7 @@ texture_region_size = Vector2i(24, 24)
 2:0/0 = 0
 3:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_72lwy"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ar1do"]
 texture = ExtResource("5_dtqbc")
 texture_region_size = Vector2i(24, 24)
 0:0/0 = 0
@@ -50,7 +51,7 @@ texture_region_size = Vector2i(24, 24)
 2:0/0 = 0
 3:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qnci4"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xwl2b"]
 texture = ExtResource("6_om83a")
 texture_region_size = Vector2i(24, 24)
 0:0/0 = 0
@@ -78,7 +79,7 @@ texture_region_size = Vector2i(24, 24)
 6:2/0 = 0
 7:2/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d6467"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x10cd"]
 texture = ExtResource("7_vxkxx")
 texture_region_size = Vector2i(24, 24)
 0:0/0 = 0
@@ -86,7 +87,7 @@ texture_region_size = Vector2i(24, 24)
 2:0/0 = 0
 3:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d4tnb"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iie77"]
 texture = ExtResource("8_ni5rx")
 texture_region_size = Vector2i(24, 24)
 0:0/0 = 0
@@ -94,7 +95,7 @@ texture_region_size = Vector2i(24, 24)
 2:0/0 = 0
 3:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mvags"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f1va2"]
 texture = ExtResource("9_wqtt6")
 texture_region_size = Vector2i(24, 24)
 0:0/0 = 0
@@ -116,7 +117,7 @@ texture_region_size = Vector2i(24, 24)
 3:0/0/terrain = 0
 3:0/0/terrains_peering_bit/left_side = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jjxi2"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lfd7l"]
 texture = ExtResource("10_rugw8")
 texture_region_size = Vector2i(24, 24)
 0:0/0 = 0
@@ -129,13 +130,19 @@ tile_size = Vector2i(24, 24)
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "cloud"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
-sources/2 = SubResource("TileSetAtlasSource_qnci4")
-sources/1 = SubResource("TileSetAtlasSource_72lwy")
-sources/3 = SubResource("TileSetAtlasSource_d6467")
-sources/4 = SubResource("TileSetAtlasSource_d4tnb")
-sources/5 = SubResource("TileSetAtlasSource_mvags")
-sources/0 = SubResource("TileSetAtlasSource_o84vp")
-sources/6 = SubResource("TileSetAtlasSource_jjxi2")
+sources/2 = SubResource("TileSetAtlasSource_xwl2b")
+sources/1 = SubResource("TileSetAtlasSource_ar1do")
+sources/3 = SubResource("TileSetAtlasSource_x10cd")
+sources/4 = SubResource("TileSetAtlasSource_iie77")
+sources/5 = SubResource("TileSetAtlasSource_f1va2")
+sources/0 = SubResource("TileSetAtlasSource_1qpa7")
+sources/6 = SubResource("TileSetAtlasSource_lfd7l")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vkk0r"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_cm3mf"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1ds32"]
 shader = ExtResource("11_7ytli")
@@ -151,7 +158,7 @@ polygon = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8n7tc"]
 polygon = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a1mol"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d56u4"]
 texture = ExtResource("12_d56ng")
 texture_region_size = Vector2i(18, 18)
 0:0/0 = 0
@@ -534,9 +541,9 @@ terrain_set_0/terrain_0/name = "Grass"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 terrain_set_0/terrain_1/name = "Brick"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
-sources/0 = SubResource("TileSetAtlasSource_a1mol")
+sources/0 = SubResource("TileSetAtlasSource_d56u4")
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_qiqm4"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_bvpwq"]
 scenes/1/scene = ExtResource("13_cwihj")
 scenes/2/scene = ExtResource("14_jvaot")
 scenes/3/scene = ExtResource("16_jlkes")
@@ -546,7 +553,7 @@ scenes/6/scene = ExtResource("18_3e2js")
 
 [sub_resource type="TileSet" id="TileSet_ttr45"]
 tile_size = Vector2i(18, 18)
-sources/0 = SubResource("TileSetScenesCollectionSource_qiqm4")
+sources/0 = SubResource("TileSetScenesCollectionSource_bvpwq")
 
 [sub_resource type="Environment" id="Environment_4dr5n"]
 background_mode = 3
@@ -625,6 +632,16 @@ repeat_times = 4
 [node name="Background_3" type="TileMapLayer" parent="Tilemap/Backgrounds/Trees"]
 tile_map_data = PackedByteArray("AAD1/wAAAQAAAAAAAAD1/wEAAgACAAIAAAD1/wIAAgACAAIAAAD1/wMAAgAAAAIAAAD1/wQAAgAAAAIAAAD1/wUAAgAAAAIAAAD1/wYAAgAAAAIAAAD1/wcAAgAAAAIAAAD2/wAAAQABAAAAAAD2/wEAAgADAAIAAAD2/wIAAgADAAIAAAD2/wMAAgABAAIAAAD2/wQAAgABAAIAAAD2/wUAAgABAAIAAAD2/wYAAgABAAIAAAD2/wcAAgABAAIAAAD3/wAAAQACAAAAAAD3/wEAAgACAAIAAAD3/wIAAgACAAIAAAD3/wMAAgACAAIAAAD3/wQAAgACAAIAAAD3/wUAAgACAAIAAAD3/wYAAgACAAIAAAD3/wcAAgACAAIAAAD4/wAAAQADAAAAAAD4/wEAAgADAAIAAAD4/wIAAgADAAIAAAD4/wMAAgADAAIAAAD4/wQAAgADAAIAAAD4/wUAAgADAAIAAAD4/wYAAgADAAIAAAD4/wcAAgADAAIAAAD5/wAAAQAAAAAAAAD5/wEAAgAAAAIAAAD5/wIAAgAAAAIAAAD5/wMAAgAAAAIAAAD5/wQAAgAAAAIAAAD5/wUAAgAAAAIAAAD5/wYAAgAAAAIAAAD5/wcAAgAAAAIAAAD6/wAAAQABAAAAAAD6/wEAAgABAAIAAAD6/wIAAgABAAIAAAD6/wMAAgABAAIAAAD6/wQAAgABAAIAAAD6/wUAAgABAAIAAAD6/wYAAgABAAIAAAD6/wcAAgABAAIAAAD7/wAAAQACAAAAAAD7/wEAAgACAAIAAAD7/wIAAgACAAIAAAD7/wMAAgACAAIAAAD7/wQAAgACAAIAAAD7/wUAAgACAAIAAAD7/wYAAgACAAIAAAD7/wcAAgACAAIAAAD8/wAAAQADAAAAAAD8/wEAAgADAAIAAAD8/wIAAgADAAIAAAD8/wMAAgADAAIAAAD8/wQAAgADAAIAAAD8/wUAAgADAAIAAAD8/wYAAgADAAIAAAD8/wcAAgADAAIAAAD9/wAAAQAAAAAAAAD9/wEAAgAAAAIAAAD9/wIAAgAAAAIAAAD9/wMAAgAAAAIAAAD9/wQAAgAAAAIAAAD9/wUAAgAAAAIAAAD9/wYAAgAAAAIAAAD9/wcAAgAAAAIAAAD+/wAAAQABAAAAAAD+/wEAAgABAAIAAAD+/wIAAgABAAIAAAD+/wMAAgABAAIAAAD+/wQAAgABAAIAAAD+/wUAAgABAAIAAAD+/wYAAgABAAIAAAD+/wcAAgABAAIAAAD//wAAAQACAAAAAAD//wEAAgACAAIAAAD//wIAAgACAAIAAAD//wMAAgACAAIAAAD//wQAAgACAAIAAAD//wUAAgACAAIAAAD//wYAAgACAAIAAAD//wcAAgACAAIAAAAAAAAAAQADAAAAAAAAAAEAAgADAAIAAAAAAAIAAgADAAIAAAAAAAMAAgADAAIAAAAAAAQAAgADAAIAAAAAAAUAAgADAAIAAAAAAAYAAgADAAIAAAAAAAcAAgADAAIAAAABAAAAAQAAAAAAAAABAAEAAgAAAAIAAAABAAIAAgAAAAIAAAABAAMAAgAAAAIAAAABAAQAAgAAAAIAAAABAAUAAgAAAAIAAAABAAYAAgAAAAIAAAABAAcAAgAAAAIAAAACAAAAAQABAAAAAAACAAEAAgABAAIAAAACAAIAAgABAAIAAAACAAMAAgABAAIAAAACAAQAAgABAAIAAAACAAUAAgABAAIAAAACAAYAAgABAAIAAAACAAcAAgABAAIAAAADAAAAAQACAAAAAAADAAEAAgACAAIAAAADAAIAAgACAAIAAAADAAMAAgACAAIAAAADAAQAAgACAAIAAAADAAUAAgACAAIAAAADAAYAAgACAAIAAAADAAcAAgACAAIAAAAEAAAAAQADAAAAAAAEAAEAAgADAAIAAAAEAAIAAgADAAIAAAAEAAMAAgADAAIAAAAEAAQAAgADAAIAAAAEAAUAAgADAAIAAAAEAAYAAgADAAIAAAAEAAcAAgADAAIAAAAFAAAAAQAAAAAAAAAFAAEAAgAAAAIAAAAFAAIAAgAAAAIAAAAFAAMAAgAAAAIAAAAFAAQAAgAAAAIAAAAFAAUAAgAAAAIAAAAFAAYAAgAAAAIAAAAFAAcAAgAAAAIAAAAGAAAAAQABAAAAAAAGAAEAAgABAAIAAAAGAAIAAgABAAIAAAAGAAMAAgABAAIAAAAGAAQAAgABAAIAAAAGAAUAAgABAAIAAAAGAAYAAgABAAIAAAAGAAcAAgABAAIAAAAHAAAAAQACAAAAAAAHAAEAAgACAAIAAAAHAAIAAgACAAIAAAAHAAMAAgACAAIAAAAHAAQAAgACAAIAAAAHAAUAAgACAAIAAAAHAAYAAgACAAIAAAAHAAcAAgACAAIAAAAIAAAAAQADAAAAAAAIAAEAAgADAAIAAAAIAAIAAgADAAIAAAAIAAMAAgADAAIAAAAIAAQAAgADAAIAAAAIAAUAAgADAAIAAAAIAAYAAgADAAIAAAAIAAcAAgADAAIAAAAJAAAAAQAAAAAAAAAJAAEAAgAAAAIAAAAJAAIAAgAAAAIAAAAJAAMAAgAAAAIAAAAJAAQAAgAAAAIAAAAJAAUAAgAAAAIAAAAJAAYAAgAAAAIAAAAJAAcAAgAAAAIAAAAKAAAAAQABAAAAAAAKAAEAAgABAAIAAAAKAAIAAgABAAIAAAAKAAMAAgABAAIAAAAKAAQAAgABAAIAAAAKAAUAAgABAAIAAAAKAAYAAgABAAIAAAAKAAcAAgABAAIAAAALAAAAAQACAAAAAAALAAEAAgACAAIAAAALAAIAAgACAAIAAAALAAMAAgACAAIAAAALAAQAAgACAAIAAAALAAUAAgACAAIAAAALAAYAAgACAAIAAAALAAcAAgACAAIAAAAMAAAAAQADAAAAAAAMAAEAAgADAAIAAAAMAAIAAgADAAIAAAAMAAMAAgADAAIAAAAMAAQAAgADAAIAAAAMAAUAAgADAAIAAAAMAAYAAgADAAIAAAAMAAcAAgADAAIAAAD1/wgAAgAAAAIAAAD2/wgAAgABAAIAAAD3/wgAAgACAAIAAAD4/wgAAgADAAIAAAD5/wgAAgAAAAIAAAD6/wgAAgABAAIAAAD7/wgAAgACAAIAAAD8/wgAAgADAAIAAAD9/wgAAgAAAAIAAAD+/wgAAgABAAIAAAD//wgAAgACAAIAAAAAAAgAAgADAAIAAAABAAgAAgAAAAIAAAACAAgAAgABAAIAAAADAAgAAgACAAIAAAAEAAgAAgADAAIAAAAFAAgAAgAAAAIAAAAGAAgAAgABAAIAAAAHAAgAAgACAAIAAAAIAAgAAgADAAIAAAAJAAgAAgAAAAIAAAAKAAgAAgABAAIAAAALAAgAAgACAAIAAAAMAAgAAgADAAIAAAD2/wkAAgABAAIAAAD3/wkAAgACAAIAAAD4/wkAAgADAAIAAAD5/wkAAgADAAIAAAD1/wkAAgAAAAIAAAA=")
 tile_set = SubResource("TileSet_160se")
+
+[node name="BG_Particles" type="CPUParticles2D" parent="Tilemap/Backgrounds/Trees"]
+material = SubResource("CanvasItemMaterial_vkk0r")
+position = Vector2(45, 0)
+amount = 2000
+lifetime = 10.0
+emission_shape = 3
+emission_rect_extents = Vector2(1808, 1920)
+gravity = Vector2(-5, 0)
+color_ramp = SubResource("Gradient_cm3mf")
 
 [node name="LowerBG" type="Parallax2D" parent="Tilemap/Backgrounds"]
 modulate = Color(0.5, 0.305, 0.4155, 1)
@@ -744,3 +761,7 @@ stream = ExtResource("21_ebymm")
 volume_db = -15.0
 autoplay = true
 bus = &"Ambience"
+
+[node name="DialogueManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("28_jw2mb")

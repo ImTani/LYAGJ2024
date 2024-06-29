@@ -22,8 +22,17 @@ PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_came
 Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 utils="*res://scripts/Utils.gd"
 BackgroundMusic="*res://scenes/bg_music.tscn"
-DialogManager="*res://scripts/components/DialogueAndSubtitlesComponent.gd"
 ProjectUISoundController="*res://addons/maaacks_ui_sound_controller/base/scenes/Autoloads/ProjectUISoundController.tscn"
+
+[configuration]
+
+graphics/shadows=false
+graphics/light_environment=false
+graphics/subtitles=false
+audio/overall_volume=false
+audio/music_volume=false
+audio/sfx_volume=false
+audio/voice_volume=false
 
 [display]
 
