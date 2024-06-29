@@ -1,6 +1,9 @@
 extends Node
 class_name Utils
 
+@export_file("*.tscn") var game_scene: String
+@export_file("*.tscn") var main_menu_scene: String
+
 func _add_root_child(child) -> void:
 	get_tree().get_root().add_child.call_deferred(child)
 

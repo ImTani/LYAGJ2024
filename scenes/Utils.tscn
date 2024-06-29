@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://du7vvg4yn2ehm"]
+
+[ext_resource type="Script" path="res://scripts/Utils.gd" id="1_x71cu"]
+
+[node name="Utils" type="Node"]
+script = ExtResource("1_x71cu")
+game_scene = "res://scenes/platformer_world.tscn"
+main_menu_scene = "res://scenes/UI/main_menu.tscn"

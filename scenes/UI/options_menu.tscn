@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bek5u6hspqgem"]
+[gd_scene load_steps=4 format=3 uid="uid://bek5u6hspqgem"]
 
 [ext_resource type="Theme" uid="uid://b6m5m23f256la" path="res://resources/theme.tres" id="1_mrf67"]
 [ext_resource type="Script" path="res://scripts/UI/options_menu.gd" id="2_ars7o"]
+[ext_resource type="AudioStream" uid="uid://xjsa7mxxyoag" path="res://assets/sounds/voice_lines/ui/adjusting_voice_volume.mp3" id="3_5mty4"]
 
-[node name="OptionsMenu" type="HBoxContainer" node_paths=PackedStringArray("overall_volume_slider", "music_volume_slider", "sfx_volume_slider", "voice_volume_slider")]
+[node name="OptionsMenu" type="HBoxContainer" node_paths=PackedStringArray("audio_player", "overall_volume_slider", "music_volume_slider", "sfx_volume_slider", "voice_volume_slider", "shadows_toggle_button", "subtitles_toggle_button", "light_environment_toggle_button")]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,10 +15,15 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_mrf67")
 script = ExtResource("2_ars7o")
+voice_line = ExtResource("3_5mty4")
+audio_player = NodePath("AudioStreamPlayer")
 overall_volume_slider = NodePath("PanelContainer/VBoxContainer/Overall Volume/OverallVolumeSlider")
-music_volume_slider = NodePath("PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/MusicSlider/MusicVolumeSlider")
-sfx_volume_slider = NodePath("PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/SFXSlider/SFXVolumeSlider")
-voice_volume_slider = NodePath("PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2/Voice Volume/VoiceVolumeSlider")
+music_volume_slider = NodePath("PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/MusicSlider/MusicVolumeSlider")
+sfx_volume_slider = NodePath("PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/SFXSlider/SFXVolumeSlider")
+voice_volume_slider = NodePath("PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Voice Volume/VoiceVolumeSlider")
+shadows_toggle_button = NodePath("PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/Shadows")
+subtitles_toggle_button = NodePath("PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/Subtitles")
+light_environment_toggle_button = NodePath("PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2/Light Environment")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
@@ -46,56 +53,56 @@ layout_mode = 2
 max_value = 1.0
 step = 0.01
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer3"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MusicSlider" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
+[node name="MusicSlider" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/MusicSlider"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/MusicSlider"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.898039, 0.219608, 0.231373, 1)
 text = "Music Volume"
 
-[node name="MusicVolumeSlider" type="HSlider" parent="PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/MusicSlider"]
+[node name="MusicVolumeSlider" type="HSlider" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/MusicSlider"]
 layout_mode = 2
 max_value = 1.0
 step = 0.01
 
-[node name="SFXSlider" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
+[node name="SFXSlider" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/SFXSlider"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/SFXSlider"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.898039, 0.219608, 0.231373, 1)
 text = "SFX Volume"
 
-[node name="SFXVolumeSlider" type="HSlider" parent="PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/SFXSlider"]
+[node name="SFXVolumeSlider" type="HSlider" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/SFXSlider"]
 layout_mode = 2
 max_value = 1.0
 step = 0.01
 
-[node name="VSeparator" type="VSeparator" parent="PanelContainer/VBoxContainer/HBoxContainer3"]
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/VBoxContainer/HBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer3"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Voice Volume" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2"]
+[node name="Voice Volume" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2/Voice Volume"]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Voice Volume"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.898039, 0.219608, 0.231373, 1)
 text = "Voice Volume"
 
-[node name="VoiceVolumeSlider" type="HSlider" parent="PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2/Voice Volume"]
+[node name="VoiceVolumeSlider" type="HSlider" parent="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Voice Volume"]
 layout_mode = 2
 max_value = 1.0
 step = 0.01
@@ -105,16 +112,16 @@ modulate = Color(0, 0, 0, 0)
 layout_mode = 2
 theme_override_constants/separation = 9
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/VBoxContainer3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
 theme_override_constants/separation = 0
 
-[node name="Shadows Checkbox" type="CheckBox" parent="PanelContainer/VBoxContainer/VBoxContainer3/HBoxContainer"]
+[node name="Shadows" type="CheckButton" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -122,9 +129,8 @@ theme_override_colors/font_pressed_color = Color(0.827451, 0.827451, 0.827451, 1
 theme_override_colors/font_color = Color(0.827451, 0.827451, 0.827451, 1)
 button_pressed = true
 text = "Shadows"
-alignment = 2
 
-[node name="Subtitles" type="CheckBox" parent="PanelContainer/VBoxContainer/VBoxContainer3/HBoxContainer"]
+[node name="Subtitles" type="CheckButton" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -132,24 +138,30 @@ theme_override_colors/font_pressed_color = Color(0.827451, 0.827451, 0.827451, 1
 theme_override_colors/font_color = Color(0.827451, 0.827451, 0.827451, 1)
 button_pressed = true
 text = "Subtitles"
-alignment = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/VBoxContainer3"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Lighting" type="CheckBox" parent="PanelContainer/VBoxContainer/VBoxContainer3/HBoxContainer2"]
+[node name="Light Environment" type="CheckButton" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
 theme_override_colors/font_pressed_color = Color(0.827451, 0.827451, 0.827451, 1)
 theme_override_colors/font_color = Color(0.827451, 0.827451, 0.827451, 1)
 text = "Lighter Environment"
-alignment = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -15.0
+bus = &"Voice"
 
 [connection signal="value_changed" from="PanelContainer/VBoxContainer/Overall Volume/OverallVolumeSlider" to="." method="_on_overall_volume_slider_value_changed"]
-[connection signal="value_changed" from="PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/MusicSlider/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
-[connection signal="value_changed" from="PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer/SFXSlider/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
-[connection signal="value_changed" from="PanelContainer/VBoxContainer/HBoxContainer3/VBoxContainer2/Voice Volume/VoiceVolumeSlider" to="." method="_on_voice_volume_slider_value_changed"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/MusicSlider/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/SFXSlider/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
+[connection signal="drag_started" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Voice Volume/VoiceVolumeSlider" to="." method="_on_voice_volume_slider_drag_started"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Voice Volume/VoiceVolumeSlider" to="." method="_on_voice_volume_slider_value_changed"]
+[connection signal="toggled" from="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/Shadows" to="." method="_on_shadows_checkbox_toggled"]
+[connection signal="toggled" from="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/Subtitles" to="." method="_on_subtitles_toggled"]
+[connection signal="toggled" from="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2/Light Environment" to="." method="_on_light_environment_toggled"]

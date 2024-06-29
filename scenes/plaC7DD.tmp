@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://c4ouhrq4y2h4q"]
+[gd_scene load_steps=49 format=4 uid="uid://c4ouhrq4y2h4q"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_q4wr6"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_vyy81"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://dlkthuhdkymnc" path="res://scenes/UI/pause_menu.tscn" id="20_rdc51"]
 [ext_resource type="AudioStream" uid="uid://ddvdjsfnalh8k" path="res://assets/sounds/sfx/ambience.mp3" id="21_ebymm"]
 [ext_resource type="AudioStream" uid="uid://dng0cggdflu8v" path="res://assets/sounds/voice_lines/antag_every_step.mp3" id="21_ejo28"]
+[ext_resource type="AudioStream" uid="uid://jj12anm1y3ua" path="res://assets/sounds/voice_lines/beginning/antag1.mp3" id="21_xwkfs"]
 [ext_resource type="Script" path="res://scripts/UI/ui_manager.gd" id="23_5irjn"]
 [ext_resource type="Theme" uid="uid://b6m5m23f256la" path="res://resources/theme.tres" id="25_061aw"]
 [ext_resource type="Script" path="res://scripts/components/DialogueAndSubtitlesComponent.gd" id="28_jw2mb"]
@@ -681,6 +682,11 @@ position = Vector2(459, -81)
 dialogue_audio = ExtResource("29_2655i")
 dialogue_text = "You only delay the inevitable."
 
+[node name="DialoguePlayer3" parent="Tilemap/DialogueDetectors" instance=ExtResource("19_37ggq")]
+position = Vector2(-135, -9)
+dialogue_audio = ExtResource("21_xwkfs")
+dialogue_text = "Welcome, Dear Twin. This desolate realm will be you PRISON. No spells, no hope, and no escape."
+
 [node name="DialoguePlayer2" parent="Tilemap/DialogueDetectors" instance=ExtResource("19_37ggq")]
 position = Vector2(1503, -135)
 dialogue_audio = ExtResource("21_ejo28")
@@ -701,13 +707,10 @@ environment = SubResource("Environment_4dr5n")
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.404919, 0.0561343, 0.0666684, 1)
 
-[node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("pause_menu", "subtitles", "canvas_modulate", "player")]
+[node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("pause_menu")]
 process_mode = 3
 script = ExtResource("23_5irjn")
 pause_menu = NodePath("Theme/PauseMenu")
-subtitles = NodePath("Theme/Subtitles")
-canvas_modulate = NodePath("../CanvasModulate")
-player = NodePath("../Player")
 
 [node name="Theme" type="Control" parent="UI"]
 layout_mode = 3

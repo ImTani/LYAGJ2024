@@ -1,4 +1,8 @@
 extends CharacterBody2D
+class_name Player
+
+@export_subgroup("Settings")
+@export var light_for_others: PointLight2D
 
 @export_subgroup("Components")
 @export var gravity_component: GravityComponent
