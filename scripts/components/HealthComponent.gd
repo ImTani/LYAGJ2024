@@ -27,7 +27,7 @@ func handle_health() -> void:
 func take_damage(damage: int) -> void:
 	if not is_invincible:
 		health -= damage
-		hurt.emit()
+		hurt.emit(damage)
 		handle_hurt_particles()
 		
 		if health <= 0:

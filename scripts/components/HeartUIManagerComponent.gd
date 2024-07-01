@@ -17,14 +17,18 @@ func _ready() -> void:
 	player.health_component.hurt.connect(_remove_heart)
 	player.respawn_component.respawned.connect(_reset_hearts)
 
-func _remove_heart() -> void:
+func _remove_heart(damage: int) -> void:
 	alpha_tween.kill()
 	
 	hearts_container.get_parent().visible = true
 	
 	if _heart_count > 0:
-		hearts_container.get_child(-1).queue_free()
-		_heart_count -= 1
+		if damage > _heart_count:
+			for child in hearts_container.get_children(): child.queue_free()
+		else:
+			for i: int in range(damage):
+				hearts_container.get_child(-1).queue_free()
+				_heart_count -= 1
 	
 	alpha_tween.tween_property(hearts_container.get_parent(), "modulate:a", 0, 1)
 	await alpha_tween.finished
