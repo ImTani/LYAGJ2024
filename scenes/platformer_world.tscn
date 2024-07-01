@@ -643,8 +643,9 @@ material = SubResource("CanvasItemMaterial_vkk0r")
 position = Vector2(45, 0)
 amount = 2000
 lifetime = 10.0
+preprocess = 20.0
 emission_shape = 3
-emission_rect_extents = Vector2(1808, 1920)
+emission_rect_extents = Vector2(1152, 1920)
 gravity = Vector2(-5, 0)
 color_ramp = SubResource("Gradient_cm3mf")
 
@@ -757,6 +758,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Hearts" type="MarginContainer" parent="UI/Theme"]
+visible = false
 layout_mode = 1
 offset_right = 144.0
 offset_bottom = 72.0

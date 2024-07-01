@@ -8,7 +8,7 @@ class_name HeartUIManagerComponent
 var heart_count: int
 var _heart_count: int
 
-@onready var alpha_tween: Tween = create_tween()
+var alpha_tween: Tween
 
 func _ready() -> void:
 	heart_count = player.health_component.max_health
@@ -16,11 +16,12 @@ func _ready() -> void:
 
 	player.health_component.hurt.connect(_remove_heart)
 	player.respawn_component.respawned.connect(_reset_hearts)
+	
+	run_alpha_tween()
 
 func _remove_heart(damage: int) -> void:
-	alpha_tween.kill()
-	
-	hearts_container.get_parent().visible = true
+
+	run_alpha_tween()
 	
 	if _heart_count > 0:
 		if damage > _heart_count:
@@ -29,12 +30,19 @@ func _remove_heart(damage: int) -> void:
 			for i: int in range(damage):
 				hearts_container.get_child(-1).queue_free()
 				_heart_count -= 1
+
+func run_alpha_tween() -> void:
+
+	hearts_container.get_parent().modulate.a = 1
+	hearts_container.get_parent().visible = true	
+
+	if alpha_tween:
+		alpha_tween.kill()
 	
-	alpha_tween.tween_property(hearts_container.get_parent(), "modulate:a", 0, 1)
-	await alpha_tween.finished
+	alpha_tween = create_tween()
+	alpha_tween.set_ease(Tween.EASE_IN)
 	
-	hearts_container.get_parent().visible = false
-	hearts_container.get_parent().modulate.a = 255
+	alpha_tween.tween_property(hearts_container.get_parent(), "modulate:a", 0, 3)
 
 func _reset_hearts() -> void:
 	for child in hearts_container.get_children():

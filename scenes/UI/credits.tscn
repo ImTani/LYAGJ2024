@@ -27,6 +27,7 @@ texture_margin_bottom = 12.0
 modulate_color = Color(0.4, 0.028, 0.0341999, 0.694118)
 
 [node name="Credits" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_ip0kb")
 main_menu_scene = "res://scenes/UI/main_menu.tscn"
 

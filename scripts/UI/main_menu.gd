@@ -6,6 +6,7 @@ extends Node2D
 @export var buttons_container: Control
 
 func _on_play_button_pressed() -> void:
+	get_tree().paused = false
 	get_tree().change_scene_to_file(game_scene)
 
 func _on_options_button_pressed() -> void:

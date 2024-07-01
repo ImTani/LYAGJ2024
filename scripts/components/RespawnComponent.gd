@@ -29,6 +29,7 @@ func respawn() -> void:
 	
 	var health_component: HealthComponent = utils.get_component(body, "HealthComponent")
 	if health_component:
+		await animation_component.animation_player.animation_finished
 		health_component.is_alive = true
 		health_component.health = health_component.max_health
 
