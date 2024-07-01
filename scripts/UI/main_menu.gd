@@ -1,6 +1,7 @@
 extends Node2D
 
 @export_file("*.tscn") var game_scene: String
+@export_file("*.tscn") var credits_scene: String
 @export var options_container: Control
 @export var buttons_container: Control
 
@@ -23,3 +24,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		if options_container.visible:
 			buttons_container.visible = true
 			options_container.visible = false
+
+func _on_credits_button_pressed() -> void:
+		get_tree().change_scene_to_file(credits_scene)

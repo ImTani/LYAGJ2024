@@ -26,7 +26,7 @@ func pick_up(item: Item) -> void:
 	hold_item(item)
 
 func hold_item(item: Item) -> void:
-	var item_pos = item.global_position
+	var item_pos: Vector2 = item.global_position
 	item.get_parent().remove_child.call_deferred(item)
 	
 	current_item = item
@@ -38,7 +38,7 @@ func hold_item(item: Item) -> void:
 	
 	item.set_global_position.call_deferred(item_pos)
 	
-	var pos_tween = create_tween()
+	var pos_tween: Tween = create_tween()
 	pos_tween.tween_property.call_deferred(item, "position", Vector2.ZERO, 0.2)
 
 func remove_current_item() -> void:

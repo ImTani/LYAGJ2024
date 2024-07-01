@@ -15,7 +15,7 @@ var is_going_up: bool = false
 var is_jumping: bool = false
 var last_frame_on_floor: bool = false
 
-func _ready():
+func _ready() -> void:
 	initialize_jump_buffer_timer() #because im too lazy to make it a scene
 	initialize_coyote_timer() # x2
 

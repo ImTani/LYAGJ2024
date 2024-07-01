@@ -12,7 +12,10 @@ var is_alive: bool = true
 var is_invincible: bool = false
 var invincibility_timer: Timer
 
+@warning_ignore("unused_signal")
 signal died
+@warning_ignore("unused_signal")
+signal hurt
 
 func _ready() -> void:
 	health = max_health
@@ -21,9 +24,10 @@ func _ready() -> void:
 func handle_health() -> void:
 	health = clamp(health, 0, max_health)
 
-func take_damage(damage: float) -> void:
+func take_damage(damage: int) -> void:
 	if not is_invincible:
 		health -= damage
+		hurt.emit()
 		handle_hurt_particles()
 		
 		if health <= 0:
@@ -32,7 +36,7 @@ func take_damage(damage: float) -> void:
 		
 		handle_invincibility()
 
-func heal_health(healing: float) -> void:
+func heal_health(healing: int) -> void:
 	health += healing
 
 func die() -> void:

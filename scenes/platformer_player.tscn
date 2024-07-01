@@ -270,7 +270,7 @@ metadata/_edit_group_ = true
 
 [node name="Flame" type="CPUParticles2D" parent="."]
 material = SubResource("ShaderMaterial_2hiwt")
-position = Vector2(0, -18)
+position = Vector2(16, -16)
 amount = 20
 lifetime = 0.5
 lifetime_randomness = 0.3

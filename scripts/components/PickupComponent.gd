@@ -8,7 +8,7 @@ class_name PickupComponent
 func _ready() -> void:
 	detection_area.body_entered.connect(_on_pickup)
 
-func _on_pickup(body) -> void:
+func _on_pickup(body: Node2D) -> void:
 	var holder_component: HolderComponent = utils.get_component(body, "HolderComponent")
 	
 	if not holder_component:

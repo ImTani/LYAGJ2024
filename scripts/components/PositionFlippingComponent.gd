@@ -10,11 +10,11 @@ class_name PositionFlippingComponent
 @export var time_to_tween: float = 0.2
 
 
-func handle_flipping(threshold_property: float):
+func handle_flipping(threshold_property: float) -> void:
 	if threshold_property == 0:
 		return
 	
-	var position_tween = create_tween()
+	var position_tween: Tween = create_tween()
 	position_tween.set_ease(Tween.EASE_IN)
 	
 	if threshold_property > 0:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://c4ouhrq4y2h4q"]
+[gd_scene load_steps=51 format=4 uid="uid://c4ouhrq4y2h4q"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_q4wr6"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_vyy81"]
@@ -25,6 +25,8 @@
 [ext_resource type="AudioStream" uid="uid://dng0cggdflu8v" path="res://assets/sounds/voice_lines/antag_every_step.mp3" id="21_ejo28"]
 [ext_resource type="Script" path="res://scripts/UI/ui_manager.gd" id="23_5irjn"]
 [ext_resource type="Theme" uid="uid://b6m5m23f256la" path="res://resources/theme.tres" id="25_061aw"]
+[ext_resource type="PackedScene" uid="uid://1gku0xxxy41l" path="res://scenes/UI/heart.tscn" id="26_g7oko"]
+[ext_resource type="Script" path="res://scripts/components/HeartUIManagerComponent.gd" id="27_e56k3"]
 [ext_resource type="Script" path="res://scripts/components/DialogueAndSubtitlesComponent.gd" id="28_jw2mb"]
 [ext_resource type="AudioStream" uid="uid://b84nu5xt62uov" path="res://assets/sounds/voice_lines/antag_delay_the_inevtiable.mp3" id="29_2655i"]
 
@@ -563,6 +565,10 @@ glow_strength = 2.0
 glow_bloom = 0.1
 glow_hdr_threshold = 0.9
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_b335q"]
+atlas = ExtResource("12_d56ng")
+region = Rect2(108, 36, 18, 18)
+
 [node name="PlatformerWorld" type="Node2D"]
 position = Vector2(9, 9)
 
@@ -687,7 +693,7 @@ dialogue_audio = ExtResource("21_ejo28")
 dialogue_text = "Every step you take is just another step into the abyss. . . "
 
 [node name="Player" parent="." instance=ExtResource("15_wvaci")]
-position = Vector2(-135, -45)
+position = Vector2(-135, -27)
 
 [node name="Dialogues" type="AudioStreamPlayer2D" parent="Player"]
 position = Vector2(135, 27)
@@ -699,6 +705,7 @@ bus = &"Voice"
 environment = SubResource("Environment_4dr5n")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.404919, 0.0561343, 0.0666684, 1)
 
 [node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("pause_menu", "subtitles", "canvas_modulate", "player")]
@@ -747,11 +754,64 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
+[node name="Hearts" type="MarginContainer" parent="UI/Theme"]
+layout_mode = 1
+offset_right = 144.0
+offset_bottom = 72.0
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="HeartsGrid2" type="GridContainer" parent="UI/Theme/Hearts"]
+modulate = Color(0.470167, 0.2604, 0.62, 1)
+custom_minimum_size = Vector2(108, 36)
+layout_mode = 2
+columns = 3
+
+[node name="TextureRect" type="TextureRect" parent="UI/Theme/Hearts/HeartsGrid2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_b335q")
+
+[node name="TextureRect2" type="TextureRect" parent="UI/Theme/Hearts/HeartsGrid2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_b335q")
+
+[node name="TextureRect3" type="TextureRect" parent="UI/Theme/Hearts/HeartsGrid2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_b335q")
+
+[node name="HeartsGrid" type="GridContainer" parent="UI/Theme/Hearts"]
+modulate = Color(0.470167, 0.2604, 0.62, 1)
+custom_minimum_size = Vector2(108, 36)
+layout_mode = 2
+columns = 3
+
+[node name="Heart" parent="UI/Theme/Hearts/HeartsGrid" instance=ExtResource("26_g7oko")]
+layout_mode = 2
+
+[node name="Heart2" parent="UI/Theme/Hearts/HeartsGrid" instance=ExtResource("26_g7oko")]
+layout_mode = 2
+
+[node name="Heart3" parent="UI/Theme/Hearts/HeartsGrid" instance=ExtResource("26_g7oko")]
+layout_mode = 2
+
 [node name="PauseMenu" parent="UI/Theme" instance=ExtResource("20_rdc51")]
-unique_name_in_owner = true
 process_mode = 2
 visible = false
 layout_mode = 1
+
+[node name="HeartUIManagerComponent" type="Node" parent="UI" node_paths=PackedStringArray("hearts_container", "player")]
+script = ExtResource("27_e56k3")
+hearts_container = NodePath("../Theme/Hearts/HeartsGrid")
+heart_texture_scene = ExtResource("26_g7oko")
+player = NodePath("../../Player")
 
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
 process_mode = 3

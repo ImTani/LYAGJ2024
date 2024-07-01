@@ -13,12 +13,10 @@ func handle_item_throw(item: Item, want_to_throw: bool) -> void:
 		if want_to_throw:
 			throw_item()
 
-#TODO make the items spawn at their original positions when player dies.
-
 func throw_item() -> void:
 	if item_to_throw:
 		
-		var item_position = item_to_throw.global_position
+		var item_position: Vector2 = item_to_throw.global_position
 		item_to_throw.get_parent().remove_child.call_deferred(item_to_throw)
 
 		item_thrown.emit()

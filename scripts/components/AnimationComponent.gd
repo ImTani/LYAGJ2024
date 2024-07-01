@@ -54,10 +54,10 @@ func handle_respawn_animation() -> void:
 	await animation_player.animation_finished
 	is_dead = false
 
-func play_animation(animation) -> void:
+func play_animation(animation: StringName) -> void:
 	if animation_player.current_animation != animation:
 		animation_player.play(animation)
 
-func play_animation_backwards(animation) -> void:
+func play_animation_backwards(animation: StringName) -> void:
 	if animation_player.current_animation != animation:
 		animation_player.play_backwards(animation)

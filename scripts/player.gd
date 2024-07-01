@@ -27,7 +27,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 
-	var horizontal_input = input_component.input_horizontal 
+	var horizontal_input: float = input_component.input_horizontal 
 	var is_dead: bool = not health_component.is_alive
 	var is_invincible: bool = health_component.is_invincible
 	

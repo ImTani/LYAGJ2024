@@ -10,15 +10,6 @@ class_name AudioComponent
 @export var hurt_audio_player: AudioStreamPlayer2D
 @export var stab_audio_player: AudioStreamPlayer2D
 
-var master_bus = AudioServer.get_bus_index("Master")
-
-func _ready() -> void:
-	var audio_tween = create_tween()
-	audio_tween.tween_method(change_audio_bus_volume, -80, 0, 0.5)
-
-func change_audio_bus_volume(value: float):
-	AudioServer.set_bus_volume_db(master_bus, value)
-	
 func handle_footsteps_sfx(move_input: float) -> void:
 	if move_input != 0 and not footsteps_audio_player.playing:
 		footsteps_audio_player.play()
