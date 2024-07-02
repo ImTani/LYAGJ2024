@@ -1,8 +1,8 @@
 extends Node
 class_name DialogueManager
 
-@onready var subtitles: Label = get_node("/root/PlatformerWorld/UI/Theme/Subtitles/MarginContainer/SubtitleLabel")
-@onready var dialogue_player: AudioStreamPlayer2D = get_node("/root/PlatformerWorld/Player/Dialogues")
+@onready var subtitles: Label = %SubtitleLabel
+@onready var dialogue_player: AudioStreamPlayer2D = %DialoguePlayer
 
 func play_dialogue(audio: AudioStream, subtitles_dict: Dictionary, audio_bus: String) -> void:
 	dialogue_player.bus = audio_bus

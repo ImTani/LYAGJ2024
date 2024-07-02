@@ -1,8 +1,7 @@
 extends Node
 class_name Utils
 
-@export_file("*.tscn") var game_scene: String
-@export_file("*.tscn") var main_menu_scene: String
+var player: Player
 
 func _add_root_child(child: Node2D) -> void:
 	get_tree().get_root().add_child.call_deferred(child)

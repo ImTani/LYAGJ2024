@@ -18,6 +18,8 @@ class_name Player
 @export var flame_position_flipping_component: PositionFlippingComponent
 
 func _ready() -> void:
+	utils.player = self
+	
 	thrower_component.item_thrown.connect(holder_component.remove_current_item)
 	health_component.died.connect(respawn_component.respawn)
 	health_component.died.connect(thrower_component.throw_item)

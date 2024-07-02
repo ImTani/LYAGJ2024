@@ -5,6 +5,9 @@ extends Node2D
 @export var options_container: Control
 @export var buttons_container: Control
 
+func _ready() -> void:
+	%"Play Button".grab_focus.call_deferred()
+
 func _on_play_button_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file(game_scene)
