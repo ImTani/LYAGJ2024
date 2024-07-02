@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://cvgt65wvk4mfa"]
+[gd_scene load_steps=55 format=3 uid="uid://cvgt65wvk4mfa"]
 
 [ext_resource type="Texture2D" uid="uid://dv71gb2mu40pc" path="res://assets/branding/logo_no_tagline.png" id="1_0p30q"]
 [ext_resource type="FontFile" uid="uid://gm0i7516lrdh" path="res://assets/font/Uncial_WIP.ttf" id="2_mgu50"]
@@ -38,10 +38,20 @@
 atlas = ExtResource("1_0p30q")
 region = Rect2(0, 162, 500, 175)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6bx8e"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2rei5"]
 shader = ExtResource("4_hq4fj")
 shader_parameter/wave_speed = 2.0
 shader_parameter/wave_intensity = 5.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rfjwe"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_3b4c8"]
+_data = [Vector2(0.00761555, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_04vco"]
+polygon = PackedVector2Array(-6, -14, -6, -13, -7, -13, -7, -12, -8, -12, -8, -11, -9, -11, -9, -9, -10, -9, -10, -3, -9, -3, -9, -2, -7, -2, -7, -1, -8, -1, -8, 2, -9, 2, -9, 6, -10, 6, -10, 11, -9, 11, -9, 12, -8, 12, -8, 13, -5, 13, -5, 14, -4, 14, -4, 16, -1, 16, -1, 13, 1, 13, 1, 16, 4, 16, 4, 13, 6, 13, 6, 12, 7, 12, 7, 11, 8, 11, 8, 3, 7, 3, 7, -1, 6, -1, 6, -2, 7, -2, 7, -10, 6, -10, 6, -11, 5, -11, 5, -12, 4, -12, 4, -13, 3, -13, 3, -14)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ym4i7"]
 shader = ExtResource("4_hq4fj")
@@ -174,9 +184,6 @@ _data = {
 "land": SubResource("Animation_g56mv"),
 "run": SubResource("Animation_i4xpo")
 }
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_04vco"]
-polygon = PackedVector2Array(-6, -14, -6, -13, -7, -13, -7, -12, -8, -12, -8, -11, -9, -11, -9, -9, -10, -9, -10, -3, -9, -3, -9, -2, -7, -2, -7, -1, -8, -1, -8, 2, -9, 2, -9, 6, -10, 6, -10, 11, -9, 11, -9, 12, -8, 12, -8, 13, -5, 13, -5, 14, -4, 14, -4, 16, -1, 16, -1, 13, 1, 13, 1, 16, 4, 16, 4, 13, 6, 13, 6, 12, 7, 12, 7, 11, 8, 11, 8, 3, 7, 3, 7, -1, 6, -1, 6, -2, 7, -2, 7, -10, 6, -10, 6, -11, 5, -11, 5, -12, 4, -12, 4, -13, 3, -13, 3, -14)
 
 [sub_resource type="Resource" id="Resource_q8n5u"]
 script = ExtResource("32_5dv2w")
@@ -342,7 +349,7 @@ tracks/1/path = NodePath("CanvasLayer/MarginContainer:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(-0.1, 0.5),
+"times": PackedFloat32Array(-0.1, 0.9),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
 "values": [Vector2(0, -455), Vector2(0, 0)]
@@ -368,7 +375,7 @@ tracks/3/path = NodePath("CanvasLayer2/Background:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(3.5, 4),
+"times": PackedFloat32Array(3.3, 3.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -392,10 +399,10 @@ tracks/5/path = NodePath("CanvasLayer/CanvasModulate:color")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(2.6, 2.7, 3),
+"times": PackedFloat32Array(2.3, 2.4, 2.7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -476,7 +483,16 @@ _data = {
 "splash_screen": SubResource("Animation_oeu3o")
 }
 
-[node name="SpashScreen" type="Node2D"]
+[sub_resource type="Environment" id="Environment_4kg7s"]
+background_mode = 3
+background_canvas_max_layer = 1
+glow_enabled = true
+glow_normalized = true
+glow_strength = 1.4
+glow_blend_mode = 0
+glow_hdr_threshold = 1.09
+
+[node name="SplashScreen" type="Node2D"]
 modulate = Color(1, 1, 1, 0.00392157)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -532,10 +548,10 @@ vertical_alignment = 1
 anchors_preset = -1
 anchor_right = 0.287326
 anchor_bottom = 0.16821
-offset_left = -7252.63
-offset_top = -2148.39
-offset_right = -7252.63
-offset_bottom = -2148.39
+offset_left = -18512.0
+offset_top = -5843.0
+offset_right = -18512.0
+offset_bottom = -5843.0
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_mgu50")
@@ -574,15 +590,53 @@ theme_override_constants/margin_bottom = 36
 clip_children = 1
 layout_mode = 2
 
-[node name="Title Label" type="Label" parent="CanvasLayer2/ColorRect/MarginContainer/VBoxContainer"]
-material = SubResource("ShaderMaterial_6bx8e")
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer2/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Rise" type="Label" parent="CanvasLayer2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+material = SubResource("ShaderMaterial_2rei5")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
 theme_override_font_sizes/font_size = 108
-text = "RISE and SHINE"
+text = "RISE"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="And" type="Label" parent="CanvasLayer2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 108
+text = " and "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shine" type="Label" parent="CanvasLayer2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(1, 0.799, 0.33, 1)
+theme_override_font_sizes/font_size = 108
+text = "Shine"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShinyParticles" type="CPUParticles2D" parent="CanvasLayer2/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/Shine"]
+material = SubResource("CanvasItemMaterial_rfjwe")
+position = Vector2(103, 56)
+amount = 10
+lifetime = 2.0
+emission_shape = 3
+emission_rect_extents = Vector2(120, 60)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_3b4c8")
+color = Color(2, 2, 2, 1)
 
 [node name="Background" type="Node2D" parent="CanvasLayer2"]
 modulate = Color(1, 1, 1, 0)
@@ -594,6 +648,11 @@ modulate = Color(0.70342, 0.70342, 0.703419, 0.999999)
 self_modulate = Color(0.42, 0.1722, 0.35392, 1)
 position = Vector2(-19.6946, -14.1801)
 metadata/_edit_group_ = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="CanvasLayer2/Background/PlatformerPlayer"]
+position = Vector2(1, -1.99998)
+scale = Vector2(0.810447, 0.810447)
+occluder = SubResource("OccluderPolygon2D_04vco")
 
 [node name="Flame" type="CPUParticles2D" parent="CanvasLayer2/Background/PlatformerPlayer"]
 material = SubResource("ShaderMaterial_ym4i7")
@@ -626,7 +685,7 @@ shape = SubResource("RectangleShape2D_7nqap")
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer2/Background/PlatformerPlayer"]
 light_mask = 2
 position = Vector2(1, -2)
-texture = ExtResource("12_1hwcf")
+texture = ExtResource("14_pr2w3")
 
 [node name="HoldLocation" type="Node2D" parent="CanvasLayer2/Background/PlatformerPlayer"]
 
@@ -636,11 +695,6 @@ libraries = {
 }
 autoplay = "idle"
 speed_scale = 2.0
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="CanvasLayer2/Background/PlatformerPlayer"]
-position = Vector2(1, -2)
-scale = Vector2(0.810447, 0.810447)
-occluder = SubResource("OccluderPolygon2D_04vco")
 
 [node name="Camera2D" type="Camera2D" parent="CanvasLayer2/Background"]
 physics_interpolation_mode = 1
@@ -673,3 +727,6 @@ stream = ExtResource("33_3mmkl")
 volume_db = -20.0
 pitch_scale = 0.5
 bus = &"Music"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4kg7s")

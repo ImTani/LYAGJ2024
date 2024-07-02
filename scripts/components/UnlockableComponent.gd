@@ -5,6 +5,7 @@ class_name UnlockableComponent
 @export var neighbour_detection_area: Area2D
 @export var door: Door
 @export var break_sound: AudioStreamPlayer2D
+@export var break_particles: CPUParticles2D
 @export var base_delay_time: float = 0.5
 
 var neighbouring_unlockables: Array[Door]
@@ -51,6 +52,7 @@ func _on_neighbour_detection_area_area_entered(area: Area2D) -> void:
 
 func _break() -> void:
 	break_sound.play()
+	break_particles.emitting = true
 	door.collision_shape.set_disabled.call_deferred(true)
 	door.visible = false
 	await break_sound.finished

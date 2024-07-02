@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqdem25adjph"]
+
+[ext_resource type="PackedScene" uid="uid://b3ol5sqaib5pe" path="res://scenes/hazard.tscn" id="1_fnour"]
+[ext_resource type="Texture2D" uid="uid://eueyuobot22u" path="res://assets/kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="2_ecj7x"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qmwr3"]
+polygon = PackedVector2Array(-6, 1, -7, 1, -7, 3, -8, 3, -8, 5, -9, 5, -9, 9, 9, 9, 9, 5, 8, 5, 8, 3, 7, 3, 7, 1, 6, 1, 6, 0, 2, 0, 2, 1, 1, 1, 1, 3, -1, 3, -1, 1, -2, 1, -2, 0, -6, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6r86u"]
+resource_local_to_scene = true
+size = Vector2(16, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38sw0"]
+resource_local_to_scene = true
+size = Vector2(16, 8)
+
+[node name="Spikes" instance=ExtResource("1_fnour")]
+rotation = 3.14159
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." index="0"]
+occluder = SubResource("OccluderPolygon2D_qmwr3")
+
+[node name="Sprite2D" parent="." index="1"]
+light_mask = 2
+texture = ExtResource("2_ecj7x")
+region_enabled = true
+region_rect = Rect2(144, 54, 18, 18)
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_6r86u")
+
+[node name="CollisionShape2D" parent="CollisionBox" index="0"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_38sw0")

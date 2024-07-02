@@ -8,13 +8,13 @@ polygon = PackedVector2Array(-6, 1, -7, 1, -7, 3, -8, 3, -8, 5, -9, 5, -9, 9, 9,
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6r86u"]
 resource_local_to_scene = true
-size = Vector2(18, 9)
+size = Vector2(16, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38sw0"]
 resource_local_to_scene = true
 size = Vector2(16, 8)
 
-[node name="Spikes" instance=ExtResource("1_2u2p2")]
+[node name="SpikesUp" instance=ExtResource("1_2u2p2")]
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." index="0"]
 occluder = SubResource("OccluderPolygon2D_qmwr3")

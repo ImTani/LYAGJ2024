@@ -76,11 +76,11 @@ interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.340206, 0.768041)
 colors = PackedColorArray(1.249, 1.262, 1.868, 1, 0.8, 1.8, 2.9, 1, 2, 0, 0, 0.561)
 
-[sub_resource type="Gradient" id="Gradient_c34li"]
+[sub_resource type="Gradient" id="Gradient_8ebpi"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_y7n8f"]
-gradient = SubResource("Gradient_c34li")
+gradient = SubResource("Gradient_8ebpi")
 width = 500
 height = 500
 use_hdr = true

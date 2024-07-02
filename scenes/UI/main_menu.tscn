@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=4 uid="uid://djmre73p5gsxv"]
+[gd_scene load_steps=94 format=4 uid="uid://djmre73p5gsxv"]
 
 [ext_resource type="Theme" uid="uid://b6m5m23f256la" path="res://resources/theme.tres" id="1_0seha"]
 [ext_resource type="Shader" uid="uid://tlm38mqaeaqj" path="res://shaders/wave_shader.tres" id="2_7veuq"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cyhwu2cagoijn" path="res://scenes/items/key.tscn" id="11_yb11t"]
 [ext_resource type="PackedScene" uid="uid://4n8v4sj3slol" path="res://scenes/items/diamond.tscn" id="12_n4ir1"]
 [ext_resource type="PackedScene" uid="uid://ckry5eecdpv3v" path="res://scenes/checkpoint.tscn" id="13_j4xky"]
-[ext_resource type="PackedScene" uid="uid://b4aytx6ug3hu1" path="res://scenes/hazards/spikes.tscn" id="14_ias12"]
+[ext_resource type="PackedScene" uid="uid://b4aytx6ug3hu1" path="res://scenes/hazards/spikes_up.tscn" id="14_ias12"]
 [ext_resource type="PackedScene" uid="uid://b52u60dngu6ot" path="res://scenes/hazards/void.tscn" id="15_sy4xc"]
 [ext_resource type="PackedScene" uid="uid://cr17uy2pbpd8v" path="res://scenes/door.tscn" id="16_xkvrr"]
 [ext_resource type="PackedScene" uid="uid://rebcsm0hgsrw" path="res://scenes/dialogue_player.tscn" id="17_7leuq"]
@@ -28,7 +28,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="47_qta0o"]
 [ext_resource type="Texture2D" uid="uid://dsp1ippr2e7mc" path="res://assets/kenney_fantasy_ui_borders/PNG/Default/Transparent center/panel-transparent-center-000.png" id="50_55rwj"]
 [ext_resource type="PackedScene" uid="uid://bek5u6hspqgem" path="res://scenes/UI/options_menu.tscn" id="51_n6mwx"]
-[ext_resource type="PackedScene" uid="uid://cvgt65wvk4mfa" path="res://scenes/UI/spash_screen.tscn" id="52_0rkcj"]
+[ext_resource type="PackedScene" uid="uid://cvgt65wvk4mfa" path="res://scenes/UI/splash_screen.tscn" id="52_epyb5"]
 [ext_resource type="Texture2D" uid="uid://bst7od25gpgsp" path="res://assets/player_sprites/tile057.png" id="57_0ljnh"]
 [ext_resource type="Texture2D" uid="uid://c0vlgjs6h5538" path="res://assets/player_sprites/tile058.png" id="58_hi3yp"]
 [ext_resource type="Texture2D" uid="uid://r12b03ld6fdy" path="res://assets/player_sprites/tile059.png" id="59_4p8pv"]
@@ -743,6 +743,13 @@ shader = ExtResource("2_7veuq")
 shader_parameter/wave_speed = 2.0
 shader_parameter/wave_intensity = 5.0
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7mvf5"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_3mony"]
+_data = [Vector2(0.00761555, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_320yh"]
 texture = ExtResource("50_55rwj")
 texture_margin_left = 12.0
@@ -758,6 +765,15 @@ texture_margin_top = 12.0
 texture_margin_right = 12.0
 texture_margin_bottom = 12.0
 modulate_color = Color(0.4, 0.028, 0.0341999, 0.694118)
+
+[sub_resource type="Environment" id="Environment_wbrb7"]
+background_mode = 3
+background_canvas_max_layer = 1
+glow_enabled = true
+glow_normalized = true
+glow_strength = 1.4
+glow_blend_mode = 0
+glow_hdr_threshold = 1.09
 
 [node name="Main Menu" type="Node2D" node_paths=PackedStringArray("options_container", "buttons_container")]
 process_mode = 3
@@ -861,17 +877,14 @@ color_ramp = SubResource("Gradient_2k0qv")
 [node name="DialoguePlayer" parent="Background/DialogueDetectors" instance=ExtResource("17_7leuq")]
 position = Vector2(459, -81)
 dialogue_audio = ExtResource("18_redtv")
-dialogue_text = "You only delay the inevitable."
 
 [node name="DialoguePlayer3" parent="Background/DialogueDetectors" instance=ExtResource("17_7leuq")]
 position = Vector2(-135, -9)
 dialogue_audio = ExtResource("19_8pths")
-dialogue_text = "Welcome, Dear Twin. This desolate realm will be you PRISON. No spells, no hope, and no escape."
 
 [node name="DialoguePlayer2" parent="Background/DialogueDetectors" instance=ExtResource("17_7leuq")]
 position = Vector2(1503, -135)
 dialogue_audio = ExtResource("20_igqgy")
-dialogue_text = "Every step you take is just another step into the abyss. . . "
 
 [node name="PlatformerPlayer" type="CharacterBody2D" parent="Background"]
 modulate = Color(0.70342, 0.70342, 0.703419, 1)
@@ -992,15 +1005,53 @@ theme_override_constants/margin_bottom = 36
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
 layout_mode = 2
 
-[node name="Title Label" type="Label" parent="UI/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Rise" type="Label" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
 material = SubResource("ShaderMaterial_nhi0j")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
 theme_override_font_sizes/font_size = 108
-text = "RISE and SHINE"
+text = "RISE"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="And" type="Label" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 108
+text = " and "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shine" type="Label" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(1, 0.799, 0.33, 1)
+theme_override_font_sizes/font_size = 108
+text = "Shine"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShinyParticles" type="CPUParticles2D" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Shine"]
+material = SubResource("CanvasItemMaterial_7mvf5")
+position = Vector2(103, 56)
+amount = 10
+lifetime = 2.0
+emission_shape = 3
+emission_rect_extents = Vector2(120, 60)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_3mony")
+color = Color(2, 2, 2, 1)
 
 [node name="ButtonsContainer" type="PanelContainer" parent="UI/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -1097,7 +1148,10 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxTexture_q3m6p")
 text = "X"
 
-[node name="SpashScreen" parent="." instance=ExtResource("52_0rkcj")]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wbrb7")
+
+[node name="SplashScreen" parent="." instance=ExtResource("52_epyb5")]
 
 [connection signal="pressed" from="UI/MarginContainer/VBoxContainer/ButtonsContainer/HBoxContainer/VBoxContainer/Play Button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI/MarginContainer/VBoxContainer/ButtonsContainer/HBoxContainer/VBoxContainer/HBoxContainer/Options Button" to="." method="_on_options_button_pressed"]
