@@ -14,12 +14,14 @@ func pause() -> void:
 func _on_resume_button_pressed() -> void:
 	pause()
 
+func _on_last_checkpoint_button_pressed() -> void:
+	utils.restart_from_last_checkpoint(game_scene)
+
 func _on_restart_button_pressed() -> void:
 	get_tree().quit()
 
 func _on_main_menu_button_pressed() -> void:
 	get_tree().change_scene_to_file(main_menu_scene)
-
 
 func _on_visibility_changed() -> void:
 	if visible:

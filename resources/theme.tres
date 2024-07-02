@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=44 format=3 uid="uid://b6m5m23f256la"]
+[gd_resource type="Theme" load_steps=46 format=3 uid="uid://b6m5m23f256la"]
 
 [ext_resource type="Texture2D" uid="uid://dsp1ippr2e7mc" path="res://assets/kenney_fantasy_ui_borders/PNG/Default/Transparent center/panel-transparent-center-000.png" id="1_lui5e"]
 [ext_resource type="Texture2D" uid="uid://vi47jt7incm7" path="res://assets/kenney_fantasy_ui_borders/PNG/Default/Panel/panel-000.png" id="2_ntrpi"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://rlyxcu81sfg2" path="res://assets/kenney_fantasy_ui_borders/PNG/Default/Cursors/Slider_Cursor.png" id="4_sys14"]
 [ext_resource type="Texture2D" uid="uid://mblx6u2f4na8" path="res://assets/kenney_fantasy_ui_borders/PNG/Default/Border/panel-border-017.png" id="5_c4vbh"]
 [ext_resource type="Texture2D" uid="uid://bx0vpyyyeci6a" path="res://assets/kenney_fantasy_ui_borders/PNG/Default/Transparent center/panel-transparent-center-023.png" id="6_fkd08"]
+[ext_resource type="Texture2D" uid="uid://6p7i0fux2m54" path="res://assets/kenney_fantasy_ui_borders/PNG/Default/Panel/panel-008.png" id="7_32eoc"]
 [ext_resource type="FontFile" uid="uid://gm0i7516lrdh" path="res://assets/font/Uncial_WIP.ttf" id="7_yxrij"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jqqyt"]
@@ -221,6 +222,14 @@ texture_margin_right = 14.0
 texture_margin_bottom = 14.0
 modulate_color = Color(0.694118, 0.654902, 0.65098, 1)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4fpmu"]
+texture = ExtResource("7_32eoc")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(0.24, 0.24, 0.24, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xxj1"]
 content_margin_left = 4.0
 content_margin_top = 4.0
@@ -385,6 +394,15 @@ Panel/styles/panel = SubResource("StyleBoxTexture_7q0mw")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_7q0mw")
 RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
 RichTextLabel/constants/outline_size = 16
+TooltipLabel/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+TooltipLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+TooltipLabel/colors/font_shadow_color = Color(0, 0, 0, 0)
+TooltipLabel/constants/outline_size = 0
+TooltipLabel/constants/shadow_offset_x = 1
+TooltipLabel/constants/shadow_offset_y = 1
+TooltipPanel/colors/title_color = Color(0, 0, 0, 1)
+TooltipPanel/colors/title_outline_modulate = Color(0, 0, 0, 1)
+TooltipPanel/styles/panel = SubResource("StyleBoxTexture_4fpmu")
 VScrollBar/icons/decrement = SubResource("ImageTexture_42j6c")
 VScrollBar/icons/decrement_highlight = SubResource("ImageTexture_42j6c")
 VScrollBar/icons/decrement_pressed = SubResource("ImageTexture_42j6c")

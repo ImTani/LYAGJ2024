@@ -26,6 +26,7 @@ point_count = 2
 [node name="Item" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_02ldc")
 sprite = NodePath("Sprite")
+abyss_y_position = 165.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
 light_mask = 2

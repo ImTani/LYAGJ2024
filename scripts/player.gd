@@ -17,9 +17,10 @@ class_name Player
 @export var audio_component: AudioComponent
 @export var flame_position_flipping_component: PositionFlippingComponent
 
-func _ready() -> void:
-	
+func _init() -> void:
 	utils.player = self
+
+func _ready() -> void:
 	
 	thrower_component.item_thrown.connect(holder_component.remove_current_item)
 	health_component.died.connect(respawn_component.respawn)

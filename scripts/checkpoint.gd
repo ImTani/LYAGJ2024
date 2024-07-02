@@ -12,7 +12,8 @@ func _on_checkpoint_entered(body: Node2D) -> void:
 		return
 	
 	respawn_component.respawn_point = global_position
-
+	utils.last_checkpoint = global_position
+	
 	if animation_player.current_animation:
 		animation_player.play(rise_animation)
 		$FlagWave.play()
