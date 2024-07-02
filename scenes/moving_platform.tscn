@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://co7bh71jmgyv3"]
+[gd_scene load_steps=8 format=3 uid="uid://co7bh71jmgyv3"]
 
 [ext_resource type="Texture2D" uid="uid://eueyuobot22u" path="res://assets/kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="1_6vkks"]
+[ext_resource type="AudioStream" uid="uid://cma08loqvjsbf" path="res://assets/sounds/sfx/engine_hum.mp3" id="2_usu5o"]
 
 [sub_resource type="Curve2D" id="Curve2D_qrm7u"]
 _data = {
@@ -124,6 +125,16 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_sst2j")
 one_way_collision = true
 debug_color = Color(0.424105, 0.559774, 0.619033, 0.42)
+
+[node name="Moving" type="AudioStreamPlayer2D" parent="AnimatableBody2D"]
+stream = ExtResource("2_usu5o")
+volume_db = -15.0
+pitch_scale = 2.0
+autoplay = true
+max_distance = 180.0
+attenuation = 0.5
+panning_strength = 2.0
+bus = &"SFX"
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 rotation = -1.5708

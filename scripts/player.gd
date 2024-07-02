@@ -18,6 +18,7 @@ class_name Player
 @export var flame_position_flipping_component: PositionFlippingComponent
 
 func _ready() -> void:
+	
 	utils.player = self
 	
 	thrower_component.item_thrown.connect(holder_component.remove_current_item)

@@ -60,6 +60,14 @@ func handle_coyote_time(body: CharacterBody2D) -> void:
 	if not coyote_timer.is_stopped() and not is_jumping:
 		body.velocity.y = 0
 
+func handle_jump_pad(body: CharacterBody2D) -> void:
+	jumped.emit()
+	
+	body.velocity.y = jump_velocity * 2.25
+	is_jumping = true
+	jump_buffer_timer.stop()
+	coyote_timer.stop()
+
 func jump(body: CharacterBody2D) -> void:
 	jumped.emit()
 	

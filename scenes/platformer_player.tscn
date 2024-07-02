@@ -1,9 +1,10 @@
-[gd_scene load_steps=82 format=3 uid="uid://eohbogu0cec3"]
+[gd_scene load_steps=87 format=3 uid="uid://eohbogu0cec3"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_w4a55"]
 [ext_resource type="Shader" uid="uid://tlm38mqaeaqj" path="res://shaders/wave_shader.tres" id="2_gjjn1"]
 [ext_resource type="Texture2D" uid="uid://cikmgyfofq6wh" path="res://assets/player_sprites/tile000.png" id="2_mw1do"]
 [ext_resource type="AudioStream" uid="uid://csvav8edh423y" path="res://assets/sounds/sfx/fire_crackle.mp3" id="3_0ohdl"]
+[ext_resource type="Script" path="res://scripts/lights_flicker.gd" id="3_e52d3"]
 [ext_resource type="Script" path="res://scripts/components/GravityComponent.gd" id="3_ekt3m"]
 [ext_resource type="AudioStream" uid="uid://c4whsr5sv2g7w" path="res://assets/sounds/sfx/footsteps/footstep1.mp3" id="3_fttdc"]
 [ext_resource type="Script" path="res://scripts/components/InputComponent.gd" id="4_7u3fe"]
@@ -86,9 +87,52 @@ height = 500
 use_hdr = true
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.3, 0.5)
+fill_to = Vector2(0, 0.5)
 metadata/_snap_enabled = true
 metadata/_snap_count = 20
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dpv3u"]
+gradient = SubResource("Gradient_8ebpi")
+width = 500
+height = 500
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.25, 0.55)
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="Animation" id="Animation_q01ce"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_y43dp"]
+resource_name = "flicker"
+length = 0.1
+loop_mode = 1
+step = 0.05
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"randomize_light_intensity"
+}, {
+"args": [],
+"method": &"randomize_light_intensity"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eny4e"]
+_data = {
+"RESET": SubResource("Animation_q01ce"),
+"flicker": SubResource("Animation_y43dp")
+}
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4ycvb"]
 playback_mode = 1
@@ -268,7 +312,8 @@ audio_component = NodePath("AudioComponent")
 flame_position_flipping_component = NodePath("FlamePositionFlippingComponent")
 metadata/_edit_group_ = true
 
-[node name="Flame" type="CPUParticles2D" parent="."]
+[node name="Flame" type="CPUParticles2D" parent="." node_paths=PackedStringArray("light1")]
+light_mask = 0
 material = SubResource("ShaderMaterial_2hiwt")
 position = Vector2(16, -16)
 amount = 20
@@ -283,11 +328,13 @@ scale_amount_min = 2.0
 scale_amount_max = 5.0
 scale_amount_curve = SubResource("Curve_wpwl7")
 color_ramp = SubResource("Gradient_5nuw6")
+script = ExtResource("3_e52d3")
+light1 = NodePath("FlickeringLight")
 
 [node name="LightForOthers" type="PointLight2D" parent="Flame"]
 use_parent_material = true
 scale = Vector2(9.375, 9.375)
-color = Color(0, 1.2, 1.2, 1)
+color = Color(0.623655, 0.99095, 0.986603, 1)
 shadow_enabled = true
 shadow_color = Color(0.229, 0.229, 0.229, 0.295)
 shadow_filter = 1
@@ -295,10 +342,22 @@ shadow_filter_smooth = 5.0
 texture = SubResource("GradientTexture2D_y7n8f")
 texture_scale = 0.1
 
+[node name="FlickeringLight" type="PointLight2D" parent="Flame"]
+use_parent_material = true
+scale = Vector2(9.375, 9.375)
+energy = 0.5
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_color = Color(0.229, 0.229, 0.229, 0.295)
+shadow_filter = 1
+shadow_filter_smooth = 5.0
+texture = SubResource("GradientTexture2D_dpv3u")
+texture_scale = 0.1
+
 [node name="LightForSelf" type="PointLight2D" parent="Flame"]
 use_parent_material = true
 scale = Vector2(9.375, 9.375)
-color = Color(0.5, 1.2, 1.2, 1)
+color = Color(0.623655, 0.99095, 0.986603, 1)
 range_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_y7n8f")
 texture_scale = 0.1
@@ -310,6 +369,12 @@ volume_db = -15.0
 autoplay = true
 panning_strength = 50.0
 bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Flame"]
+libraries = {
+"": SubResource("AnimationLibrary_eny4e")
+}
+autoplay = "flicker"
 
 [node name="Sounds" type="Node2D" parent="."]
 
