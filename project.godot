@@ -37,6 +37,7 @@ audio/overall_volume=1.0
 audio/sfx_volume=1.0
 audio/music_volume=1.0
 audio/voice_volume=1.0
+graphics/fullscreen=false
 
 [debug]
 

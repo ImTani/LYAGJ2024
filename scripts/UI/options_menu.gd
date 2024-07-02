@@ -15,6 +15,7 @@ class_name OptionsMenu
 @export var shadows_toggle_button: CheckButton
 @export var subtitles_toggle_button: CheckButton
 @export var light_environment_toggle_button: CheckButton
+@export var full_screen_toggle_button: CheckButton
 
 @export_subgroup("Audio Busses")
 @export var master_bus: StringName = &"Master"
@@ -30,6 +31,7 @@ var voice_volume_setting: StringName = "configuration/audio/voice_volume"
 var shadows_setting: StringName = "configuration/graphics/shadows"
 var subtitles_setting: StringName = "configuration/graphics/subtitles"
 var light_environment_setting: StringName = "configuration/graphics/light_environment"
+var fullscreen_setting: StringName = "configuration/graphics/fullscreen"
 
 var override_path: StringName = "res://override.cfg"
 
@@ -84,6 +86,7 @@ func load_toggle_settings() -> void:
 	light_environment_toggle_button.button_pressed = ProjectSettings.get_setting(light_environment_setting)
 	shadows_toggle_button.button_pressed = ProjectSettings.get_setting(shadows_setting)
 	subtitles_toggle_button.button_pressed = ProjectSettings.get_setting(subtitles_setting)
+	full_screen_toggle_button.button_pressed = ProjectSettings.get_setting(fullscreen_setting)
 
 func toggle_setting(setting: StringName, toggled_on: bool) -> void:
 	ProjectSettings.set_setting(setting, toggled_on)
@@ -97,3 +100,10 @@ func _on_subtitles_toggled(toggled_on: bool) -> void:
 
 func _on_shadows_checkbox_toggled(toggled_on: bool) -> void:
 	toggle_setting(shadows_setting, toggled_on)
+
+func _on_full_screen_toggled(toggled_on: bool) -> void:
+	toggle_setting(fullscreen_setting, toggled_on)
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_WINDOWED)

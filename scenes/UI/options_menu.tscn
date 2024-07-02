@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/UI/options_menu.gd" id="2_ars7o"]
 [ext_resource type="AudioStream" uid="uid://xjsa7mxxyoag" path="res://assets/sounds/voice_lines/ui/adjusting_voice_volume.mp3" id="3_5mty4"]
 
-[node name="OptionsMenu" type="HBoxContainer" node_paths=PackedStringArray("audio_player", "overall_volume_slider", "music_volume_slider", "sfx_volume_slider", "voice_volume_slider", "shadows_toggle_button", "subtitles_toggle_button", "light_environment_toggle_button")]
+[node name="OptionsMenu" type="HBoxContainer" node_paths=PackedStringArray("audio_player", "overall_volume_slider", "music_volume_slider", "sfx_volume_slider", "voice_volume_slider", "shadows_toggle_button", "subtitles_toggle_button", "light_environment_toggle_button", "full_screen_toggle_button")]
 process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,6 +24,7 @@ voice_volume_slider = NodePath("PanelContainer/VBoxContainer/HBoxContainer/VBoxC
 shadows_toggle_button = NodePath("PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/Shadows")
 subtitles_toggle_button = NodePath("PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/Subtitles")
 light_environment_toggle_button = NodePath("PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2/Light Environment")
+full_screen_toggle_button = NodePath("PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2/Full Screen")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
@@ -153,6 +154,14 @@ theme_override_colors/font_pressed_color = Color(0.827451, 0.827451, 0.827451, 1
 theme_override_colors/font_color = Color(0.827451, 0.827451, 0.827451, 1)
 text = "Lighter Environment"
 
+[node name="Full Screen" type="CheckButton" parent="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_colors/font_pressed_color = Color(0.827451, 0.827451, 0.827451, 1)
+theme_override_colors/font_color = Color(0.827451, 0.827451, 0.827451, 1)
+text = "Fullscreen"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"Voice Protagonist"
 
@@ -164,3 +173,4 @@ bus = &"Voice Protagonist"
 [connection signal="toggled" from="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/Shadows" to="." method="_on_shadows_checkbox_toggled"]
 [connection signal="toggled" from="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer/Subtitles" to="." method="_on_subtitles_toggled"]
 [connection signal="toggled" from="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2/Light Environment" to="." method="_on_light_environment_toggled"]
+[connection signal="toggled" from="PanelContainer/VBoxContainer/VBoxContainer/HBoxContainer2/Full Screen" to="." method="_on_full_screen_toggled"]

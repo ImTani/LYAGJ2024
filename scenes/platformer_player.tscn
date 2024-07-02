@@ -345,7 +345,7 @@ texture_scale = 0.1
 [node name="FlickeringLight" type="PointLight2D" parent="Flame"]
 use_parent_material = true
 scale = Vector2(9.375, 9.375)
-energy = 0.5
+energy = 0.2
 range_item_cull_mask = 3
 shadow_enabled = true
 shadow_color = Color(0.229, 0.229, 0.229, 0.295)
