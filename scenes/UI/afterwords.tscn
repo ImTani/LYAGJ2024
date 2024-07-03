@@ -1,0 +1,127 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxmpkcnmsylw4"]
+
+[ext_resource type="Script" path="res://scenes/UI/afterwords.gd" id="1_nshcp"]
+[ext_resource type="Theme" uid="uid://b6m5m23f256la" path="res://resources/theme.tres" id="2_ahk4p"]
+
+[sub_resource type="Gradient" id="Gradient_hb7uu"]
+offsets = PackedFloat32Array(0.543147, 0.994924, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0.313726)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dl46k"]
+gradient = SubResource("Gradient_hb7uu")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+metadata/_snap_enabled = true
+
+[node name="Afterword" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nshcp")
+credits_scene = "res://scenes/UI/credits.tscn"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.216, 0.3, 0.2986, 1)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ahk4p")
+
+[node name="Vignette" type="TextureRect" parent="Control"]
+modulate = Color(1, 1, 1, 0.545098)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_dl46k")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="CreditFor" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 36
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 36
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CreditFor"]
+layout_mode = 2
+
+[node name="Afterword" type="Label" parent="Control/CreditFor/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 108
+text = "Afterword"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/CreditFor/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/CreditFor/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_right = 18
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/CreditFor/VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CreditFor/VBoxContainer/ScrollContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/CreditFor/VBoxContainer/ScrollContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+text = "Hey, infiniTani here."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="Control/CreditFor/VBoxContainer/ScrollContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+text = "First things first, Thank you for playing my game. It's an honour for me to have people play my creation and I truly hope that you enjoyed it. Truly, from the bottom of my heart, thank you, for playing the game, and for reading this message. If you're interested in making games, or want to know about my experience while making Rise And Shine, Be sure to check out the devlog linked in the Itch.io page of the game. Farewell, for now.
+
+J.A.R.V.I.S, roll the credits."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

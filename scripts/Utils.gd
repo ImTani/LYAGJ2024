@@ -30,6 +30,19 @@ func restart_from_last_checkpoint(game_scene: String) -> void:
 	
 	player.set_global_position.call_deferred(last_checkpoint)
 
+func change_bg(audio: AudioStream) -> void:
+	var audio_tween: Tween = create_tween()
+	audio_tween.tween_property(BackgroundMusic, "volume_db", -50, 1)
+	
+	await audio_tween.finished
+	
+	BackgroundMusic.stream = audio
+	BackgroundMusic.play()
+	audio_tween.kill()
+	
+	audio_tween = create_tween()
+	audio_tween.tween_property(BackgroundMusic, "volume_db", -5, 3)
+
 func _initialize_timer(_name: String, _wait_time: float) -> Timer:
 	var _timer: Timer = Timer.new()
 	_timer.wait_time = _wait_time
