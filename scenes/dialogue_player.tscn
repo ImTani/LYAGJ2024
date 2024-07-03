@@ -1,16 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://rebcsm0hgsrw"]
+[gd_scene load_steps=4 format=3 uid="uid://rebcsm0hgsrw"]
 
 [ext_resource type="Script" path="res://scripts/dialogue_player.gd" id="1_71hyt"]
+[ext_resource type="Script" path="res://scripts/components/DialoguePlayerComponent.gd" id="2_pm6o3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dbeiw"]
 size = Vector2(18, 180)
 
-[node name="DialoguePlayer" type="Area2D"]
+[node name="DialoguePlayer" type="Area2D" node_paths=PackedStringArray("dialogue_player_component")]
 script = ExtResource("1_71hyt")
+dialogue_player_component = NodePath("DialoguePlayerComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -81)
 shape = SubResource("RectangleShape2D_dbeiw")
 debug_color = Color(0.403687, 0.89625, 7.70092e-07, 0.42)
+
+[node name="DialoguePlayerComponent" type="Node" parent="."]
+script = ExtResource("2_pm6o3")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

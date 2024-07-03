@@ -1,13 +1,14 @@
 extends Node
 class_name RespawnComponent
 
-signal respawned
+signal respawned(first: bool)
 
 @export_subgroup("Settings")
 @export var body: CharacterBody2D
 @export var respawn_time: float = 1.0
 @export var respawn_particles: PackedScene
 
+var first: bool = true
 var respawn_point: Vector2 = Vector2.ZERO
 var respawn_timer: Timer
 
@@ -21,7 +22,7 @@ func respawn() -> void:
 	body.global_position = respawn_point
 	handle_respawn_particles()
 	
-	respawned.emit()
+	respawned.emit(first)
 	
 	var animation_component: AnimationComponent = utils.get_component(body, "AnimationComponent")
 	if animation_component:
@@ -32,6 +33,9 @@ func respawn() -> void:
 		await animation_component.animation_player.animation_finished
 		health_component.is_alive = true
 		health_component.health = health_component.max_health
+	
+	if first:
+		first = false
 
 func handle_respawn_particles() -> void:
 	var _respawn_particles: CPUParticles2D = respawn_particles.instantiate()

@@ -10,6 +10,9 @@ class_name AudioComponent
 @export var hurt_audio_player: AudioStreamPlayer2D
 @export var stab_audio_player: AudioStreamPlayer2D
 
+@export var first_respawn_audio: AudioStream
+@export var first_respawn_subtitles: Dictionary
+
 func handle_footsteps_sfx(move_input: float) -> void:
 	if move_input != 0 and not footsteps_audio_player.playing:
 		footsteps_audio_player.play()
@@ -39,8 +42,12 @@ func handle_death_sfx() -> void:
 	if not death_audio_player.playing:
 		death_audio_player.play()
 
-func handle_respawn_sfx() -> void:
+func handle_respawn_sfx(first: bool) -> void:
 	if not respawn_audio_player.playing:
-		respawn_audio_player.play()
+		if first:
+			utils.play_dialogue(first_respawn_audio, first_respawn_subtitles, "Voice Protagonist")
+		else:
+			respawn_audio_player.play()
+
 		await respawn_audio_player.finished
 		respawn_audio_player.stop()

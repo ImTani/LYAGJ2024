@@ -44,7 +44,7 @@ func run_alpha_tween() -> void:
 	
 	alpha_tween.tween_property(hearts_container.get_parent(), "modulate:a", 0, 3)
 
-func _reset_hearts() -> void:
+func _reset_hearts(first: bool) -> void:
 	for child in hearts_container.get_children():
 		child.queue_free()
 	_heart_count = heart_count

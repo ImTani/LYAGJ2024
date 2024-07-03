@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://eohbogu0cec3"]
+[gd_scene load_steps=88 format=3 uid="uid://eohbogu0cec3"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_w4a55"]
 [ext_resource type="Shader" uid="uid://tlm38mqaeaqj" path="res://shaders/wave_shader.tres" id="2_gjjn1"]
@@ -52,6 +52,7 @@
 [ext_resource type="Texture2D" uid="uid://xdebetjmgsxl" path="res://assets/player_sprites/tile047.png" id="23_xxvcf"]
 [ext_resource type="Texture2D" uid="uid://xanmpqen810q" path="res://assets/player_sprites/tile048.png" id="24_thyem"]
 [ext_resource type="Script" path="res://scripts/components/HolderComponent.gd" id="25_nfach"]
+[ext_resource type="AudioStream" uid="uid://bprvryq6i0uqj" path="res://assets/sounds/voice_lines/first_death.mp3" id="26_hpkjc"]
 [ext_resource type="Script" path="res://scripts/components/RespawnComponent.gd" id="27_0mnbk"]
 [ext_resource type="Texture2D" uid="uid://bst7od25gpgsp" path="res://assets/player_sprites/tile057.png" id="29_x6ecr"]
 [ext_resource type="Texture2D" uid="uid://c0vlgjs6h5538" path="res://assets/player_sprites/tile058.png" id="30_f7psc"]
@@ -424,6 +425,10 @@ stream = ExtResource("22_rg00y")
 volume_db = -20.0
 bus = &"SFX"
 
+[node name="FirstRespawnSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("26_hpkjc")
+bus = &"Voice Protagonist"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_km53y")
@@ -454,6 +459,13 @@ fall_audio_player = NodePath("../Sounds/FallingSound")
 landing_audio_player = NodePath("../Sounds/Landing")
 hurt_audio_player = NodePath("../Sounds/Hurt")
 stab_audio_player = NodePath("../Sounds/Stab")
+first_respawn_audio = ExtResource("26_hpkjc")
+first_respawn_subtitles = {
+1.7: "I'm still alive.",
+4.1: "You won't break me Nox.",
+7.1: "I WILL find a way to get out of this place.",
+11.0: "Alive."
+}
 
 [node name="FlamePositionFlippingComponent" type="Node" parent="." node_paths=PackedStringArray("object_to_flip")]
 script = ExtResource("37_2aae6")

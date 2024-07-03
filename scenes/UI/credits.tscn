@@ -543,20 +543,24 @@ focus_mode = 2
 [node name="Heading_Music2" type="Label" parent="UI/Control/CreditFor/VBoxContainer/ScrollContainer/MarginContainer/HBoxContainer/VBoxContainer/Holder7"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 56
-text = "Playetesters"
+text = "Playtesters"
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="UI/Control/CreditFor/VBoxContainer/ScrollContainer/MarginContainer/HBoxContainer/VBoxContainer/Holder7"]
 layout_mode = 2
-
-[node name="CreditFor" type="Label" parent="UI/Control/CreditFor/VBoxContainer/ScrollContainer/MarginContainer/HBoxContainer/VBoxContainer/Holder7/HBoxContainer6"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "My Brother (with some weird flipping alias)"
 
 [node name="CreditTo" type="Label" parent="UI/Control/CreditFor/VBoxContainer/ScrollContainer/MarginContainer/HBoxContainer/VBoxContainer/Holder7/HBoxContainer6"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Guggam Daas"
+horizontal_alignment = 2
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="UI/Control/CreditFor/VBoxContainer/ScrollContainer/MarginContainer/HBoxContainer/VBoxContainer/Holder7"]
+layout_mode = 2
+
+[node name="CreditTo" type="Label" parent="UI/Control/CreditFor/VBoxContainer/ScrollContainer/MarginContainer/HBoxContainer/VBoxContainer/Holder7/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Goti Gamer"
 horizontal_alignment = 2
 
 [node name="Separator2" type="VBoxContainer" parent="UI/Control/CreditFor/VBoxContainer/ScrollContainer/MarginContainer/HBoxContainer/VBoxContainer/Holder7"]

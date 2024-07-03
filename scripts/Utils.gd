@@ -2,6 +2,7 @@ extends Node
 class_name Utils
 
 var player: Player
+var dialogue_manager: DialogueManager
 
 var last_checkpoint: Vector2:
 	set(value):
@@ -42,6 +43,9 @@ func change_bg(audio: AudioStream) -> void:
 	
 	audio_tween = create_tween()
 	audio_tween.tween_property(BackgroundMusic, "volume_db", -5, 3)
+
+func play_dialogue(audio: AudioStream, subtitles_dict: Dictionary, audio_bus: String) -> void:
+	dialogue_manager.play_dialogue(audio, subtitles_dict, audio_bus)
 
 func _initialize_timer(_name: String, _wait_time: float) -> Timer:
 	var _timer: Timer = Timer.new()
