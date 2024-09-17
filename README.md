@@ -1,2 +1,2 @@
-# LYAGJ2024
- My repository for Learn You A Game Jam 2024
+Check the devlog out!
+https://rise-and-shine.simple.ink/
